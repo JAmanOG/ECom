@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components {
+    a:hover {
+        color: #34D399; 
+        text-decoration: underline;
+        font-weight: bold;
+}
+}
