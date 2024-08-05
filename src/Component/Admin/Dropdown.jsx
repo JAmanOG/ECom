@@ -87,9 +87,9 @@ const data = {
   ],
   KIDS: [
     {
-      "name": "SPORTS SHOES",
-      "value": "sports_shoes",
-      "subcategories": [
+      name: "SPORTS SHOES",
+      value: "sports_shoes",
+      subcategories: [
         "Running Shoes",
         "Training Shoes",
         "Soccer Shoes",
@@ -97,9 +97,9 @@ const data = {
       ]
     },
     {
-      "name": "CASUAL SHOES",
-      "value": "casual_shoes",
-      "subcategories": [
+      name: "CASUAL SHOES",
+      value: "casual_shoes",
+      subcategories: [
         "Sneakers",
         "Slip-Ons",
         "Sandals",
@@ -107,34 +107,34 @@ const data = {
       ]
     },
     {
-      "name": "SCHOOL SHOES",
-      "value": "school_shoes",
-      "subcategories": [
+      name: "SCHOOL SHOES",
+      value: "school_shoes",
+      subcategories: [
         "Boys",
         "Girls"
       ]
     },
     {
-      "name": "BOOTS",
-      "value": "boots",
-      "subcategories": [
+      name: "BOOTS",
+      value: "boots",
+      subcategories: [
         "Ankle Boots",
         "Winter Boots",
         "Rain Boots"
       ]
     },
     {
-      "name": "SLIPPERS",
-      "value": "slippers",
-      "subcategories": [
+      name: "SLIPPERS",
+      value: "slippers",
+      subcategories: [
         "Indoor Slippers",
         "Outdoor Slippers"
       ]
     },
     {
-      "name": "FORMAL SHOES",
-      "value": "formal_shoes",
-      "subcategories": [
+      name: "FORMAL SHOES",
+      value: "formal_shoes",
+      subcategories: [
         "Boys",
         "Girls"
       ]
@@ -142,35 +142,35 @@ const data = {
   ],
   OTHER_PRODUCTS: [
     {
-      "name": "FOOTWEAR ACCESSORIES",
-      "value": "footwear_accessories",
-      "subcategories": [
+      name: "FOOTWEAR ACCESSORIES",
+      value: "footwear_accessories",
+      subcategories: [
         "Shoe Laces",
         "Insoles",
         "Shoe Polish"
       ]
     },
     {
-      "name": "FOOTWEAR CARE",
-      "value": "footwear_care",
-      "subcategories": [
+      name: "FOOTWEAR CARE",
+      value: "footwear_care",
+      subcategories: [
         "Waterproof Sprays",
         "Shoe Cleaners"
       ]
     },
     {
-      "name": "SOCKS",
-      "value": "socks",
-      "subcategories": [
+      name: "SOCKS",
+      value: "socks",
+      subcategories: [
         "Casual Socks",
         "Athletic Socks",
         "Dress Socks"
       ]
     },
     {
-      "name": "SHOE STORAGE",
-      "value": "shoe_storage",
-      "subcategories": [
+      name: "SHOE STORAGE",
+      value: "shoe_storage",
+      subcategories: [
         "Shoe Racks",
         "Shoe Bags"
       ]

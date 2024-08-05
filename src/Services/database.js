@@ -126,14 +126,70 @@
 //   export default DBservice;
   
 
-  import { Client, Databases } from 'appwrite';
-  import conf from './conf';
+// src/Services/database.js
+import { Client, Databases,Storage,ID, Query } from 'appwrite';
+import conf from './conf';
 
 const client = new Client();
 client
-      .setEndpoint(conf.appwriteUrl)
-      .setProject(conf.appwriteProjectId);
+  .setEndpoint(conf.appwriteUrl)
+  .setProject(conf.appwriteProjectId);
 
 const databases = new Databases(client);
 
-export { client, databases };
+
+const getShoes = async (category, footwearType,variety) => {
+  try {
+    const response = await databases.listDocuments(
+      conf.appwriteDatabaseId,
+      conf.appwriteCollectionId,
+      [
+        Query.equal('Category', category),
+        Query.equal('Footwear_Type', footwearType),
+        Query.equal('Variety', variety)
+      ]
+    );
+    return response.documents;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error; // Ensure errors are thrown to be caught in the component
+  }
+};
+
+class bucketstorage {
+  constructor() {
+    this.bucket = new Storage(client);
+  }
+  
+  async uploadFile(file) {
+    try {
+      return await this.bucket.createFile(
+        conf.appwriteBucketId,
+        ID.unique(),
+        file
+      );
+    } catch (error) {
+      console.log("Appwrite serive :: uploadFile :: error", error);
+      return false;
+    }
+  }
+
+  async deleteFile(fileId) {
+    try {
+      await this.bucket.deleteFile(conf.appwriteBucketId, fileId);
+      return true;
+    } catch (error) {
+      console.log("Appwrite serive :: deleteFile :: error", error);
+      return false;
+    }
+  }
+
+  getFilePreview(fileId){
+    return this.bucket.getFilePreview(
+        conf.appwriteBucketId,
+        fileId
+    )
+}
+}
+const appwriteService = new bucketstorage();
+export { client, databases, getShoes, appwriteService };

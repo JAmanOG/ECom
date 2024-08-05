@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Shopping_cart } from "./Shopping_cart";
 
 function Main_nav() {
   return (
     <section id="MainNavbar">
       <nav className="border-b-[3px] shadow-sm text-center justify-center">
-        <div className="flex justify-between bg-white text-gray-600 pl-[3rem] p-2 w-full">
+        <div className="flex justify-between bg-white align-middle text-center text-gray-600 pl-[3rem] p-2 w-full">
           <div className="flex space-x-4 align-middle text-center">
             <span className="p-2">LOGO</span>
             <span className="p-2 font-medium transition duration-300 ease-in transform hover:translate-y-1">
@@ -27,27 +28,27 @@ function Main_nav() {
                     DRESS SHOES
                   </li>
                   <li>
-                    <Link to="/men/oxfords" aria-label="Oxfords">
+                    <Link to="/men/dress_shoes/oxfords" aria-label="Oxfords">
                       Oxfords
                     </Link>
                   </li>
                   <li>
-                    <Link to="/men/derbies" aria-label="Derbies">
+                    <Link to="/men/dress_shoes/derbies" aria-label="Derbies">
                       Derbies
                     </Link>
                   </li>
                   <li>
-                    <Link to="/men/brogues" aria-label="Brogues">
+                    <Link to="/men/dress_shoes/brogues" aria-label="Brogues">
                       Brogues
                     </Link>
                   </li>
                   <li>
-                    <Link to="/men/loafers" aria-label="Loafers">
+                    <Link to="/men/dress_shoes/loafers" aria-label="Loafers">
                       Loafers
                     </Link>
                   </li>
                   <li>
-                    <Link to="/men/monk-straps" aria-label="Monk Straps">
+                    <Link to="/men/dress_shoes/monk-straps" aria-label="Monk Straps">
                       Monk Straps
                     </Link>
                   </li>
@@ -57,27 +58,27 @@ function Main_nav() {
                     CASUAL SHOES
                   </li>
                   <li>
-                    <Link to="/sneakers" aria-label="Sneakers">
+                    <Link to="/men/casual_shoes/sneakers" aria-label="Sneakers">
                       Sneakers
                     </Link>
                   </li>
                   <li>
-                    <Link to="/boat-shoes" aria-label="Boat Shoes">
+                    <Link to="/men/casual_shoes/boat-shoes" aria-label="Boat Shoes">
                       Boat Shoes
                     </Link>
                   </li>
                   <li>
-                    <Link to="/espadrilles" aria-label="Espadrilles">
+                    <Link to="/men/casual_shoes/espadrilles" aria-label="Espadrilles">
                       Espadrilles
                     </Link>
                   </li>
                   <li>
-                    <Link to="/moccasins" aria-label="Moccasins">
+                    <Link to="/men/casual_shoes/moccasins" aria-label="Moccasins">
                       Moccasins
                     </Link>
                   </li>
                   <li>
-                    <Link to="/slip-ons" aria-label="Slip-Ons">
+                    <Link to="/men/casual_shoes/slip-ons" aria-label="Slip-Ons">
                       Slip-Ons
                     </Link>
                   </li>
@@ -88,27 +89,27 @@ function Main_nav() {
                     BOOTS
                   </li>
                   <li>
-                    <Link to="/ankle-boots" aria-label="Ankle Boots">
+                    <Link to="/men/boots/ankle-boots" aria-label="Ankle Boots">
                       Ankle Boots
                     </Link>
                   </li>
                   <li>
-                    <Link to="/chelsea-boots" aria-label="Chelsea Boots">
+                    <Link to="/men/boots/chelsea-boots" aria-label="Chelsea Boots">
                       Chelsea Boots
                     </Link>
                   </li>
                   <li>
-                    <Link to="/chukka-boots" aria-label="Chukka Boots">
+                    <Link to="/men/boots/chukka-boots" aria-label="Chukka Boots">
                       Chukka Boots
                     </Link>
                   </li>
                   <li>
-                    <Link to="/work-boots" aria-label="Work Boots">
+                    <Link to="/men/boots/work-boots" aria-label="Work Boots">
                       Work Boots
                     </Link>
                   </li>
                   <li>
-                    <Link to="/hiking-boots" aria-label="Hiking Boots">
+                    <Link to="/men/boots/hiking-boots" aria-label="Hiking Boots">
                       Hiking Boots
                     </Link>
                   </li>
@@ -119,18 +120,18 @@ function Main_nav() {
                     SANDALS
                   </li>
                   <li>
-                    <Link to="/flip-flops" aria-label="Flip Flops">
+                    <Link to="/men/sandals/flip-flops" aria-label="Flip Flops">
                       Flip Flops
                     </Link>
                   </li>
                   <li>
-                    <Link to="/slide-sandals" aria-label="Slide Sandals">
+                    <Link to="/men/sandals/slide-sandals" aria-label="Slide Sandals">
                       Slide Sandals
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/fisherman-sandals"
+                      to="/men/sandals/fisherman-sandals"
                       aria-label="Fisherman Sandals"
                     >
                       Fisherman Sandals
@@ -143,27 +144,27 @@ function Main_nav() {
                     ATHLETIC FOOTWEAR
                   </li>
                   <li>
-                    <Link to="/running-shoes" aria-label="Running Shoes">
+                    <Link to="/men/athletic_footwear/running-shoes" aria-label="Running Shoes">
                       Running Shoes
                     </Link>
                   </li>
                   <li>
-                    <Link to="/training-shoes" aria-label="Training Shoes">
+                    <Link to="/men/athletic_footwear/training-shoes" aria-label="Training Shoes">
                       Training Shoes
                     </Link>
                   </li>
                   <li>
-                    <Link to="/basketball-shoes" aria-label="Basketball Shoes">
+                    <Link to="/men/athletic_footwear/basketball-shoes" aria-label="Basketball Shoes">
                       Basketball Shoes
                     </Link>
                   </li>
                   <li>
-                    <Link to="/soccer-shoes" aria-label="Soccer Shoes">
+                    <Link to="/men/athletic_footwear/soccer-shoes" aria-label="Soccer Shoes">
                       Soccer Shoes
                     </Link>
                   </li>
                   <li>
-                    <Link to="/tennis-shoes" aria-label="Tennis Shoes">
+                    <Link to="/men/athletic_footwear/tennis-shoes" aria-label="Tennis Shoes">
                       Tennis Shoes
                     </Link>
                   </li>
@@ -174,13 +175,13 @@ function Main_nav() {
                     FORMAL SHOES
                   </li>
                   <li>
-                    <Link to="/dress-boots" aria-label="Dress Boots">
+                    <Link to="/men/formal_shoes/dress-boots" aria-label="Dress Boots">
                       Dress Boots
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/patent-leather-shoes"
+                      to="/men/formal_shoes/patent-leather-shoes"
                       aria-label="Patent Leather Shoes"
                     >
                       Patent Leather Shoes
@@ -193,12 +194,12 @@ function Main_nav() {
                     OUTDOOR SHOES
                   </li>
                   <li>
-                    <Link to="/hiking-boots-outdoor" aria-label="Hiking Boots">
+                    <Link to="/men/outdoor_shoes/hiking-boots-outdoor" aria-label="Hiking Boots">
                       Hiking Boots
                     </Link>
                   </li>
                   <li>
-                    <Link to="/trail-shoes" aria-label="Trail Shoes">
+                    <Link to="/men/outdoor_shoes/trail-shoes" aria-label="Trail Shoes">
                       Trail Shoes
                     </Link>
                   </li>
@@ -209,12 +210,12 @@ function Main_nav() {
                     SLIPPERS
                   </li>
                   <li>
-                    <Link to="/indoor-slippers" aria-label="Indoor Slippers">
+                    <Link to="/men/slippers/indoor-slippers" aria-label="Indoor Slippers">
                       Indoor Slippers
                     </Link>
                   </li>
                   <li>
-                    <Link to="/outdoor-slippers" aria-label="Outdoor Slippers">
+                    <Link to="/men/slippers/outdoor-slippers" aria-label="Outdoor Slippers">
                       Outdoor Slippers
                     </Link>
                   </li>
@@ -237,28 +238,28 @@ function Main_nav() {
                     HEELS
                   </li>
                   <li>
-                    <Link to="/women/stilettos" aria-label="Stilettos">
+                    <Link to="/women/heels/stilettos" aria-label="Stilettos">
                       Stilettos
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/kitten-heels" aria-label="Kitten Heels">
+                    <Link to="/women/heels/kitten-heels" aria-label="Kitten Heels">
                       Kitten Heels
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/block-heels" aria-label="Block Heels">
+                    <Link to="/women/heels/block-heels" aria-label="Block Heels">
                       Block Heels
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/wedges" aria-label="Wedges">
+                    <Link to="/women/heels/wedges" aria-label="Wedges">
                       Wedges
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/women/platform-heels"
+                      to="/women/heels/platform-heels"
                       aria-label="Platform Heels"
                     >
                       Platform Heels
@@ -271,22 +272,22 @@ function Main_nav() {
                     FLATS
                   </li>
                   <li>
-                    <Link to="/women/ballet-flats" aria-label="Ballet Flats">
+                    <Link to="/women/flats/ballet-flats" aria-label="Ballet Flats">
                       Ballet Flats
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/loafers" aria-label="Loafers">
+                    <Link to="/women/flats/loafers" aria-label="Loafers">
                       Loafers
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/espadrilles" aria-label="Espadrilles">
+                    <Link to="/women/flats/espadrilles" aria-label="Espadrilles">
                       Espadrilles
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/moccasins" aria-label="Moccasins">
+                    <Link to="/women/flats/moccasins" aria-label="Moccasins">
                       Moccasins
                     </Link>
                   </li>
@@ -297,13 +298,13 @@ function Main_nav() {
                     BOOTS
                   </li>
                   <li>
-                    <Link to="/women/ankle-boots" aria-label="Ankle Boots">
+                    <Link to="/women/boots/ankle-boots" aria-label="Ankle Boots">
                       Ankle Boots
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/women/knee-high-boots"
+                      to="/women/boots/knee-high-boots"
                       aria-label="Knee-High Boots"
                     >
                       Knee-High Boots
@@ -311,19 +312,19 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/women/over-the-knee-boots"
+                      to="/women/boots/over-the-knee-boots"
                       aria-label="Over-the-Knee Boots"
                     >
                       Over-the-Knee Boots
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/chelsea-boots" aria-label="Chelsea Boots">
+                    <Link to="/women/boots/chelsea-boots" aria-label="Chelsea Boots">
                       Chelsea Boots
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/combat-boots" aria-label="Combat Boots">
+                    <Link to="/women/boots/combat-boots" aria-label="Combat Boots">
                       Combat Boots
                     </Link>
                   </li>
@@ -335,25 +336,25 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/women/gladiator-sandals"
+                      to="/women/sandals/gladiator-sandals"
                       aria-label="Gladiator Sandals"
                     >
                       Gladiator Sandals
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/slide-sandals" aria-label="Slide Sandals">
+                    <Link to="/women/sandals/slide-sandals" aria-label="Slide Sandals">
                       Slide Sandals
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/flip-flops" aria-label="Flip Flops">
+                    <Link to="/women/sandals/flip-flops" aria-label="Flip Flops">
                       Flip Flops
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/women/slingback-sandals"
+                      to="/women/sandals/slingback-sandals"
                       aria-label="Slingback Sandals"
                     >
                       Slingback Sandals
@@ -366,13 +367,13 @@ function Main_nav() {
                     SNEAKERS
                   </li>
                   <li>
-                    <Link to="/women/running-shoes" aria-label="Running Shoes">
+                    <Link to="/women/sneakers/running-shoes" aria-label="Running Shoes">
                       Running Shoes
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/women/casual-sneakers"
+                      to="/women/sneakers/casual-sneakers"
                       aria-label="Casual Sneakers"
                     >
                       Casual Sneakers
@@ -380,7 +381,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/women/high-top-sneakers"
+                      to="/women/sneakers/high-top-sneakers"
                       aria-label="High-Top Sneakers"
                     >
                       High-Top Sneakers
@@ -388,7 +389,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/women/slip-on-sneakers"
+                      to="/women/sneakers/slip-on-sneakers"
                       aria-label="Slip-On Sneakers"
                     >
                       Slip-On Sneakers
@@ -401,12 +402,12 @@ function Main_nav() {
                     FORMAL SHOES
                   </li>
                   <li>
-                    <Link to="/women/dress-shoes" aria-label="Dress Shoes">
+                    <Link to="/women/formal_shoes/dress-shoes" aria-label="Dress Shoes">
                       Dress Shoes
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/pumps" aria-label="Pumps">
+                    <Link to="/women/formal_shoes/pumps" aria-label="Pumps">
                       Pumps
                     </Link>
                   </li>
@@ -418,19 +419,19 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/women/training-shoes"
+                      to="/women/athletic_footwear/training-shoes"
                       aria-label="Training Shoes"
                     >
                       Training Shoes
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/hiking-boots" aria-label="Hiking Boots">
+                    <Link to="/women/athletic_footwear/hiking-boots" aria-label="Hiking Boots">
                       Hiking Boots
                     </Link>
                   </li>
                   <li>
-                    <Link to="/women/walking-shoes" aria-label="Walking Shoes">
+                    <Link to="/women/athletic_footwear/walking-shoes" aria-label="Walking Shoes">
                       Walking Shoes
                     </Link>
                   </li>
@@ -442,7 +443,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/women/indoor-slippers"
+                      to="/women/slippers/indoor-slippers"
                       aria-label="Indoor Slippers"
                     >
                       Indoor Slippers
@@ -450,7 +451,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/women/outdoor-slippers"
+                      to="/women/slippers/outdoor-slippers"
                       aria-label="Outdoor Slippers"
                     >
                       Outdoor Slippers
@@ -460,7 +461,7 @@ function Main_nav() {
               </div>
             </span>
             {/* KIDS SECTION */}
-            <span className="p-2 font-medium relative group dropdown transition duration-300 ease-in transform hover:translate-x-1">
+            <span className="p-2 font-medium relative group dropdown z-10 transition duration-300 ease-in transform hover:translate-x-1">
               <NavLink
                 to="#"
                 className="cursor-pointer hover:font-extrabold transition duration-300 ease-in transform hover:translate-x-1"
@@ -474,23 +475,23 @@ function Main_nav() {
                     SPORTS SHOES
                   </li>
                   <li>
-                    <Link to="/kids/running-shoes" aria-label="Running Shoes">
+                    <Link to="/kids/sports_shoes/running-shoes" aria-label="Running Shoes">
                       Running Shoes
                     </Link>
                   </li>
                   <li>
-                    <Link to="/kids/training-shoes" aria-label="Training Shoes">
+                    <Link to="/kids/sports_shoes/training-shoes" aria-label="Training Shoes">
                       Training Shoes
                     </Link>
                   </li>
                   <li>
-                    <Link to="/kids/soccer-shoes" aria-label="Soccer Shoes">
+                    <Link to="/kids/sports_shoes/soccer-shoes" aria-label="Soccer Shoes">
                       Soccer Shoes
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/kids/basketball-shoes"
+                      to="/kids/sports_shoes/basketball-shoes"
                       aria-label="Basketball Shoes"
                     >
                       Basketball Shoes
@@ -503,22 +504,22 @@ function Main_nav() {
                     CASUAL SHOES
                   </li>
                   <li>
-                    <Link to="/kids/sneakers" aria-label="Sneakers">
+                    <Link to="/kids/casual_shoes/sneakers" aria-label="Sneakers">
                       Sneakers
                     </Link>
                   </li>
                   <li>
-                    <Link to="/kids/slip-ons" aria-label="Slip-Ons">
+                    <Link to="/kids/casual_shoes/slip-ons" aria-label="Slip-Ons">
                       Slip-Ons
                     </Link>
                   </li>
                   <li>
-                    <Link to="/kids/sandals" aria-label="Sandals">
+                    <Link to="/kids/casual_shoes/sandals" aria-label="Sandals">
                       Sandals
                     </Link>
                   </li>
                   <li>
-                    <Link to="/kids/flip-flops" aria-label="Flip Flops">
+                    <Link to="/kids/casual_shoes/flip-flops" aria-label="Flip Flops">
                       Flip Flops
                     </Link>
                   </li>
@@ -530,7 +531,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/kids/school-shoes-boys"
+                      to="/kids/school_shoes/school-shoes-boys"
                       aria-label="School Shoes for Boys"
                     >
                       Boys
@@ -538,7 +539,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/kids/school-shoes-girls"
+                      to="/kids/school_shoes/school-shoes-girls"
                       aria-label="School Shoes for Girls"
                     >
                       Girls
@@ -551,17 +552,17 @@ function Main_nav() {
                     BOOTS
                   </li>
                   <li>
-                    <Link to="/kids/ankle-boots" aria-label="Ankle Boots">
+                    <Link to="/kids/boots/ankle-boots" aria-label="Ankle Boots">
                       Ankle Boots
                     </Link>
                   </li>
                   <li>
-                    <Link to="/kids/winter-boots" aria-label="Winter Boots">
+                    <Link to="/kids/boots/winter-boots" aria-label="Winter Boots">
                       Winter Boots
                     </Link>
                   </li>
                   <li>
-                    <Link to="/kids/rain-boots" aria-label="Rain Boots">
+                    <Link to="/kids/boots/rain-boots" aria-label="Rain Boots">
                       Rain Boots
                     </Link>
                   </li>
@@ -573,7 +574,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/kids/indoor-slippers"
+                      to="/kids/slippers/indoor-slippers"
                       aria-label="Indoor Slippers"
                     >
                       Indoor Slippers
@@ -581,7 +582,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/kids/outdoor-slippers"
+                      to="/kids/slippers/outdoor-slippers"
                       aria-label="Outdoor Slippers"
                     >
                       Outdoor Slippers
@@ -595,7 +596,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/kids/formal-shoes-boys"
+                      to="/kids/formal_shoes/formal-shoes-boys"
                       aria-label="Formal Shoes for Boys"
                     >
                       Boys
@@ -603,7 +604,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/kids/formal-shoes-girls"
+                      to="/kids/formal_shoes/formal-shoes-girls"
                       aria-label="Formal Shoes for Girls"
                     >
                       Girls
@@ -614,7 +615,7 @@ function Main_nav() {
             </span>
             {/* Other Products */}
 
-            <span className="p-2 font-medium relative group dropdown transition duration-300 ease-in transform hover:translate-x-1">
+            <span className="p-2 font-medium relative group z-20 dropdown transition duration-300 ease-in transform hover:translate-x-1">
               <NavLink
                 to="#"
                 className="cursor-pointer hover:font-extrabold transition duration-300 ease-in transform hover:translate-x-1"
@@ -622,14 +623,14 @@ function Main_nav() {
               >
                 Others Products
               </NavLink>
-              <div className="absolute group-hover:grid hidden z-20 left-0 top-10 bg-[#F1EAFF] text-[#242424] shadow-2xl grid-rows-2 font-OpenSans grid-flow-col space-x-20 px-5 p-2 border-[2px]">
-                <ul className="space-y-2 ml-auto py-2 w-max text-lg">
+              <div className="absolute group-hover:grid hidden z-10 left-0 top-10 bg-[#F1EAFF] text-[#242424] shadow-2xl grid-rows-2 font-OpenSans grid-flow-col space-x-20 px-5 p-2 border-[2px]">
+                <ul className="space-y-2 ml-auto  py-2 w-max text-lg">
                   <li className="font-extrabold text-xl tracking-wider border-b-2 border-emerald-500">
                     FOOTWEAR ACCESSORIES
                   </li>
                   <li>
                     <Link
-                      to="/footwear-accessories/shoe-laces"
+                      to="/other_product/footwear-accessories/shoe-laces"
                       aria-label="Shoe Laces"
                     >
                       Shoe Laces
@@ -637,7 +638,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/footwear-accessories/insoles"
+                      to="/other_product/footwear-accessories/insoles"
                       aria-label="Insoles"
                     >
                       Insoles
@@ -645,7 +646,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/footwear-accessories/shoe-polish"
+                      to="/other_product/footwear-accessories/shoe-polish"
                       aria-label="Shoe Polish"
                     >
                       Shoe Polish
@@ -659,7 +660,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/footwear-care/waterproof-sprays"
+                      to="/other_product/footwear-care/waterproof-sprays"
                       aria-label="Waterproof Sprays"
                     >
                       Waterproof Sprays
@@ -667,7 +668,7 @@ function Main_nav() {
                   </li>
                   <li>
                     <Link
-                      to="/footwear-care/shoe-cleaners"
+                      to="/other_product/footwear-care/shoe-cleaners"
                       aria-label="Shoe Cleaners"
                     >
                       Shoe Cleaners
@@ -680,20 +681,20 @@ function Main_nav() {
                     SOCKS
                   </li>
                   <li>
-                    <Link to="/socks/casual-socks" aria-label="Casual Socks">
+                    <Link to="/other_product/socks/casual-socks" aria-label="Casual Socks">
                       Casual Socks
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/socks/athletic-socks"
+                      to="/other_product/socks/athletic-socks"
                       aria-label="Athletic Socks"
                     >
                       Athletic Socks
                     </Link>
                   </li>
                   <li>
-                    <Link to="/socks/dress-socks" aria-label="Dress Socks">
+                    <Link to="/other_product/socks/dress-socks" aria-label="Dress Socks">
                       Dress Socks
                     </Link>
                   </li>
@@ -704,12 +705,12 @@ function Main_nav() {
                     SHOE STORAGE
                   </li>
                   <li>
-                    <Link to="/shoe-storage/shoe-racks" aria-label="Shoe Racks">
+                    <Link to="/other_product/shoe-storage/shoe-racks" aria-label="Shoe Racks">
                       Shoe Racks
                     </Link>
                   </li>
                   <li>
-                    <Link to="/shoe-storage/shoe-bags" aria-label="Shoe Bags">
+                    <Link to="/other_product/shoe-storage/shoe-bags" aria-label="Shoe Bags">
                       Shoe Bags
                     </Link>
                   </li>
@@ -729,13 +730,10 @@ function Main_nav() {
             <input type="text" placeholder="search for products,brands and more,"
               className="border p-2 rounded-md w-[60vh]" />
           </span>
-          <Link><span className="p-2"><span className="material-symbols-outlined"> person </span></span></Link>
-          <Link><span className="p-2"><span className="material-symbols-outlined"> favorite </span>
+          <Link><span className="p-2 flex"><span className="material-symbols-outlined"> person </span></span></Link>
+          <Link><span className="p-2 flex"><span className="material-symbols-outlined"> favorite </span>
           </span></Link>
-          <Link>
-          <span className="p-2"><span className="material-symbols-outlined">
-              shopping_cart
-            </span></span></Link>
+          <Shopping_cart/>
         </div>
       </div>
     </nav>
