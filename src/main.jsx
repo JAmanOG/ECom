@@ -12,6 +12,8 @@ import LoginC from './Pages/CLogin.jsx';
 import AuthLayout from './Component/AuthLayout.jsx';
 import App from './App.jsx';
 import Dashboard from './Component/Profile/Dashboard.jsx';
+import Product from './Component/Product/Product.jsx';
+import { useLocation } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -44,6 +46,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 </AuthLayout>
               } 
             />
+            <Route path='/:category/:subcategory/:subsubcategory/:slug' element={
+              <AuthLayout authenticate={false}>
+                <Product/>
+                </AuthLayout>
+            } />
             <Route path="/*" element={<Layout />}>
               <Route path="*" element={<App />} /> {/* Default route */}
             </Route>

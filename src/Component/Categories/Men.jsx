@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getShoes } from "../../Services/database";
 import { appwriteService } from "../../Services/database";
+import { useLocation } from "react-router-dom";
 
-const Shoecategory = () => {
+const Shoecategory = ({$id}) => {
   const { category, subcategory, subsubcategory } = useParams();
   const [shoes, setShoes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +36,8 @@ const Shoecategory = () => {
           <div className="flex flex-wrap -m-4">
             {shoes.map((shoe) => (
               <div key={shoe.$id} className="lg:w-1/4 z-0 md:w-1/2 p-4 w-full">
-                <Link className="block relative h-48 rounded overflow-hidden">
+                <Link to={`${location.pathname}/${shoe.$id}`}>
+                <Link to={`${location.pathname}/${shoe.$id}`} className="block relative h-48 rounded overflow-hidden">
                   <img
                     alt={shoe.name}
                     className="object-cover object-center w-full h-full block"
@@ -66,8 +69,11 @@ const Shoecategory = () => {
                     <p className="mt-1 font-bold">${shoe.price}</p>
                   )}
                 </div>
+                </Link>
               </div>
-            ))}
+            )
+            )
+            }
           </div>
         </div>
       </section>

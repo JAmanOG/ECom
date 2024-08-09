@@ -127,9 +127,10 @@
   
 
 // src/Services/database.js
-import { Client, Databases,Storage,ID, Query } from 'appwrite';
+import { Client, Databases, Storage, ID, Query } from 'appwrite';
 import conf from './conf';
 
+// Initialize Appwrite client
 const client = new Client();
 client
   .setEndpoint(conf.appwriteUrl)
@@ -137,8 +138,7 @@ client
 
 const databases = new Databases(client);
 
-
-const getShoes = async (category, footwearType,variety) => {
+const getShoes = async (category, footwearType, variety) => {
   try {
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
@@ -146,7 +146,7 @@ const getShoes = async (category, footwearType,variety) => {
       [
         Query.equal('Category', category),
         Query.equal('Footwear_Type', footwearType),
-        Query.equal('Variety', variety)
+        Query.equal('Variety', variety),
       ]
     );
     return response.documents;
@@ -160,7 +160,7 @@ class bucketstorage {
   constructor() {
     this.bucket = new Storage(client);
   }
-  
+
   async uploadFile(file) {
     try {
       return await this.bucket.createFile(
@@ -169,8 +169,21 @@ class bucketstorage {
         file
       );
     } catch (error) {
-      console.log("Appwrite serive :: uploadFile :: error", error);
-      return false;
+      console.error('Appwrite service :: uploadFile :: error', error);
+      throw error; // Throw error for consistent error handling
+    }
+  }
+
+  async getPost(slug) {
+    try {
+      return await databases.getDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionId,
+        slug
+      );
+    } catch (error) {
+      console.error('Appwrite service :: getPost :: error', error);
+      throw error; // Throw error for consistent error handling
     }
   }
 
@@ -179,17 +192,23 @@ class bucketstorage {
       await this.bucket.deleteFile(conf.appwriteBucketId, fileId);
       return true;
     } catch (error) {
-      console.log("Appwrite serive :: deleteFile :: error", error);
-      return false;
+      console.error('Appwrite service :: deleteFile :: error', error);
+      throw error; // Throw error for consistent error handling
     }
   }
 
-  getFilePreview(fileId){
-    return this.bucket.getFilePreview(
+  getFilePreview(fileId) {
+    try {
+      return this.bucket.getFilePreview(
         conf.appwriteBucketId,
         fileId
-    )
+      ).href; // Return the preview URL directly
+    } catch (error) {
+      console.error('Appwrite service :: getFilePreview :: error', error);
+      throw error; // Throw error for consistent error handling
+    }
+  }
 }
-}
+
 const appwriteService = new bucketstorage();
 export { client, databases, getShoes, appwriteService };
