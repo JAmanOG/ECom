@@ -1,6 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Shoecategory from './Component/Categories/Men';
+// import AuthServices from './Services/auth';
+
+// const result = AuthServices.getCurrentUser()
+// result ? console.log(result) : console.log('No user logged in')
+// const session = AuthServices.getCurrentSession()
+// session ? console.log(session) : console.log('No session found')
 
 const App = () => (
   <Routes>

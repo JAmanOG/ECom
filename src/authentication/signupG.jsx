@@ -24,6 +24,8 @@ function LoginG() {
       );
     } catch (error) {
       console.error("Google authentication error:", error);
+      console.error("Google authentication error:", error.response || error.message);
+      alert("An error occurred: " + (error.response ? error.response.data.message : error.message));
     }
   };
 

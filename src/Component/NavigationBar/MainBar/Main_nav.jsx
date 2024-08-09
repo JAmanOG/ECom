@@ -730,7 +730,7 @@ function Main_nav() {
             <input type="text" placeholder="search for products,brands and more,"
               className="border p-2 rounded-md w-[60vh]" />
           </span>
-          <Link><span className="p-2 flex"><span className="material-symbols-outlined"> person </span></span></Link>
+          <Link to="/my/Dashboard"><span className="p-2 flex"><span className="material-symbols-outlined"> person </span></span></Link>
           <Link><span className="p-2 flex"><span className="material-symbols-outlined"> favorite </span>
           </span></Link>
           <Shopping_cart/>

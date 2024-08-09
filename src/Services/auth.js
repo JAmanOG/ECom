@@ -46,6 +46,17 @@ export class AuthService {
             console.log("Appwrite serive :: logout :: error", error);
         }
     }
+
+    
+    async getCurrentSession() {
+    try {
+      const session = await this.account.getSession('current');
+      console.log('Current session:', session);
+    } catch (error) {
+      console.error('Error fetching current session:', error);
+    }
+  }
+  
 }
 
 const AuthServices = new AuthService();

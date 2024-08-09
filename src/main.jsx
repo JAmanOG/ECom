@@ -1,4 +1,3 @@
-// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import ErrorBoundary from './Component/ErrorBoundary.jsx';
@@ -12,6 +11,7 @@ import Sign_up from './Pages/Sign_up.jsx';
 import LoginC from './Pages/CLogin.jsx';
 import AuthLayout from './Component/AuthLayout.jsx';
 import App from './App.jsx';
+import Dashboard from './Component/Profile/Dashboard.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -33,6 +33,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               element={
                 <AuthLayout authenticate={false}>
                   <Sign_up />
+                </AuthLayout>
+              } 
+            />
+            <Route 
+              path="/my/Dashboard" 
+              element={
+                <AuthLayout authenticate={false}>
+                  <Dashboard/>
                 </AuthLayout>
               } 
             />
