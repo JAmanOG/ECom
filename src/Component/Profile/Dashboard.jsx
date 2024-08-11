@@ -30,6 +30,12 @@ function Dashboard() {
 
   return (
     <div>
+      <div className="items-center w-max flex m-5">
+        <Link className="flex font-bold" to={`/`}>
+        <span class="material-symbols-outlined no-underline">arrow_back_ios</span>{" "}
+        <span>Back to Home</span>
+        </Link>
+      </div>
       <h1 className="text-3xl align-middle justify-center flex font-bold">
         Dashboard
       </h1>

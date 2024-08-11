@@ -138,6 +138,50 @@ client
 
 const databases = new Databases(client);
 
+
+const getWishlist = async (userId) => {
+  try {
+    const wishlist = await databases.listDocuments(
+      conf.appwriteWishlistCollectionId, // Your collection ID
+      ['userId=' + userId]
+    );
+    return wishlist.documents;
+  } catch (error) {
+    console.error('Failed to fetch wishlist:', error);
+    throw error;
+  }
+};
+
+export const addToWishlist = async (userId, product) => {
+  try {
+    await databases.createDocument(conf.appwriteWishlistCollectionId, {
+      userId,
+      productId: product.$id,
+      product,
+    });
+    return await getWishlist(userId);
+  } catch (error) {
+    console.error('Failed to add to wishlist:', error);
+    throw error;
+  }
+};
+
+export const removeFromWishlist = async (userId, productId) => {
+  try {
+    const wishlist = await getWishlist(userId);
+    const itemToRemove = wishlist.find(item => item.productId === productId);
+
+    if (itemToRemove) {
+      await databases.deleteDocument(conf.appwriteWishlistCollectionId, itemToRemove.$id);
+    }
+    
+    return await getWishlist(userId);
+  } catch (error) {
+    console.error('Failed to remove from wishlist:', error);
+    throw error;
+  }
+};
+
 const getShoes = async (category, footwearType, variety) => {
   try {
     const response = await databases.listDocuments(
@@ -211,4 +255,4 @@ class bucketstorage {
 }
 
 const appwriteService = new bucketstorage();
-export { client, databases, getShoes, appwriteService };
+export { client, databases, getShoes, appwriteService, getWishlist };

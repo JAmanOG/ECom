@@ -8,7 +8,6 @@ import Logo from "../logo";
 import Button from "../Component/ProductComponent/Button";
 import Input from "../Component/ProductComponent/Input";
 import AuthServices from "../Services/auth";
-import googleAuth from "./Login"
 
 function Login() {
   const navigate = useNavigate();

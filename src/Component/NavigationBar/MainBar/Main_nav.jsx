@@ -731,7 +731,7 @@ function Main_nav() {
               className="border p-2 rounded-md w-[60vh]" />
           </span>
           <Link to="/my/Dashboard"><span className="p-2 flex"><span className="material-symbols-outlined"> person </span></span></Link>
-          <Link><span className="p-2 flex"><span className="material-symbols-outlined"> favorite </span>
+          <Link to="/my/Wishlist"><span className="p-2 flex"><span className="material-symbols-outlined"> favorite </span>
           </span></Link>
           <Shopping_cart/>
         </div>

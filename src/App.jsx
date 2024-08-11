@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Shoecategory from './Component/Categories/Men';
+import Shoecategory from './Component/Categories/Categories';
 // import AuthServices from './Services/auth';
 
 // const result = AuthServices.getCurrentUser()

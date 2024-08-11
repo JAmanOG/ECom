@@ -4,7 +4,7 @@ import { getShoes } from "../../Services/database";
 import { appwriteService } from "../../Services/database";
 import { useLocation } from "react-router-dom";
 
-const Shoecategory = ({$id}) => {
+const Shoecategory = ({}) => {
   const { category, subcategory, subsubcategory } = useParams();
   const [shoes, setShoes] = useState([]);
   const [loading, setLoading] = useState(true);

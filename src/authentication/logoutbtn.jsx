@@ -11,8 +11,8 @@ const LogoutButton = () => {
   const handleLogout = async () => {
     try {
       await AuthServices.logout();
-      dispatch(authLogout()); // Clear user state in Redux
-      navigate('/login'); // Redirect to login page
+      dispatch(authLogout()); 
+      navigate('/login');
     } catch (error) {
       console.error("Logout Error: ", error);
     }
