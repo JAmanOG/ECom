@@ -15,6 +15,7 @@ import Dashboard from "./Component/Profile/Dashboard.jsx";
 import Product from "./Component/Product/Product.jsx";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
+import WishlistComponent from "./Component/Wishlist/Wishlist.jsx";
 
 let persistor = persistStore(store);
 
@@ -39,6 +40,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 element={
                   <AuthLayout authenticate={false}>
                     <Sign_up />
+                  </AuthLayout>
+                }
+              />
+              <Route
+                path="/my/Wishlist"
+                element={
+                  <AuthLayout authenticate>
+                    <WishlistComponent />
                   </AuthLayout>
                 }
               />

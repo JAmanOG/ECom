@@ -11,6 +11,7 @@ function Dashboard() {
       try {
         const result = await AuthServices.getCurrentUser();
         setUserData(result);
+        console.log("User data:", result);
       } catch (error) {
         console.error("Error fetching user:", error);
       } finally {
