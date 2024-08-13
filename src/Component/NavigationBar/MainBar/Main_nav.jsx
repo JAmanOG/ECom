@@ -22,7 +22,7 @@ function Main_nav() {
               >
                 MEN
               </Link>
-              <div className="absolute group-hover:grid hidden z-10 left-0 top-10 bg-white text-[#242424] shadow-2xl grid-rows-2 font-OpenSans grid-flow-col space-x-20 px-5 p-2 border-[2px]">
+              <div className="absolute group-hover:grid hidden z-10 left-0 top-10 bg-white text-[#242424] shadow-2xl grid-rows-2 font-OpenSans grid-flow-col px-5 p-2 border-[2px]">
                 <ul className="space-y-2 ml-auto py-2 w-max text-lg">
                   <li className="font-extrabold text-xl tracking-wider border-b-2 border-emerald-500">
                     DRESS SHOES
@@ -141,7 +141,7 @@ function Main_nav() {
 
                 <ul className="space-y-2 ml-auto py-2 w-max text-lg">
                   <li className="font-extrabold text-xl tracking-wider border-b-2 border-emerald-500">
-                    ATHLETIC FOOTWEAR
+                    ATHLETIC <br /> FOOTWEAR
                   </li>
                   <li>
                     <Link to="/men/athletic_footwear/running-shoes" aria-label="Running Shoes">

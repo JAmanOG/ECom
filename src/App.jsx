@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Shoecategory from './Component/Categories/Categories';
+import Home from './Component/Landingpage/Home';
 // import AuthServices from './Services/auth';
 
 // const result = AuthServices.getCurrentUser()
@@ -11,6 +12,7 @@ import Shoecategory from './Component/Categories/Categories';
 const App = () => (
   <Routes>
     <Route path="/:category/:subcategory/:subsubcategory" element={<Shoecategory />} />
+    <Route path="/" element={<Home />} />
   </Routes>
 );
 

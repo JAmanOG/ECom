@@ -66,43 +66,44 @@ const WishlistComponent = () => {
         {wishlist.length > 0 ? (
           wishlist.map((item) => (
             <div key={item.$id}>
-              <div className="container p-5 mx-auto my-3">
-                <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                  <img
-                    className="lg:h-48 md:h-36 w-full object-cover object-center"
-                    src={
-                      productDetails[item.productId]?.image ||
-                      "fallback-image-url"
-                    }
-                    alt={productDetails[item.productId]?.name || "Product"}
-                  />
-                  <div className="p-6">
-                    <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                      {productDetails[item.productId]?.Category || "Loading..."}
-                    </h2>
-                    <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                      {productDetails[item.productId]?.name || "Loading..."}
-                    </h1>
-                    <div className="flex items-center flex-wrap">
-                      <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
-                        Add to Cart
-                        <svg
-                          className="w-4 h-4 ml-2"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M5 12h14"></path>
-                          <path d="M12 5l7 7-7 7"></path>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div className="p-5 mx-auto my-4 max-w-sm lg:max-w-md">
+  <div className="h-full border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <img
+      className="h-48 w-full object-cover"
+      src={
+        productDetails[item.productId]?.image ||
+        "fallback-image-url"
+      }
+      alt={productDetails[item.productId]?.name || "Product"}
+    />
+    <div className="p-4">
+      <h2 className="text-xs font-semibold text-gray-500 uppercase mb-1">
+        {productDetails[item.productId]?.Category || "Loading..."}
+      </h2>
+      <h1 className="text-lg font-bold text-gray-900 mb-2">
+        {productDetails[item.productId]?.name || "Loading..."}
+      </h1>
+      <div className="flex items-center justify-between">
+        <button className="text-indigo-600 font-semibold hover:text-indigo-800 inline-flex items-center">
+          Add to Cart
+          <svg
+            className="w-5 h-5 ml-2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
             </div>
           ))
         ) : (
