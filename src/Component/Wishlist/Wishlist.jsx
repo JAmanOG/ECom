@@ -62,12 +62,12 @@ const WishlistComponent = () => {
         <span>Back to Home</span>
       </Link>
     </div>
-      <div className="grid-flow-col grid">
+      <div className="grid-cols-4 gap-4 grid">
         {wishlist.length > 0 ? (
           wishlist.map((item) => (
             <div key={item.$id}>
-              <div className="p-5 mx-auto my-4 max-w-sm lg:max-w-md">
-  <div className="h-full border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="p-5 mx-auto my-4 max-w-sm lg:max-w-md  overflow-hidden transition-all duration-300 transform hover:scale-105">
+  <div className="h-full border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
     <img
       className="h-48 w-full object-cover"
       src={

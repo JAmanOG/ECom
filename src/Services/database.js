@@ -1,11 +1,10 @@
 // {// import { Client, ID, Databases, Storage, Query } from "appwrite";
 
-
 // // export class DatabaseService {
 // //     client = new Client();
 // //     databases;
 // //     bucket;
-  
+
 // //     constructor() {
 // //       this.client
 // //         .setEndpoint('https://cloud.appwrite.io/v1')
@@ -13,7 +12,7 @@
 // //       this.databases = new Databases(this.client);
 // //       this.bucket = new Storage(this.client);
 // //     }
-  
+
 // //     async createPost({ title, slug ,content, featuredImage, Price, userId }) {
 // //       try {
 // //         return await this.databases.createDocument(
@@ -32,7 +31,7 @@
 // //         console.log("Appwrite serive :: createPost :: error", error);
 // //       }
 // //     }
-  
+
 // //     async updatePost(slug, { title, content, featuredImage, Price }) {
 // //       try {
 // //         return await this.databases.updateDocument(
@@ -50,7 +49,7 @@
 // //         console.log("Appwrite serive :: updatePost :: error", error);
 // //       }
 // //     }
-  
+
 // //     async deletePost(slug) {
 // //       try {
 // //         await this.databases.deleteDocument(
@@ -64,7 +63,7 @@
 // //         return false;
 // //       }
 // //     }
-  
+
 // //     async getPost(slug) {
 // //       try {
 // //         return await this.databases.getDocument(
@@ -77,7 +76,7 @@
 // //         return false;
 // //       }
 // //     }
-  
+
 // //     async getPosts(queries = [Query.equal("status", "active")]) {
 // //       try {
 // //         return await this.databases.listDocuments(
@@ -90,7 +89,7 @@
 // //         return false;
 // //       }
 // //     }
-  
+
 // //     async uploadFile(file) {
 // //       try {
 // //         return await this.bucket.createFile(
@@ -103,7 +102,7 @@
 // //         return false;
 // //       }
 // //     }
-  
+
 // //     async deleteFile(fileId) {
 // //       try {
 // //         await this.bucket.deleteFile(conf.appwriteBucketId, fileId);
@@ -113,7 +112,7 @@
 // //         return false;
 // //       }
 // //     }
-  
+
 // //     getFilePreview(fileId){
 // //       return this.bucket.getFilePreview(
 // //           conf.appwriteBucketId,
@@ -121,21 +120,19 @@
 // //       )
 // //   }
 // //   }
-  
+
 // //   const DBservice = new DatabaseService();
 // //   export default DBservice;
 //   }
 
 // src/Services/database.js
-import { Client, Databases, Storage, ID, Query } from 'appwrite';
-import conf from './conf';
-import AuthService from './auth';
+import { Client, Databases, Storage, ID, Query } from "appwrite";
+import conf from "./conf";
+import AuthService from "./auth";
 
 // Initialize Appwrite client
 const client = new Client();
-client
-  .setEndpoint(conf.appwriteUrl)
-  .setProject(conf.appwriteProjectId);
+client.setEndpoint(conf.appwriteUrl).setProject(conf.appwriteProjectId);
 
 const databases = new Databases(client);
 
@@ -180,16 +177,15 @@ export const getWishlist = async (userId) => {
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteWishlistCollectionId,
-      [Query.equal('userId', userId)]
+      [Query.equal("userId", userId)]
     );
     console.log("Fetched wishlist:", response.documents);
     return response.documents;
   } catch (error) {
-    console.error('Failed to fetch wishlist:', error);
+    console.error("Failed to fetch wishlist:", error);
     throw error;
   }
 };
-
 
 // export const addToWishlist = async (userId, productId) => {
 //   try {
@@ -218,7 +214,7 @@ export const getWishlist = async (userId) => {
 export const addToWishlist = async (userId, productId) => {
   try {
     if (!userId || !productId) {
-      throw new Error('UserId or Product data is missing');
+      throw new Error("UserId or Product data is missing");
     }
 
     // Wrap userId and productId in arrays
@@ -226,16 +222,16 @@ export const addToWishlist = async (userId, productId) => {
       userId: userId.toString(), // Ensure userId is a string
       productId: productId.toString(), // Ensure productId is a string
     };
-    console.log('Data to be sent:', data);
+    console.log("Data to be sent:", data);
 
     await databases.createDocument(
       conf.appwriteDatabaseId,
       conf.appwriteWishlistCollectionId,
-      'unique()',
+      "unique()",
       data
     );
   } catch (error) {
-    console.error('Failed to add to wishlist:', error);
+    console.error("Failed to add to wishlist:", error);
     throw error;
   }
 };
@@ -247,7 +243,7 @@ export const removeFromWishlist = async (userId, productId) => {
     const wishlist = await getWishlist(userId); // Ensure this returns a proper array
     console.log("Fetched wishlist for removal:", wishlist);
 
-    const itemToRemove = wishlist.find(item => item.productId === productId);
+    const itemToRemove = wishlist.find((item) => item.productId === productId);
     console.log("Item to remove:", itemToRemove);
 
     if (itemToRemove) {
@@ -259,15 +255,128 @@ export const removeFromWishlist = async (userId, productId) => {
       console.log("Item removed successfully");
       return productId; // Return productId for state update
     } else {
-      throw new Error('Item not found in wishlist'); // Throw error if item not found
+      throw new Error("Item not found in wishlist"); // Throw error if item not found
     }
   } catch (error) {
-    console.error('Failed to remove from wishlist:', error);
+    console.error("Failed to remove from wishlist:", error);
+    throw error;
+  }
+};
+
+export const getCart = async (userId) => {
+  try {
+    console.log("Fetching Cartlist for user ID:", userId);
+    const response = await databases.listDocuments(
+      conf.appwriteDatabaseId,
+      conf.appwriteCartCollectionId,
+      [Query.equal("userId", userId)]
+    );
+    console.log("Fetched CartList: ", response.documents);
+    return response.documents;
+  } catch (error) {
+    console.error("Failed to fetch Cartlist: ", error);
+    throw error;
+  }
+};
+
+export const addToCart = async (userId, productId, quantity = 1) => {
+  try {
+    if (!userId || !productId) {
+      throw new Error("UserId or ProductId is missing");
+    }
+
+    const cart = await getCart(userId);
+    const existingItem = cart.find(item => item.productId === productId);
+    if (existingItem) {
+      // Update existing item
+      const updatedQuantity = existingItem.quantity + quantity;
+      await databases.updateDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteCartCollectionId,
+        existingItem.$id,  // Ensure this is correct
+        { quantity: updatedQuantity }
+      );
+    } else {
+      // Add new item
+      await databases.createDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteCartCollectionId,
+        "unique()",
+        {
+          userId: userId.toString(),
+          productId: productId.toString(),
+          quantity: quantity
+        }
+      );
+    }
+  } catch (error) {
+    console.error("Failed to add to Cart:", error);
+    throw error;
+  }
+};
+
+export const updateCart = async (userId, productId, quantity = 1) => {
+  try {
+    if (!userId || !productId) {
+      throw new Error("UserId or ProductId is missing");
+    }
+
+    const cart = await getCart(userId);
+    const existingItem = cart.find(item => item.productId === productId);
+
+    if (existingItem) {
+      const updatedQuantity = existingItem.quantity - quantity;
+
+      if (updatedQuantity <= 0) {
+        // Remove item if quantity drops to zero or below
+        await removeFromCart(userId, productId);
+      } else {
+        // Update existing item
+        await databases.updateDocument(
+          conf.appwriteDatabaseId,
+          conf.appwriteCartCollectionId,
+          existingItem.$id,
+          { quantity: updatedQuantity }
+        );
+      }
+    } else {
+      console.warn("Item not found in cart");
+    }
+  } catch (error) {
+    console.error("Failed to update cart:", error);
     throw error;
   }
 };
 
 
+
+export const removeFromCart = async (userId,productId) => {
+  try{
+    console.log("Attempting to remove item with productId:", productId);
+
+    const cart = await getCart(userId);
+    
+    console.log("Fetched Cart for removal: ",cart);
+
+    const itemToRemove = cart.find((item) => item.productId === productId);
+    console.log("Item to remove:", itemToRemove);
+
+    if (itemToRemove) {
+      await databases.deleteDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteCartCollectionId,
+        itemToRemove.$id // Document ID to be removed
+      );
+      console.log("Item removed successfully");
+      return productId; // Return productId for state update
+    } else {
+      throw new Error("Item not found in Cart"); // Throw error if item not found
+    }
+  } catch (error) {
+    console.error("Failed to remove from Cart:", error);
+    throw error;
+  }
+}
 
 const getShoes = async (category, footwearType, variety) => {
   try {
@@ -275,14 +384,14 @@ const getShoes = async (category, footwearType, variety) => {
       conf.appwriteDatabaseId,
       conf.appwriteCollectionId,
       [
-        Query.equal('Category', category),
-        Query.equal('Footwear_Type', footwearType),
-        Query.equal('Variety', variety),
+        Query.equal("Category", category),
+        Query.equal("Footwear_Type", footwearType),
+        Query.equal("Variety", variety),
       ]
     );
     return response.documents;
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     throw error; // Ensure errors are thrown to be caught in the component
   }
 };
@@ -300,7 +409,7 @@ class bucketstorage {
         file
       );
     } catch (error) {
-      console.error('Appwrite service :: uploadFile :: error', error);
+      console.error("Appwrite service :: uploadFile :: error", error);
       throw error; // Throw error for consistent error handling
     }
   }
@@ -313,7 +422,7 @@ class bucketstorage {
         slug
       );
     } catch (error) {
-      console.error('Appwrite service :: getPost :: error', error);
+      console.error("Appwrite service :: getPost :: error", error);
       throw error; // Throw error for consistent error handling
     }
   }
@@ -323,19 +432,16 @@ class bucketstorage {
       await this.bucket.deleteFile(conf.appwriteBucketId, fileId);
       return true;
     } catch (error) {
-      console.error('Appwrite service :: deleteFile :: error', error);
+      console.error("Appwrite service :: deleteFile :: error", error);
       throw error; // Throw error for consistent error handling
     }
   }
 
   getFilePreview(fileId) {
     try {
-      return this.bucket.getFilePreview(
-        conf.appwriteBucketId,
-        fileId
-      ).href; // Return the preview URL directly
+      return this.bucket.getFilePreview(conf.appwriteBucketId, fileId).href; // Return the preview URL directly
     } catch (error) {
-      console.error('Appwrite service :: getFilePreview :: error', error);
+      console.error("Appwrite service :: getFilePreview :: error", error);
       throw error; // Throw error for consistent error handling
     }
   }
