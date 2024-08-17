@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Shoe Shopping Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            color: #333333;
+            font-family: 'Montserrat', sans-serif;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            padding: 2.5rem;
+        }
+
+        .btn-primary {
+            background-color: #2e5bff;
+            color: #ffffff;
+            font-weight: bold;
+            border-radius: 30px;
+            padding: 0.75rem 2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #4a73ff;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(46, 91, 255, 0.3);
+        }
+
+        .btn-secondary {
+            color: #ffffff;
+            background-color: #2e5bff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50%;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #4a73ff;
+        }
+
+        .text-accent {
+            color: #2e5bff;
+        }
+
+        .border-accent {
+            border-color: #2e5bff;
+        }
+
+        .divider {
+            border-top: 1px solid #e5e5e5;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-body {
+                padding: 1.5rem;
+            }
+
+            .text-4xl {
+                font-size: 2rem;
+            }
+
+            .text-2xl {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .mx-6 {
+                margin-left: 0;
+                margin-right: 0;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .w-40 {
+                width: 100%;
+                height: auto;
+            }
+
+            .h-40 {
+                height: auto;
+            }
+
+            .text-xl {
+                font-size: 1.25rem;
+            }
+
+            .card-body {
+                padding: 1rem;
+            }
+
+            .btn-primary {
+                padding: 0.5rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .btn-secondary {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+
+            .text-lg {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-4xl font-bold mb-10 text-accent">Your Shopping Cart</h1>
+
+        <div class="grid lg:grid-cols-3 gap-10">
+            <!-- Cart Item -->
+            <div class="col-span-2 card">
+                <div class="card-body">
+                    <div class="flex items-center space-x-8">
+                        <div class="product-image">
+                            <img class="h-40 w-40 object-cover" src="https://example.com/premium-shoe.jpg" alt="Premium Shoe">
+                        </div>
+                        <div class="flex-1">
+                            <h2 class="text-2xl font-semibold mb-4">Luxury Leather Sneakers - White & Navy</h2>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <button class="btn-secondary px-3 py-1">-</button>
+                                    <span class="mx-6 text-xl">1</span>
+                                    <button class="btn-secondary px-3 py-1">+</button>
+                                </div>
+                                <p class="text-2xl font-semibold text-accent">$450</p>
+                            </div>
+                            <div class="mt-6 flex space-x-6">
+                                <button class="text-lg font-medium text-gray-500 hover:text-accent transition">
+                                    <svg class="inline-block h-6 w-6 mr-1" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                    </svg>
+                                    Add to Favorites
+                                </button>
+                                <button class="text-lg font-medium text-red-500 hover:text-red-300 transition">
+                                    <svg class="inline-block h-6 w-6 mr-1" viewBox="0 0 24 24" fill="none">
+                                        <path d="M6 18L17.94 6M18 18L6.06 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                    </svg>
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-2xl font-semibold text-accent mb-8">Order Summary</h3>
+                    <div class="flex justify-between mb-6">
+                        <span>Original Price</span>
+                        <span>$900</span>
+                    </div>
+                    <div class="flex justify-between mb-6">
+                        <span>Savings</span>
+                        <span class="text-green-500">-$50</span>
+                    </div>
+                    <div class="flex justify-between mb-6">
+                        <span>Shipping</span>
+                        <span>$20</span>
+                    </div>
+                    <div class="flex justify-between mb-6">
+                        <span>Tax</span>
+                        <span>$45</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="flex justify-between text-xl font-bold">
+                        <span>Total</span>
+                        <span>$915</span>
+                    </div>
+                    <button class="btn-primary w-full mt-8">Proceed to Checkout</button>
+                    <p class="text-center text-sm text-gray-500 mt-6">
+                        or <a href="#" class="text-accent hover:underline">Continue Shopping</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voucher/Gift Card -->
+        <div class="mt-10 card">
+            <div class="card-body">
+                <label for="voucher" class="block text-xl font-semibold mb-4">Have a voucher or gift card?</label>
+                <input type="text" id="voucher" class="w-full px-4 py-3 rounded-lg bg-gray-100 border border-accent text-gray-700 focus:border-accent focus:ring-0" placeholder="Enter your code">
+                <button class="btn-primary w-full mt-6">Apply Code</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
