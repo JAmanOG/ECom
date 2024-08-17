@@ -385,7 +385,7 @@ const Shoecategory = () => {
         +
       </button>
       <div className="flex items-center justify-center w-12 h-10 bg-gray-200 text-gray-900 font-semibold rounded-lg">
-        {checkout.find((item) => item.productId === shoe.$id)?.quantity || 0}
+      {checkout.find((item) => item.productId === shoe.$id)?.quantity || 0}
       </div>
       <button
         onClick={() => handleDecrement(shoe.$id, 1)}

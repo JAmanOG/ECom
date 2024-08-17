@@ -18,6 +18,8 @@ import { persistStore } from "redux-persist";
 import WishlistComponent from "./Component/Wishlist/Wishlist.jsx";
 import Checkout from "./Component/Checkout/Cart.jsx";
 import Home from "./Component/Landingpage/Home.jsx";
+import Carts from "./Component/Cart/Carts.jsx";
+import CheckoutPage from "./Component/Checkout/Checkout.jsx";
 
 let persistor = persistStore(store);
 
@@ -58,6 +60,22 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 element={
                   <AuthLayout authenticate>
                     <Checkout />
+                  </AuthLayout>
+                }
+              />
+              <Route
+                path="/my/CheckoutPage"
+                element={
+                  <AuthLayout authenticate>
+                    <CheckoutPage />
+                  </AuthLayout>
+                }
+              />
+              <Route
+                path="/my/Cart"
+                element={
+                  <AuthLayout authenticate>
+                    <Carts />
                   </AuthLayout>
                 }
               />

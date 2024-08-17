@@ -1,0 +1,153 @@
+.body {
+    background-color: #f7f7f7;
+    color: #333333;
+    font-family: 'Montserrat', sans-serif;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.containerrs {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.cardd {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.cardd:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    padding: 2.5rem;
+}
+
+.btn-primary {
+    background-color: #2e5bff;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 30px;
+    padding: 0.75rem 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #4a73ff;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(46, 91, 255, 0.3);
+}
+
+.btn-secondary {
+    color: #ffffff;
+    background-color: #2e5bff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #4a73ff;
+}
+
+.text-accent {
+    color: #2e5bff;
+}
+
+.border-accent {
+    border-color: #2e5bff;
+}
+
+.divider {
+    border-top: 1px solid #e5e5e5;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.product-image {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .text-4xl {
+        font-size: 2rem;
+    }
+
+    .text-2xl {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mx-6 {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .w-40 {
+        width: 100%;
+        height: auto;
+    }
+
+    .h-40 {
+        height: auto;
+    }
+
+    .text-xl {
+        font-size: 1.25rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .btn-primary {
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .btn-secondary {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .text-lg {
+        font-size: 1rem;
+    }
+}
