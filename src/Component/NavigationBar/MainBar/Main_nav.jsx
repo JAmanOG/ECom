@@ -1,8 +1,15 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Shopping_cart } from "./Shopping_cart";
+import Shopping_cart from "./Shopping_cart";
+import { useState } from "react";
 
 function Main_nav() {
+  const [open, setOpen] = useState(false);
+
+
+  const handleButtonClick = () => {
+    setOpen(true); // Open the sidebar when the button is clicked
+  };
   return (
     <section id="MainNavbar">
       <nav className="border-b-[3px] shadow-sm text-center justify-center">
@@ -733,7 +740,16 @@ function Main_nav() {
           <Link to="/my/Dashboard"><span className="p-2 flex"><span className="material-symbols-outlined"> person </span></span></Link>
           <Link to="/my/Wishlist"><span className="p-2 flex"><span className="material-symbols-outlined"> favorite </span>
           </span></Link>
-          <Shopping_cart/>
+          <div>
+      <button
+        onClick={handleButtonClick}
+        className="btn-primary"
+      >
+        Open Cart
+      </button>
+
+      <Shopping_cart open={open} setOpen={setOpen} />
+    </div>
         </div>
       </div>
     </nav>

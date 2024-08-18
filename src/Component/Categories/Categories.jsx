@@ -141,9 +141,10 @@
 // // };
 // }
 
-// export default Shoecategory;}
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css"; // Import the CSS for the skeleton
 import { addToCart, getShoes } from "../../Services/database";
 import { appwriteService } from "../../Services/database";
 import { useDispatch, useSelector } from "react-redux";
@@ -256,10 +257,29 @@ const Shoecategory = () => {
       : "#FFFFFF";
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) {
+    return (
+      <div className="container px-6 py-10 mx-auto">
+        <div className="flex flex-wrap -m-4">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div key={index} className="lg:w-1/4 md:w-1/2 p-4 w-full">
+              <div className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+                <Skeleton height={224} />
+                <div className="p-6">
+                  <Skeleton height={30} width="60%" />
+                  <Skeleton height={20} width="40%" />
+                  <Skeleton height={20} width="80%" />
+                  <Skeleton height={40} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   if (error) return <div>Error: {error.message}</div>;
-
   return (
     <div>
       {alert.message && (
@@ -367,44 +387,43 @@ const Shoecategory = () => {
                     )}
                   </div>
                   <div className="flex justify-center w-full items-center space-x-2">
-  {!isInCart[shoe.$id] ? (
-    <button
-      onClick={() => handleCheckout(shoe.$id, 1)}
-      className="w-full py-2 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
-      type="button"
-    >
-      Add to Cart
-    </button>
-  ) : (
-    <div className="flex items-center space-x-2">
-      <button
-        onClick={() => handleIncrement(shoe.$id, 1)}
-        className="py-2 px-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
-        type="button"
-      >
-        +
-      </button>
-      <div className="flex items-center justify-center w-12 h-10 bg-gray-200 text-gray-900 font-semibold rounded-lg">
-      {checkout.find((item) => item.productId === shoe.$id)?.quantity || 0}
-      </div>
-      <button
-        onClick={() => handleDecrement(shoe.$id, 1)}
-        className="py-2 px-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
-        type="button"
-      >
-        -
-      </button>
-      <button
-        onClick={() => handleRemove(shoe.$id)}
-        className="py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none"
-        type="button"
-      >
-        Remove
-      </button>
-    </div>
-  )}
-</div>
-
+                    {!isInCart[shoe.$id] ? (
+                      <button
+                        onClick={() => handleCheckout(shoe.$id, 1)}
+                        className="w-full py-2 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
+                        type="button"
+                      >
+                        Add to Cart
+                      </button>
+                    ) : (
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => handleIncrement(shoe.$id, 1)}
+                          className="py-2 px-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
+                          type="button"
+                        >
+                          +
+                        </button>
+                        <div className="flex items-center justify-center w-12 h-10 bg-gray-200 text-gray-900 font-semibold rounded-lg">
+                          {checkout.find((item) => item.productId === shoe.$id)?.quantity || 0}
+                        </div>
+                        <button
+                          onClick={() => handleDecrement(shoe.$id, 1)}
+                          className="py-2 px-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
+                          type="button"
+                        >
+                          -
+                        </button>
+                        <button
+                          onClick={() => handleRemove(shoe.$id)}
+                          className="py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none"
+                          type="button"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
