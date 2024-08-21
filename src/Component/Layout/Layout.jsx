@@ -8,8 +8,7 @@ const Layout = () => {
     <>
       <Noticebar />
       <Main_nav />
-      
-      <main>
+            <main>
         <Outlet />
       </main>
       <Footer />

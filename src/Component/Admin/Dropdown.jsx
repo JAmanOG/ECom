@@ -175,6 +175,28 @@ const data = {
         "Shoe Bags"
       ]
     }
+  ],
+  
+};
+
+const tagdata = {
+  SpecialTags: [
+    {
+      name: "New Arrival",
+      value: "new_arrival"
+    },
+    {
+      name: "Featured",
+      value: "featured"
+    },
+    {
+      name: "Best Seller",
+      value: "best_seller"
+    },
+    {
+      name: "Sale",
+      value: "sale"
+    }
   ]
 };
 
@@ -182,9 +204,11 @@ const Drop = ({
     Category,
     Footwear_Type,
     Variety,
+    Tags,
     handleEntryCategory,
     handleCategoryChanges,
-    handleSubcategoryChanges
+    handleSubcategoryChanges,
+    handleTagsChanges
 })=>{
 
 //   function handleEntryCategory(e) {
@@ -207,6 +231,7 @@ const Drop = ({
 
   const categories = Category ? data[Category] : [];
   const currentCategory = categories.find((category) => category.value === Footwear_Type);
+  const tagsList = Tags ? tagdata.SpecialTags : []; 
 
   return (
     <div className='space-y-6'>
@@ -253,6 +278,21 @@ const Drop = ({
           </select>
         </div>
       )}
+      <div className="space-y-3">
+               <label htmlFor="tagsSelect">Tags:</label>
+        <select
+          id="tagsSelect"
+          value={Tags || ""}
+          onChange={handleTagsChanges}
+          className="w-min px-2 py-1 border rounded"
+        >
+          <option value="" disabled>Select Tags</option>
+          {tagdata.SpecialTags.map((tag) => (
+            <option key={tag.value} value={tag.value}>{tag.name}</option>
+          ))}
+        </select>
+      </div>
+
     </div>
   );
 }

@@ -13,6 +13,7 @@ const App = () => (
   <Routes>
     <Route path="/:category/:subcategory/:subsubcategory" element={<Shoecategory />} />
     <Route path="/" element={<Home />} />
+    
   </Routes>
 );
 

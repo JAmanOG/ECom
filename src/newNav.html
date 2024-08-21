@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowbite Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <img src="logo.png" alt="Flowbite Logo" class="h-8">
+                    <span class="text-xl font-bold">Flowbite</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-sm text-gray-600 hover:text-blue-500">Fast & Free Delivery</a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-blue-500">Fair Prices</a>
+                    <div class="flex items-center space-x-1">
+                        <span class="text-sm text-yellow-400">★</span>
+                        <span class="text-sm text-gray-600">5.0</span>
+                    </div>
+                    <a href="#" class="text-sm text-gray-600 hover:text-blue-500">English (USA)</a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-blue-500">Location</a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-blue-500">Support</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex space-x-4">
+                    <button class="text-sm text-gray-600 hover:text-blue-500">All categories</button>
+                    <button class="text-sm text-gray-600 hover:text-blue-500">Best Sellers</button>
+                    <button class="text-sm text-gray-600 hover:text-blue-500">Today's Deals</button>
+                    <button class="text-sm text-gray-600 hover:text-blue-500">Gift Ideas</button>
+                    <button class="text-sm text-gray-600 hover:text-blue-500">Membership</button>
+                    <button class="text-sm text-gray-600 hover:text-blue-500">Gift Cards</button>
+                    <button class="text-sm text-gray-600 hover:text-blue-500">Customer Service</button>
+                    <button class="text-sm text-gray-600 hover:text-blue-500">Open a Shop</button>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="relative">
+                        <input type="text" placeholder="Search" class="w-64 h-10 pl-4 pr-10 border rounded-full text-sm text-gray-600">
+                        <button class="absolute right-0 top-0 mt-2 mr-4 text-gray-600 hover:text-blue-500">
+                            <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.707 22.293l-7.389-7.389A9.505 9.505 0 0 0 19 9.5 9.5 9.5 0 1 0 9.5 19c2.481 0 4.73-.935 6.404-2.646l7.389 7.389a1 1 0 0 0 1.414-1.414zM9.5 17a7.5 7.5 0 1 1 7.5-7.5 7.509 7.509 0 0 1-7.5 7.5z"/></svg>
+                        </button>
+                    </div>
+                    <a href="#" class="text-sm text-gray-600 hover:text-blue-500">4 Items ($10.7)</a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-blue-500">Account</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Categories Section -->
+    <section class="bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-4 gap-8">
+                <!-- Electronics -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Electronics</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">TV & Home Cinema</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Phones</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Computers</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Consoles/Gaming</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Camera & Photo</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Monitors</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Audio & HiFi</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Headphones</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Computer Components</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Home Cinema</a></li>
+                    </ul>
+                </div>
+
+                <!-- Food & Grocery -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Food & Grocery</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Bakery and Bread</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Meat and Seafood</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Pasta and Rice</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Cereals and Breakfast Foods</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Frozen Foods</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Dairy, Cheese, and Eggs</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Snacks and Crackers</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Fruits</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Soup & Canned Goods</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Beer, Wine & Spirits</a></li>
+                    </ul>
+                </div>
+
+                <!-- Fashion -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Fashion</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Women's Clothing</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Women's Shoes</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Women's Accessories</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Men's Clothing</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Men's Shoes</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Men's Accessories</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Children's Clothing</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Children's Shoes</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Children's Accessories</a></li>
+                    </
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Children's Accessories</a></li>
+                </ul>
+            </div>
+
+            <!-- Sports & Outdoors -->
+            <div>
+                <h3 class="text-lg font-bold mb-4">Sports & Outdoors</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Sport Clothes</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Sport Shoes</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Cycling</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Football</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Camping</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Fishing</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Fitness & Nutrition</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Paddle sports</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Team Sports</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-blue-500">Hike</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- "See All Categories" Button -->
+        <div class="mt-8 text-center">
+            <a href="#" class="inline-block bg-blue-500 text-white text-sm px-6 py-2 rounded-full hover:bg-blue-600">See all categories</a>
+        </div>
+    </section>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <nav class="bg-white dark:bg-gray-800 antialiased">
+        <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0 py-4">
+          <div class="flex items-center justify-between">
+      
+            <div class="flex items-center space-x-8">
+              <div class="shrink-0">
+                <a href="#" title="" class="">
+                  <img class="block w-auto h-8 dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/logo-full.svg" alt="">
+                  <img class="hidden w-auto h-8 dark:block" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/logo-full-dark.svg" alt="">
+                </a>
+              </div>
+      
+              <ul class="hidden lg:flex items-center justify-start gap-6 md:gap-8 py-3 sm:justify-center">
+                <li>
+                  <a href="#" title="" class="flex text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500">
+                    Home
+                  </a>
+                </li>
+                <li class="shrink-0">
+                  <a href="#" title="" class="flex text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500">
+                    Best Sellers
+                  </a>
+                </li>
+                <li class="shrink-0">
+                  <a href="#" title="" class="flex text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500">
+                    Gift Ideas
+                  </a>
+                </li>
+                <li class="shrink-0">
+                  <a href="#" title="" class="text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500">
+                    Today's Deals
+                  </a>
+                </li>
+              </ul>
+            </div>
+      
+            <div class="flex items-center lg:space-x-2">
+      
+              <button id="myCartDropdownButton1" data-dropdown-toggle="myCartDropdown1" type="button" class="inline-flex items-center rounded-lg justify-center p-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm font-medium leading-none text-gray-900 dark:text-white">
+                <span class="sr-only">
+                  Cart
+                </span>
+                <svg class="w-5 h-5 lg:me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                </svg> 
+                <span class="hidden sm:flex">My Cart</span>
+                <svg class="hidden sm:flex w-4 h-4 text-gray-900 dark:text-white ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
+                </svg>              
+              </button>
+      
+              <div id="myCartDropdown1" class="hidden z-10 mx-auto max-w-sm space-y-4 overflow-hidden rounded-lg bg-white p-4 antialiased shadow-lg dark:bg-gray-800">
+                <div class="grid grid-cols-2">
+                  <div>
+                    <a href="#" class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">Apple iPhone 15</a>
+                    <p class="mt-0.5 truncate text-sm font-normal text-gray-500 dark:text-gray-400">$599</p>
+                  </div>
+            
+                  <div class="flex items-center justify-end gap-6">
+                    <p class="text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Qty: 1</p>
+            
+                    <button data-tooltip-target="tooltipRemoveItem1a" type="button" class="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
+                      <span class="sr-only"> Remove </span>
+                      <svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                    <div id="tooltipRemoveItem1a" role="tooltip" class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700">
+                      Remove item
+                      <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="grid grid-cols-2">
+                  <div>
+                    <a href="#" class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">Apple iPad Air</a>
+                    <p class="mt-0.5 truncate text-sm font-normal text-gray-500 dark:text-gray-400">$499</p>
+                  </div>
+            
+                  <div class="flex items-center justify-end gap-6">
+                    <p class="text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Qty: 1</p>
+            
+                    <button data-tooltip-target="tooltipRemoveItem2a" type="button" class="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
+                      <span class="sr-only"> Remove </span>
+                      <svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                    <div id="tooltipRemoveItem2a" role="tooltip" class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700">
+                      Remove item
+                      <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="grid grid-cols-2">
+                  <div>
+                    <a href="#" class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">Apple Watch SE</a>
+                    <p class="mt-0.5 truncate text-sm font-normal text-gray-500 dark:text-gray-400">$598</p>
+                  </div>
+            
+                  <div class="flex items-center justify-end gap-6">
+                    <p class="text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Qty: 2</p>
+            
+                    <button data-tooltip-target="tooltipRemoveItem3b" type="button" class="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
+                      <span class="sr-only"> Remove </span>
+                      <svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                    <div id="tooltipRemoveItem3b" role="tooltip" class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700">
+                      Remove item
+                      <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="grid grid-cols-2">
+                  <div>
+                    <a href="#" class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">Sony Playstation 5</a>
+                    <p class="mt-0.5 truncate text-sm font-normal text-gray-500 dark:text-gray-400">$799</p>
+                  </div>
+            
+                  <div class="flex items-center justify-end gap-6">
+                    <p class="text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Qty: 1</p>
+            
+                    <button data-tooltip-target="tooltipRemoveItem4b" type="button" class="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
+                      <span class="sr-only"> Remove </span>
+                      <svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                    <div id="tooltipRemoveItem4b" role="tooltip" class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700">
+                      Remove item
+                      <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="grid grid-cols-2">
+                  <div>
+                    <a href="#" class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">Apple iMac 20"</a>
+                    <p class="mt-0.5 truncate text-sm font-normal text-gray-500 dark:text-gray-400">$8,997</p>
+                  </div>
+            
+                  <div class="flex items-center justify-end gap-6">
+                    <p class="text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Qty: 3</p>
+            
+                    <button data-tooltip-target="tooltipRemoveItem5b" type="button" class="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
+                      <span class="sr-only"> Remove </span>
+                      <svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                    <div id="tooltipRemoveItem5b" role="tooltip" class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700">
+                      Remove item
+                      <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                  </div>
+                </div>
+            
+                <a href="#" title="" class="mb-2 me-2 inline-flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" role="button"> Proceed to Checkout </a>
+              </div>
+      
+              <button id="userDropdownButton1" data-dropdown-toggle="userDropdown1" type="button" class="inline-flex items-center rounded-lg justify-center p-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm font-medium leading-none text-gray-900 dark:text-white">
+                <svg class="w-5 h-5 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                </svg>              
+                Account
+                <svg class="w-4 h-4 text-gray-900 dark:text-white ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
+                </svg> 
+              </button>
+      
+              <div id="userDropdown1" class="hidden z-10 w-56 divide-y divide-gray-100 overflow-hidden overflow-y-auto rounded-lg bg-white antialiased shadow dark:divide-gray-600 dark:bg-gray-700">
+                <ul class="p-2 text-start text-sm font-medium text-gray-900 dark:text-white">
+                  <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> My Account </a></li>
+                  <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> My Orders </a></li>
+                  <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Settings </a></li>
+                  <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Favourites </a></li>
+                  <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Delivery Addresses </a></li>
+                  <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Billing Data </a></li>
+                </ul>
+            
+                <div class="p-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Sign Out </a>
+                </div>
+              </div>
+      
+              <button type="button" data-collapse-toggle="ecommerce-navbar-menu-1" aria-controls="ecommerce-navbar-menu-1" aria-expanded="false" class="inline-flex lg:hidden items-center justify-center hover:bg-gray-100 rounded-md dark:hover:bg-gray-700 p-2 text-gray-900 dark:text-white">
+                <span class="sr-only">
+                  Open Menu
+                </span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+                </svg>                
+              </button>
+            </div>
+          </div>
+      
+          <div id="ecommerce-navbar-menu-1" class="bg-gray-50 dark:bg-gray-700 dark:border-gray-600 border border-gray-200 rounded-lg py-3 hidden px-4 mt-4">
+            <ul class="text-gray-900 dark:text-white text-sm font-medium dark:text-white space-y-3">
+              <li>
+                <a href="#" class="hover:text-primary-700 dark:hover:text-primary-500">Home</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary-700 dark:hover:text-primary-500">Best Sellers</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary-700 dark:hover:text-primary-500">Gift Ideas</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary-700 dark:hover:text-primary-500">Games</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary-700 dark:hover:text-primary-500">Electronics</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary-700 dark:hover:text-primary-500">Home & Garden</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <script>
+        document.getElementById('userDropdownButton1').addEventListener('click', function() {
+            var dropdown = document.getElementById('userDropdown1');
+            dropdown.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

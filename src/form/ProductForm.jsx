@@ -92,6 +92,7 @@ const ProductForm = ({ post }) => {
   const [Category, setCategory] = useState('');
   const [Footwear_Type, setFootwear_Type] = useState('');
   const [Variety, setVariety] = useState('');
+  const [Tags, setTags] = useState('');
 
   // Calculate the discounted price whenever the price or discount percent changes
   useEffect(() => {
@@ -131,6 +132,7 @@ const ProductForm = ({ post }) => {
         Footwear_Type,
         Variety,
         featuredImage: featuredImageId,
+        Tags,
       };
 
       if (post) {
@@ -155,6 +157,7 @@ const ProductForm = ({ post }) => {
       setFootwear_Type('');
       setVariety('');
       setFeaturedImage('');
+      setTags('');
 
     } catch (error) {
       console.error('Error adding/updating product:', error);
@@ -193,23 +196,28 @@ const ProductForm = ({ post }) => {
           required
         />
       </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Discounted Price:</label>
-        <input
-          type="number"
-          value={discountedPrice}
-          readOnly
-          className="w-full px-3 py-2 border rounded"
-        />
-      </div>
+      {price && discountPercent && (
+  <div className="mb-4">
+    <label className="block text-gray-700 text-sm font-bold mb-2">Discounted Price:</label>
+    <input
+      type="number"
+      value={discountedPrice}
+      readOnly
+      className="w-full px-3 py-2 border rounded"
+    />
+  </div>
+)}
+
       <div className="mb-4">
         <Drop
           Category={Category}
           Footwear_Type={Footwear_Type}
           Variety={Variety}
+          Tags={Tags}
           handleEntryCategory={(e) => setCategory(e.target.value)}
           handleCategoryChanges={(e) => setFootwear_Type(e.target.value)}
           handleSubcategoryChanges={(e) => setVariety(e.target.value)}
+          handleTagsChanges={(e) => setTags(e.target.value)}
         />
       </div>
       <div>

@@ -1,0 +1,24 @@
+{
+    "projectId": "66a38b39001378ca89df",
+    "projectName": "ECom",
+    "functions": [
+        {
+            "$id": "66c638424ca3c79d90de",
+            "name": "Payment",
+            "runtime": "node-18.0",
+            "execute": [],
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "enabled": true,
+            "logging": true,
+            "entrypoint": "src/main.js",
+            "commands": "npm install",
+            "ignore": [
+                "node_modules",
+                ".npm"
+            ],
+            "path": "functions/Payment"
+        }
+    ]
+}
