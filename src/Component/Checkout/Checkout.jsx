@@ -5,6 +5,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import useFetchCheckout from "./useFetchCheckout";
 import useCheckout from "./useCheckout";
 import useCalculateTotals from "../Cart/useCalculateTotal";
+import PaymentButton from "../Payment/PaymentButton";
 
 function Checkout() {
   const { loading, productDetails } = useFetchCheckout();
@@ -287,12 +288,13 @@ function Checkout() {
                     <span>Total</span>
                     <span>${total.toFixed(2)}</span>
                   </div>
-                  <button
+                  {/* <button
                     type="submit"
                     className="mt-8 w-full bg-blue-600 border border-transparent rounded-lg shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
                     Place Order
-                  </button>
+                  </button> */}
+                  <PaymentButton amount="100" currency="inr" receipt="123" />
                   <div className="mt-6 text-center text-sm">
               <button onClick={()=>navigate(-1)} className="text-blue-600 hover:underline focus:outline-none">
                 Return to Shopping
