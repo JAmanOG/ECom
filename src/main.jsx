@@ -16,8 +16,6 @@ import Product from "./Component/Product/Product.jsx";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import WishlistComponent from "./Component/Wishlist/Wishlist.jsx";
-import Checkout from "./Component/Checkout/Cart.jsx";
-import Home from "./Component/Landingpage/Home.jsx";
 import CheckoutForms from "./Component/Checkout/CheckoutForms.jsx";
 import Carts from "./Component/Cart/Carts.jsx";
 import CheckoutPage from "./Component/Checkout/Checkout.jsx";
@@ -53,14 +51,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 element={
                   <AuthLayout authenticate>
                     <WishlistComponent />
-                  </AuthLayout>
-                }
-              />
-              <Route
-                path="/my/Checkout"
-                element={
-                  <AuthLayout authenticate>
-                    <Checkout />
                   </AuthLayout>
                 }
               />

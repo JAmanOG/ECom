@@ -280,6 +280,40 @@ const useCheckout = () => {
     }
   };
 
+  const handleRemoveAll = async () => {
+    try {
+      if (!user || !user.$id) {
+        setError("User not logged in");
+        return;
+      }
+  
+      const userId = user.$id;
+  
+      if (!Array.isArray(checkout)) {
+        setError("Invalid checkout data; it should be an array");
+        return;
+      }
+  
+      if (checkout.length === 0) {
+        setError("No products in the cart to remove");
+        return;
+      }
+  
+      // Loop through all products in the checkout and remove them
+      for (const item of checkout) {
+        await dispatch(removeCart({ userId, productId: item.productId }));
+      }
+  
+      // Update the local state to reflect the changes
+      setIsInCart({});
+      
+    } catch (error) {
+      console.log("Error in checkout process:", error);
+      setError("Checkout process failed");
+    }
+  };
+  
+
   const handleRemove = async (productId) => {
     try {
       if (!user || !user.$id) {
@@ -313,7 +347,7 @@ const useCheckout = () => {
     }
   };
 
-  return { user, checkout, handleCheckout, handleRemove, handleIncrement, handleDecrement, isInCart, error };
+  return { user, checkout, handleCheckout, handleRemove,handleRemoveAll, handleIncrement, handleDecrement, isInCart, error };
 };
 
 export default useCheckout;
