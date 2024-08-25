@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styling for better hover and transition effects */
+        .order-item:hover {
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Page Title -->
+        <div class="mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Order History</h1>
+            <p class="text-gray-600">Review past orders, manage returns, and reorder your favorite items.</p>
+        </div>
+
+        <!-- Recent Orders Section -->
+        <div class="bg-white shadow rounded-lg">
+            <!-- Order 1 -->
+            <div class="p-6 border-b border-gray-200 order-item transition duration-200 ease-in-out hover:shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4">Order placed on Jul 6, 2021</h2>
+                <div class="flex justify-between items-center mb-6">
+                    <dl class="grid grid-cols-3 gap-x-8 text-gray-600">
+                        <div>
+                            <dt class="font-semibold">Order Number</dt>
+                            <dd>WU88191111</dd>
+                        </div>
+                        <div>
+                            <dt class="font-semibold">Date Placed</dt>
+                            <dd>Jul 6, 2021</dd>
+                        </div>
+                        <div>
+                            <dt class="font-semibold">Total Amount</dt>
+                            <dd>$160.00</dd>
+                        </div>
+                    </dl>
+                    <div class="space-x-6">
+                        <a href="#" class="text-blue-600 hover:underline font-medium">View Order</a>
+                        <a href="#" class="text-blue-600 hover:underline font-medium">View Invoice</a>
+                    </div>
+                </div>
+
+                <!-- Items in Order 1 -->
+                <h4 class="text-xl font-medium mb-3">Items</h4>
+                <ul class="space-y-8">
+                    <!-- Item 1 -->
+                    <li class="flex items-start space-x-6">
+                        <img class="w-24 h-24 object-cover rounded-lg shadow" src="https://tailwindui.com/img/ecommerce-images/order-history-page-03-product-01.jpg" alt="Micro Backpack">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h5 class="text-lg font-semibold text-gray-800">Micro Backpack</h5>
+                                    <p class="text-gray-500 font-medium">$70.00</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mt-2 leading-relaxed">A compact carry option for your essential everyday items. Wear it like a backpack or carry it like a satchel for all-day use.</p>
+                        </div>
+                        <div class="flex flex-col justify-between items-end space-y-4">
+                            <p class="flex items-center text-green-600 font-medium">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"></path>
+                                </svg>
+                                Delivered on July 12, 2021
+                            </p>
+                            <div class="space-x-4">
+                                <a href="#" class="text-blue-600 hover:underline">View Product</a>
+                                <a href="#" class="text-blue-600 hover:underline">Buy Again</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Item 2 -->
+                    <li class="flex items-start space-x-6">
+                        <img class="w-24 h-24 object-cover rounded-lg shadow" src="https://tailwindui.com/img/ecommerce-images/order-history-page-03-product-02.jpg" alt="Nomad Shopping Tote">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h5 class="text-lg font-semibold text-gray-800">Nomad Shopping Tote</h5>
+                                    <p class="text-gray-500 font-medium">$90.00</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mt-2 leading-relaxed">A durable shopping tote with multiple carry options, perfect for any adventure.</p>
+                        </div>
+                        <div class="flex flex-col justify-between items-end space-y-4">
+                            <p class="flex items-center text-green-600 font-medium">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"></path>
+                                </svg>
+                                Delivered on July 12, 2021
+                            </p>
+                            <div class="space-x-4">
+                                <a href="#" class="text-blue-600 hover:underline">View Product</a>
+                                <a href="#" class="text-blue-600 hover:underline">Buy Again</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Order 2 -->
+            <div class="p-6 order-item transition duration-200 ease-in-out hover:shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4">Order placed on Dec 22, 2020</h2>
+                <div class="flex justify-between items-center mb-6">
+                    <dl class="grid grid-cols-3 gap-x-8 text-gray-600">
+                        <div>
+                            <dt class="font-semibold">Order Number</dt>
+                            <dd>AT48441546</dd>
+                        </div>
+                        <div>
+                            <dt class="font-semibold">Date Placed</dt>
+                            <dd>Dec 22, 2020</dd>
+                        </div>
+                        <div>
+                            <dt class="font-semibold">Total Amount</dt>
+                            <dd>$40.00</dd>
+                        </div>
+                    </dl>
+                    <div class="space-x-6">
+                        <a href="#" class="text-blue-600 hover:underline font-medium">View Order</a>
+                        <a href="#" class="text-blue-600 hover:underline font-medium">View Invoice</a>
+                    </div>
+                </div>
+
+                <!-- Items in Order 2 -->
+                <h4 class="text-xl font-medium mb-3">Items</h4>
+                <ul class="space-y-8">
+                    <!-- Item 1 -->
+                    <li class="flex items-start space-x-6">
+                        <img class="w-24 h-24 object-cover rounded-lg shadow" src="https://tailwindui.com/img/ecommerce-images/order-history-page-03-product-03.jpg" alt="Double Stack Clothing Bag">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h5 class="text-lg font-semibold text-gray-800">Double Stack Clothing Bag</h5>
+                                    <p class="text-gray-500 font-medium">$40.00</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mt-2 leading-relaxed">Keep your clothes neatly packed and secure with this double-layer garment bag. Ideal for travelers.</p>
+                        </div>
+                        <div class="flex flex-col justify-between items-end space-y-4">
+                            <p class="flex items-center text-green-600 font-medium">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"></path>
+                                </svg>
+                                Delivered on December 29, 2020
+                            </p>
+                            <div class="space-x-4">
+                                <a href="#" class="text-blue-600 hover:underline">View Product</a>
+                                <a href="#" class="text-blue-600 hover:underline">Buy Again</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

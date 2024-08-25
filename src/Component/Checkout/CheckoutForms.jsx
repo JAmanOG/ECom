@@ -63,7 +63,7 @@ const CheckoutForm = ({ post }) => {
           orderId: orderId,
           userId: user,
           items: items,
-          totalPrice: subtotal,
+          totalPrice: total,
           status: "Done",
           createdAt: new Date().toISOString(),
         }];
@@ -104,7 +104,7 @@ const CheckoutForm = ({ post }) => {
   
     return (
     <div className="bg-gray-50">
-      {/* {checkout.length > 0 ?( */}
+      {checkout.length > 0 ?(
       <div className="max-w-5xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <form onSubmit={handleSubmit} id="formissue" className="space-y-8 lg:col-span-2">
@@ -442,7 +442,7 @@ const CheckoutForm = ({ post }) => {
                       receipt={orderId}
                       post={post}
                       formdata={formdata}
-                      user={email}
+                      user={user}
                     />
                   ) : (
                     <button
@@ -461,8 +461,8 @@ const CheckoutForm = ({ post }) => {
         </div>
 
       </div>
-      {/* ):<main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8"> */}
-      {/* <div className="text-center">
+      ):<main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+      <div className="text-center">
         <p className="text-base font-semibold text-indigo-600">Cart is Empty</p>
         <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">No items in the Cart</h1>
         <p className="mt-6 text-base leading-7 text-gray-600">Add items to Cart for Checkout.</p>
@@ -477,9 +477,9 @@ const CheckoutForm = ({ post }) => {
             Contact support <span aria-hidden="true">&rarr; jaman0120@gmail.com</span>
           </a>
         </div>
-      </div> */}
-    {/* </main> */}
-      {/* } */}
+      </div>
+    </main>
+      }
     </div>
   );
 };

@@ -20,6 +20,7 @@
     "appwrite": "13.0.0",
     "framer-motion": "^11.3.29",
     "headlessui": "^0.0.0",
+    "html2pdf.js": "^0.10.2",
     "razorpay": "^2.9.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

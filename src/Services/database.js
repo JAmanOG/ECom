@@ -348,7 +348,65 @@ export const updateCart = async (userId, productId, quantity = 1) => {
   }
 };
 
+export const getOrderDetails = async (userId)=>{
+  try{
+    console.log("Fetching Order Details for user ID:", userId);
+    const response = await databases.listDocuments(
+      conf.appwriteDatabaseId,
+      conf.appwriteOrderDetailsCollectionId,
+      [Query.equal("userId", userId)]
+    );
+    console.log("Fetched Order Details: ", response.documents);
+    return response.documents;
+  } catch (error) {
+    console.error("Failed to fetch Order Details: ", error);
+    throw error;
+  }
+}
 
+export const updateStatus = async (userId, orderId, newStatus) => {
+  try {
+    // Validate input
+    if (!userId || !orderId || !newStatus) {
+      throw new Error("UserId, OrderId, or new status is missing");
+    }
+
+    // Fetch order details for the user
+    const orderDetails = await getOrderDetails(userId);
+    const existingOrder = orderDetails.find(order => order.orderId === orderId);
+
+    if (existingOrder) {
+      const allowedStatusUpdates = {
+        pending: ['processing', 'canceled'],
+        processing: ['shipped', 'canceled'],
+        shipped: ['delivered'],
+        delivered: ['completed'],
+      };
+
+      if (
+        existingOrder.status in allowedStatusUpdates &&
+        !allowedStatusUpdates[existingOrder.status].includes(newStatus)
+      ) {
+        console.warn(`Cannot update status from ${existingOrder.status} to ${newStatus}`);
+        return;
+      }
+
+      await databases.updateDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteOrderDetailsCollectionId,
+        existingOrder.$id,
+        { status: newStatus }
+      );
+
+      console.log(`Order status updated to ${newStatus}`);
+    } else {
+      console.warn("Order not found in order details");
+    }
+  } catch (error) {
+    console.error("Failed to update order status:", error);
+    throw error;
+  }
+};
 
 export const removeFromCart = async (userId,productId) => {
   try{

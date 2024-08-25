@@ -13,5 +13,19 @@
     border: none;
     background: none;
   }
-  
+  @media print{
+    body * {
+      visibility: hidden;
+    }
+    .orderConformationContainer * {
+      visibility: visible;
+    }
+    .orderConformationContainer {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+
 }

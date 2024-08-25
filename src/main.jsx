@@ -19,6 +19,7 @@ import WishlistComponent from "./Component/Wishlist/Wishlist.jsx";
 import CheckoutForms from "./Component/Checkout/CheckoutForms.jsx";
 import Carts from "./Component/Cart/Carts.jsx";
 import CheckoutPage from "./Component/Checkout/Checkout.jsx";
+import OrderConfirmation from "./Component/Modal/OrderConfirmationModal.jsx";
 
 let persistor = persistStore(store);
 
