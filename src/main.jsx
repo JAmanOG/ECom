@@ -72,6 +72,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 }
               />
               <Route
+                path="/order/order-confirmation"
+                element={
+                  <AuthLayout authenticate>
+                    <OrderConfirmation />
+                  </AuthLayout>
+                }
+              />
+              <Route
                 path="/my/Cart"
                 element={
                   <AuthLayout authenticate>
