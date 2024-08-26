@@ -21,10 +21,14 @@ import Carts from "./Component/Cart/Carts.jsx";
 import CheckoutPage from "./Component/Checkout/Checkout.jsx";
 import OrderConfirmation from "./Component/Modal/OrderConfirmationModal.jsx";
 
+
+
+import OrderPage from "./Component/Modal/OrderPage.jsx";
+
 let persistor = persistStore(store);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <PersistGate persistor={persistor}>
       <Provider store={store}>
         <Router>
@@ -36,6 +40,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 element={
                   <AuthLayout authenticate={false}>
                     <LoginC />
+                  </AuthLayout>
+                }
+              />
+              <Route
+                path="/order"
+                element={
+                  <AuthLayout authenticate>
+                    <OrderPage />
                   </AuthLayout>
                 }
               />
@@ -111,7 +123,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </Router>
       </Provider>
     </PersistGate>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // const [loading, setLoading] = useState(true)

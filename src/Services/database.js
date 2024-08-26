@@ -348,21 +348,22 @@ export const updateCart = async (userId, productId, quantity = 1) => {
   }
 };
 
-export const getOrderDetails = async (userId)=>{
-  try{
+export const getOrderDetails = async (userId) => {
+  try {
     console.log("Fetching Order Details for user ID:", userId);
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteOrderDetailsCollectionId,
-      [Query.equal("userId", userId)]
+      [Query.equal("user", userId)] // Adjust the field name if needed
     );
-    console.log("Fetched Order Details: ", response.documents);
+    console.log("Fetched Order Details:", response.documents);
     return response.documents;
   } catch (error) {
-    console.error("Failed to fetch Order Details: ", error);
+    console.error("Failed to fetch Order Details:", error);
     throw error;
   }
-}
+};
+
 
 export const updateStatus = async (userId, orderId, newStatus) => {
   try {
@@ -503,7 +504,31 @@ class bucketstorage {
       throw error; // Throw error for consistent error handling
     }
   }
+  async getPosts(productId) {
+    try {
+      return await databases.getDocument(
+        conf.appwriteDatabaseId,   // Database ID
+        conf.appwriteCollectionId, // Collection ID
+        productId                  // Document ID (this should be the productId)
+      );
+    } catch (error) {
+      console.error("Appwrite service :: getPost :: error", error);
+      throw error; // Throw error for consistent error handling
+    }
+  }
+  
 }
+const getProduct = async (productId) => {
+  try {
+      console.log("Fetching product with ID:", productId); // Log the productId
+      const product = await appwriteService.getPosts(productId);
+      const image = await appwriteService.getFilePreview(product.featuredImage);
+      return { ...product, image };
+  } catch (error) {
+      console.error("Error fetching product:", error);
+      return null;
+  }
+};
 
 const appwriteService = new bucketstorage();
-export { client, databases, getShoes, appwriteService };
+export { client, databases, getShoes, appwriteService ,getProduct};
