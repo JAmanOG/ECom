@@ -16,6 +16,7 @@
     "@heroicons/react": "^2.1.5",
     "@mui/icons-material": "^5.16.6",
     "@mui/material": "^5.16.6",
+    "@react-pdf/renderer": "^3.4.4",
     "@reduxjs/toolkit": "^2.2.6",
     "appwrite": "13.0.0",
     "framer-motion": "^11.3.29",

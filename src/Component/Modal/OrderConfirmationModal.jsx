@@ -6,7 +6,7 @@ import conf from "../../Services/conf";
 
 const OrderConfirmation = () => {
   const location = useLocation();
-  const { orderId, PaymentId, orderDetails, ConsumerName,user} = location.state || {};
+  const { orderId, PaymentId, orderDetails, ConsumerName,user,appOrderId} = location.state || {};
 
   const [dataStored, setDataStored] = useState(false);
 
@@ -22,6 +22,7 @@ const OrderConfirmation = () => {
   const orderTimeStamp = JSON.stringify(timespan);
   const data = {
     orderId: orderId,
+    appOrderId: appOrderId,
     user: user,
     PaymentId: PaymentId,
     orderDetails: orderDetail,

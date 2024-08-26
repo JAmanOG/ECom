@@ -448,6 +448,8 @@ const getShoes = async (category, footwearType, variety) => {
         Query.equal("Variety", variety),
       ]
     );
+    console.log("Fetching shoes with parameters:", category, footwearType, variety);
+
     return response.documents;
   } catch (error) {
     console.error("Error:", error);

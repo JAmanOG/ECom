@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 import useSubmit from "./useSubmit";
 import useCheckout from "../Checkout/useCheckout";
 
-function PaymentButton({ amount, receipt, post, formdata, user }) {
-    const [orderId, setOrderId] = useState("");
+function PaymentButton({ amount, receipt, post, formdata,orderId, user }) {
     const { handleRemoveAll } = useCheckout();
     const navigate = useNavigate();
     const currency = "INR";
-
-    const { handleSubmit } = useSubmit(post, user, formdata);
+    
+    const { handleSubmit } = useSubmit(post, user,orderId ,formdata);
 
     const paymentHandler = async (e) => {
         e.preventDefault();
@@ -42,7 +41,6 @@ function PaymentButton({ amount, receipt, post, formdata, user }) {
                 });
                 const jsonRes = await validateRes.json();
 
-                setOrderId(jsonRes.orderId);
 
                 if (jsonRes.msg === "Payment successfull!") {
                     await handleSubmit();
@@ -57,6 +55,7 @@ function PaymentButton({ amount, receipt, post, formdata, user }) {
                     navigate('/order/order-confirmation', {
                         state: {
                             user: user,
+                            appOrderId: receipt,
                             orderId: jsonRes.orderId,
                             PaymentId: response.razorpay_payment_id,
                             ConsumerName: `${data.firstname?.value} ${data.lastname?.value}`,
@@ -76,6 +75,7 @@ function PaymentButton({ amount, receipt, post, formdata, user }) {
             },
             prefill: {
                 name: `${data.firstname?.value} ${data.lastname?.value}`,
+                phone: data.phone?.value,
                 email: data.email?.value,
                 contact: data.phone?.value,
             },

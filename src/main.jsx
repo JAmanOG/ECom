@@ -24,6 +24,9 @@ import OrderConfirmation from "./Component/Modal/OrderConfirmationModal.jsx";
 
 
 import OrderPage from "./Component/Modal/OrderPage.jsx";
+import InvoiceComponent from "./Component/Invoice/InvoiceComponent.jsx";
+import ViewOrderComponent from "./Component/OrderPage/ViewOrderComponent.jsx";
+import ViewOrder from "./Component/OrderPage/ViewOrder.jsx";
 
 let persistor = persistStore(store);
 
@@ -107,6 +110,18 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                   </AuthLayout>
                 }
               />
+              <Route
+                path="/my/order/invoice"
+                element={
+                  <AuthLayout authenticate>
+                    <InvoiceComponent />
+                  </AuthLayout>
+                }
+              />
+              <Route path="/view-order/:orderId" element={
+                <ViewOrderComponent/>
+                } />
+
               <Route
                 path="/:category/:subcategory/:subsubcategory/:slug"
                 element={

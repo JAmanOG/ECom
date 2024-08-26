@@ -184,6 +184,7 @@ const Shoecategory = () => {
       try {
         const shoesData = await getShoes(category, subcategory, subsubcategory);
         setShoes(shoesData);
+        console.log("this",shoesData)
 
         const currentUser = await AuthServices.getCurrentUser();
         if (currentUser && currentUser.$id) {

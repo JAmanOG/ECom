@@ -63,6 +63,10 @@ const CheckoutForm = ({ post }) => {
           orderId: orderId,
           userId: user,
           items: items,
+          shipping: shipping,
+          tax: tax,
+          savings: savings,
+          subtotal: subtotal,
           totalPrice: total,
           status: "Done",
           createdAt: new Date().toISOString(),
@@ -75,6 +79,7 @@ const CheckoutForm = ({ post }) => {
   }, [checkout, productDetails]);
 
   const formdata = {
+
     firstname: { value: firstname, setValue: setFirstname },
     lastname: { value: lastname, setValue: setLastname },
     country: { value: country, setValue: setCountry },
@@ -93,6 +98,7 @@ const CheckoutForm = ({ post }) => {
   const { handleSubmit, loading: submitLoading } = useSubmit(
     post,
     user,
+    orderId,
     formdata
   );
   const handleCOD = async(e)=>{
@@ -443,6 +449,7 @@ const CheckoutForm = ({ post }) => {
                       post={post}
                       formdata={formdata}
                       user={user}
+                      orderId={orderId}
                     />
                   ) : (
                     <button
