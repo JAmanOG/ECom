@@ -409,8 +409,7 @@ import React, { useState, useEffect } from 'react';
 import AuthServices from "../../Services/auth";
 import { getOrderDetails as fetchOrderDetailsFromDB, getProduct } from "../../Services/database";
 import { Link, useParams } from 'react-router-dom';
-import InvoiceComponent from '../Invoice/InvoiceComponent';  // <-- Import the InvoicePage component
-import ViewOrderComponent from '../OrderPage/ViewOrderComponent';
+import InvoiceComponent from '../Invoice/InvoiceComponent';
 
 function OrderPage() {
     // your existing code...
@@ -434,7 +433,7 @@ function OrderPage() {
                             orderDetails: parsedOrderDetails
                         };
                     });
-    
+                    console.log("ParsedOrders: ",parsedOrders)
                     setOrderDetails(parsedOrders);
                     setUser(user);
                     setLoading(false);
@@ -445,7 +444,7 @@ function OrderPage() {
     
             fetchUserAndOrders();
         }, []);
-    
+        console.log("orderDetails : ",orderDetails)
         useEffect(() => {
             const fetchProductImages = async () => {
                 const productMap = {};

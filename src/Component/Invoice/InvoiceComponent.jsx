@@ -92,11 +92,14 @@ const InvoicePage = ({ orderId }) => {
   if (!orderDetails) {
     return <p>No order details found for this order.</p>;
   }
-  console.log(orderDetails);
+  console.log("orderDetails Invoice",orderDetails);
 
   // Construct the data object based on the orderDetails
   const data = {
-    soldBy: "Your Company Name", // Replace with actual data or use orderDetails field
+    soldBy: "Your Company Name",
+    customerName: `${orderDetails.firstname} ${orderDetails.lastname}`,
+    email: orderDetails.email,
+    phone: orderDetails.phone,
     billingAddress: orderDetails.address,
     shippingAddress: `${orderDetails.address}, ${orderDetails.city}, ${orderDetails.state}, ${orderDetails.country}, ${orderDetails.zip}`,
     items: orderDetails.parsedOrderData[0].items.map(item => ({

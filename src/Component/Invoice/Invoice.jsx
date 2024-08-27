@@ -87,7 +87,12 @@ const Invoice = ({ data }) => (
       <Text style={styles.header}>Tax Invoice/Bill of Supply/Cash Memo</Text>
 
       <View style={styles.section}>
-        <Text style={styles.soldBy}>Sold By: Your Company Name</Text>
+        <Text style={styles.soldBy}>Sold By: Aman</Text>
+        <br />
+        <Text style={styles.To}>To: {data.customerName}</Text>
+        <Text style={styles.email}>Email: {data.email}</Text>
+        <Text style={styles.phone}>Phone: {data.phone}</Text>
+
         <Text style={styles.address}>Billing Address: {data.billingAddress}</Text>
         <Text style={styles.address}>Shipping Address: {data.shippingAddress}</Text>
       </View>
