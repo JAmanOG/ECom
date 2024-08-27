@@ -410,6 +410,9 @@ import AuthServices from "../../Services/auth";
 import { getOrderDetails as fetchOrderDetailsFromDB, getProduct } from "../../Services/database";
 import { Link, useParams } from 'react-router-dom';
 import InvoiceComponent from '../Invoice/InvoiceComponent';
+import OrderPageSkeleton from './OrderPageSkeleton';
+import { SkeletonLoader } from './OrderPageSkeleton';
+
 
 function OrderPage() {
     // your existing code...
@@ -477,7 +480,8 @@ function OrderPage() {
         });
     
         if (loading) {
-            return <p>Loading...</p>;
+            return <OrderPageSkeleton />; 
+
         }
     
         if (orderDetails.length === 0) {
@@ -501,7 +505,7 @@ function OrderPage() {
         <div className="max-w-7xl mx-auto">
             {/* Page Title */}
             <div className="mb-12">
-                <h1 className="text-4xl font-bold text-gray-800 mb-2">Order History</h1>
+                <h1 className="text-4xl mt-3 font-bold text-gray-800 mb-2">Order History</h1>
                 <p className="text-gray-600">Review past orders, manage returns, and reorder your favorite items.</p>
             </div>
 
@@ -560,8 +564,7 @@ function OrderPage() {
                                     <li key={itemIndex} className="flex items-start space-x-6">
                                         <img
                                             className="w-24 h-24 object-cover rounded-lg shadow"
-                                            src={product?.image || "https://tailwindui.com/img/ecommerce-images/order-history-page-03-product-01.jpg"}
-                                            alt={product?.name || "Product"}
+                                            src={product?.image || "src/assets/blankwhite.jpg"}
                                         />
                                         <div className="flex-1">
                                             <div className="flex justify-between items-start">
@@ -577,7 +580,7 @@ function OrderPage() {
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 mr-1">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"></path>
                                                 </svg>
-                                                Delivered on {renderOrderDate(order.orderDetails.createdAt)}
+                                                Confirmed on {renderOrderDate(order.orderDetails.createdAt)}
                                             </p>
                                             <div className="space-x-4">
                                                 <Link

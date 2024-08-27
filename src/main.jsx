@@ -26,7 +26,6 @@ import OrderConfirmation from "./Component/Modal/OrderConfirmationModal.jsx";
 import OrderPage from "./Component/Modal/OrderPage.jsx";
 import InvoiceComponent from "./Component/Invoice/InvoiceComponent.jsx";
 import ViewOrderComponent from "./Component/OrderPage/ViewOrderComponent.jsx";
-import ViewOrder from "./Component/OrderPage/ViewOrder.jsx";
 
 let persistor = persistStore(store);
 
@@ -47,7 +46,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 }
               />
               <Route
-                path="/order"
+                path="/orders"
                 element={
                   <AuthLayout authenticate>
                     <OrderPage />

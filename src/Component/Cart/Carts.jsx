@@ -390,7 +390,7 @@ function Carts() {
                     </div>
                     <Button
                       component={Link}
-                      to="/my/CheckoutPage"
+                      to="/my/CheckoutForm"
                       className="btn-primary"
                       disabled={loading}
                     >

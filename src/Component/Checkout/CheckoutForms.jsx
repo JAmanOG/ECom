@@ -385,17 +385,17 @@ const CheckoutForm = ({ post }) => {
                 </>
               ) : checkout.length > 0 ? (
                 checkout.map((item) => (
-                  <div key={item.productId}>
+                  <div key={item.productId} className="mb-2 p-2 rounded-lg border-2 border-gray-400 ">
                     <div className="flex justify-between text-sm sm:text-base">
-                      <div>
-                        {productDetails[item.productId]?.Variety ||
-                          "Loading ..."}
+                      <div className=" ">
+                        <span className="text-xs text-gray-400">{productDetails[item.productId]?.Variety ||
+                          "Loading ..."}</span>
                         <br />
-                        <span className="text-gray-700">
+                        <span className="text-gray-700 font-bold ">
                           {productDetails[item.productId]?.name || "Loading ..."}
                         </span>
                       </div>
-                      <span className="text-gray-900 font-medium">
+                      <span className="text-gray-900   font-medium">
                         $
                         {productDetails[item.productId]?.discountedPrice ||
                           "Loading ..."}
@@ -409,7 +409,7 @@ const CheckoutForm = ({ post }) => {
             {loading ? (
               <Skeleton height={150} width="100%" />
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-4 mt-2">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Subtotal</span>
                   <span className="text-gray-800 font-semibold">

@@ -3,6 +3,7 @@ import { getOrderDetails } from '../Invoice/usefetchdata';
 import './ViewOrder.css';
 import { getProduct } from '../../Services/database';
 import InvoiceComponent from '../Invoice/InvoiceComponent';
+import OrderDetailsSkeleton from './ViewOrderSkeleton';
 
 const ViewOrder = ({ orderId }) => {
   const [productDetails, setProductDetails] = useState({});
@@ -54,7 +55,7 @@ const ViewOrder = ({ orderId }) => {
   }, [orderDetails]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <OrderDetailsSkeleton/>;
   }
 
   if (!orderDetails || !orderDetails.parsedOrderData) {

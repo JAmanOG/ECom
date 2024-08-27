@@ -125,7 +125,7 @@ const OrderConfirmation = () => {
         </div>
 
         <Link data-html2canvas-ignore="true"
-          to="/track-order"
+          to="/orders"
           className="bg-blue-600 mr-2 text-white rounded-lg px-4 py-2 hover:bg-blue-700 transition-colors mb-4 inline-block"
         >
           Track Your Order

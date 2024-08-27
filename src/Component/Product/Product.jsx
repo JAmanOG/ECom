@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { appwriteService } from "../../Services/database";
-
+import ProductDetailsSkeleton from "./ProductSkeleton";
+import useCheckout from "../Checkout/useCheckout";
 
 const Product = () => {
+  const {
+    checkout,
+    handleCheckout,
+    handleRemove,
+    handleIncrement,
+    handleDecrement,
+    isInCart,
+  } = useCheckout();
+
   const { category, subcategory, subsubcategory, slug } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
@@ -29,7 +39,7 @@ const Product = () => {
     fetchProduct();
   }, [slug, navigate]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <ProductDetailsSkeleton />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
@@ -144,9 +154,45 @@ const Product = () => {
                   </span>
                 )}
 
-                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-full transition">
-                  Add to Cart
-                </button>
+                <div className="flex justify-center w-full items-center space-x-2">
+                  {!isInCart[product.$id] ? (
+                    <button
+                      onClick={() => handleCheckout(product.$id, 1)}
+                      className="w-max py-2 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
+                      type="button"
+                    >
+                      Add to Cart
+                    </button>
+                  ) : (
+                    <div className="flex items-center space-x-2">
+                      <button
+                        onClick={() => handleIncrement(product.$id, 1)}
+                        className="py-2 px-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
+                        type="button"
+                      >
+                        +
+                      </button>
+                      <div className="flex items-center justify-center w-12 h-10 bg-gray-200 text-gray-900 font-semibold rounded-lg">
+                        {checkout.find((item) => item.productId === product.$id)?.quantity || 0}
+                      </div>
+                      <button
+                        onClick={() => handleDecrement(product.$id, 1)}
+                        className="py-2 px-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
+                        type="button"
+                      >
+                        -
+                      </button>
+                      <button
+                        onClick={() => handleRemove(product.$id)}
+                        className="py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none"
+                        type="button"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  )}
+                </div>
+
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 hover:bg-gray-300 transition">
                   <svg
                     fill="currentColor"

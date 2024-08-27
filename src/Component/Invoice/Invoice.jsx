@@ -131,11 +131,11 @@ const Invoice = ({ data }) => (
       </View>
 
       <View style={styles.summary}>
-        <Text style={styles.summaryText}>Subtotal: {data.subtotal.toFixed(2)}</Text>
-        <Text style={styles.summaryText}>Shipping: {data.shipping.toFixed(2)}</Text>
-        <Text style={styles.summaryText}>Tax: {data.tax.toFixed(2)}</Text>
-        <Text style={styles.summaryText}>Savings: {data.savings.toFixed(2)}</Text>
-        <Text style={styles.total}>Total: {data.total.toFixed(2)}</Text>
+        <Text style={styles.summaryText}>Subtotal: {data.subtotal}</Text>
+        <Text style={styles.summaryText}>Shipping: {data.shipping}</Text>
+        <Text style={styles.summaryText}>Tax: {data.tax}</Text>
+        <Text style={styles.summaryText}>Savings: {data.savings}</Text>
+        <Text style={styles.total}>Total: {data.total}</Text>
       </View>
 
       <View style={styles.footer}>

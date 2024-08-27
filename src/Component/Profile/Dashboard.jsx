@@ -57,7 +57,7 @@ function Dashboard() {
       </div>
       <div className="grid-flow-col grid m-auto justify-center align-middle gap-8">
         <div className="p-5 border border-gray-400 rounded-xl">
-            <Link>
+            <Link to="/orders">
           <h4 className="align-middle justify-center flex">
             Orders
           </h4>
