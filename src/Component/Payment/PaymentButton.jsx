@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import useSubmit from "./useSubmit";
 import useCheckout from "../Checkout/useCheckout";
 
-function PaymentButton({ amount, receipt, post, formdata,orderId, user }) {
+function PaymentButton({ amount, receipt, post, formdata,orderId, user,productId }) {
     const { handleRemoveAll } = useCheckout();
     const navigate = useNavigate();
     const currency = "INR";
     
     const { handleSubmit } = useSubmit(post, user,orderId ,formdata);
+
 
     const paymentHandler = async (e) => {
         e.preventDefault();
@@ -44,7 +45,9 @@ function PaymentButton({ amount, receipt, post, formdata,orderId, user }) {
 
                 if (jsonRes.msg === "Payment successfull!") {
                     await handleSubmit();
-                    handleRemoveAll();
+                    if (!productId) {
+                        handleRemoveAll();
+                    }
 
                     // Parse OrderData from formdata
                     const orderDataString = data.OrderData?.value?.[0];

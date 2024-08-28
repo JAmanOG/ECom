@@ -20,7 +20,7 @@ import CheckoutForms from "./Component/Checkout/CheckoutForms.jsx";
 import Carts from "./Component/Cart/Carts.jsx";
 import CheckoutPage from "./Component/Checkout/Checkout.jsx";
 import OrderConfirmation from "./Component/Modal/OrderConfirmationModal.jsx";
-
+import SingleCheckoutForm from "./Component/SingleCheckout/SingleProductCheckout.jsx";
 
 
 import OrderPage from "./Component/Modal/OrderPage.jsx";
@@ -82,6 +82,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 element={
                   <AuthLayout authenticate>
                     <CheckoutForms />
+                  </AuthLayout>
+                }
+              />
+              <Route
+                path="/my/CheckoutForm/:productId"
+                element={
+                  <AuthLayout authenticate>
+                    <SingleCheckoutForm />
                   </AuthLayout>
                 }
               />

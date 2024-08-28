@@ -589,7 +589,7 @@ function OrderPage() {
                                                 >
                                                     View Product
                                                 </Link>
-                                                <a href="#" className="text-blue-600 hover:underline">Buy Again</a>
+                                                <Link to={`/my/CheckoutForm/${productId}`} className="text-blue-600 hover:underline">Buy Again</Link>
                                             </div>
                                         </div>
                                     </li>
