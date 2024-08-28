@@ -250,7 +250,7 @@ function Carts() {
                 checkout.map((item) => (
                   <div
                     key={item.productId}
-                    className="flex items-center mt-2 rounded-md shadow hover:shadow-lg space-x-8"
+                    className="flex items-center mt-2 pb-3 rounded-md shadow hover:shadow-lg space-x-8"
                   >
                     <div className="product-image mb-3">
                       <img
@@ -325,6 +325,29 @@ function Carts() {
                           </svg>
                           Remove
                         </button>
+                        <Link
+                          to={`/my/CheckoutForm/${item.productId}`}
+                          className="text-lg flex font-medium text-blue-500 hover:text-emerald-300 transition"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="feather feather-shopping-cart inline-block mr-2"
+                            width="24"
+                          >
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a1 1 0 0 0 1 .61h9.72a1 1 0 0 0 1-.76l3.38-10.1H5.62"strokeWidth="2">
+                            
+                            </path>
+                          </svg>
+                          Buy Now
+                        </Link>
                       </div>
                     </div>
                   </div>

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { fetchWishlist } from "../../Rtk/Slices/WishlistSlice";
 import AuthServices from "../../Services/auth";
 import { appwriteService } from "../../Services/database";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css';
 
@@ -13,7 +13,6 @@ const WishlistComponent = () => {
   const [productDetails, setProductDetails] = useState({});
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   const getProduct = async (productId) => {
     try {

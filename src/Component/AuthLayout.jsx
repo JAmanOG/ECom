@@ -8,14 +8,19 @@ function AuthLayout({ children, authenticate = true }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (authstatus === undefined) {
-      setLoading(true);
-    } else if (authenticate && !authstatus) {
-      navigate("/login");
-    } else if (!authenticate && authstatus) {
-      navigate("/");
-    } else {
-      setLoading(false);
+    // Only perform navigation if authstatus is not undefined
+    if (authstatus !== undefined) {
+      if (authenticate && !authstatus) {
+        console.log("Redirecting to login...", authstatus, authenticate);
+        // Redirect to login if not authenticated
+        navigate("/login");
+      } else if (!authenticate && authstatus) {
+        // Redirect to home if already authenticated
+        navigate("/");
+      } else {
+        // No need to redirect, so set loading to false
+        setLoading(false);
+      }
     }
   }, [authstatus, authenticate, navigate]);
 

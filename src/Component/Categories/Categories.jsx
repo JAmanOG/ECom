@@ -145,7 +145,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css"; // Import the CSS for the skeleton
-import { addToCart, getShoes } from "../../Services/database";
+import { getShoes } from "../../Services/database";
 import { appwriteService } from "../../Services/database";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -155,7 +155,6 @@ import {
 } from "../../Rtk/Slices/WishlistSlice";
 import AuthServices from "../../Services/auth";
 import useCheckout from "../Checkout/useCheckout";
-import useFetchCheckout from "../Checkout/useFetchCheckout";
 
 const Shoecategory = () => {
   const { category, subcategory, subsubcategory } = useParams();

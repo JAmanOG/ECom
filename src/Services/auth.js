@@ -5,7 +5,6 @@ export class AuthService {
     client;
     account;
 
-
     constructor() {
         this.client = new Client()
             .setEndpoint(conf.appwriteUrl)
@@ -13,53 +12,55 @@ export class AuthService {
         this.account = new Account(this.client);
     }
 
-    async createAccount({email, password, name}) {
+    async createAccount({ email, password, name }) {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if (userAccount) {
-                return this.login({email, password});
+                return this.login({ email, password });
             }
         } catch (error) {
-            throw error;
+            console.error("Error creating account:", error);
+            throw new Error('Unable to create account. Please try again.');
         }
     }
-    async login({email, password}) {
+
+    async login({ email, password }) {
         try {
             return await this.account.createEmailSession(email, password);
         } catch (error) {
-            throw error;
+            console.error("Error logging in:", error);
+            throw new Error('Invalid email or password. Please try again.');
         }
     }
+
     async getCurrentUser() {
         try {
             return await this.account.get();
         } catch (error) {
-            console.log("Appwrite service :: getCurrentUser :: error", error);
+            console.error("Error fetching current user:", error);
             return null;
         }
     }
-    
+
     async logout() {
         try {
             await this.account.deleteSessions();
         } catch (error) {
-            console.log("Appwrite serive :: logout :: error", error);
+            console.error("Error logging out:", error);
         }
     }
 
-    
     async getCurrentSession() {
-    try {
-      const session = await this.account.getSession('current');
-      console.log('Current session:', session);
-    } catch (error) {
-      console.error('Error fetching current session:', error);
+        try {
+            const session = await this.account.getSession('current');
+            return session;
+        } catch (error) {
+            console.error("Error fetching current session:", error);
+            return null;
+        }
     }
-  }
-  
 }
 
 const AuthServices = new AuthService();
 
-export default AuthServices
-
+export default AuthServices;

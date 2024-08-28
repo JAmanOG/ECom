@@ -408,14 +408,12 @@
 import React, { useState, useEffect } from 'react';
 import AuthServices from "../../Services/auth";
 import { getOrderDetails as fetchOrderDetailsFromDB, getProduct } from "../../Services/database";
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import InvoiceComponent from '../Invoice/InvoiceComponent';
 import OrderPageSkeleton from './OrderPageSkeleton';
-import { SkeletonLoader } from './OrderPageSkeleton';
 
 
 function OrderPage() {
-    // your existing code...
         // const { category, subcategory, subsubcategory } = useParams();
         const [user, setUser] = useState(null);
         const [loading, setLoading] = useState(true);

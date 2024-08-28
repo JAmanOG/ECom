@@ -128,9 +128,7 @@
 // src/Services/database.js
 import { Client, Databases, Storage, ID, Query } from "appwrite";
 import conf from "./conf";
-import AuthService from "./auth";
 
-// Initialize Appwrite client
 const client = new Client();
 client.setEndpoint(conf.appwriteUrl).setProject(conf.appwriteProjectId);
 
