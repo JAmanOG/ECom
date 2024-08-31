@@ -182,6 +182,10 @@ const data = {
 const tagdata = {
   SpecialTags: [
     {
+      name: "Common tag",
+      value: "common"
+    },
+    {
       name: "New Arrival",
       value: "new_arrival"
     },
@@ -192,6 +196,10 @@ const tagdata = {
     {
       name: "Best Seller",
       value: "best_seller"
+    },
+    {
+      name: "Hot",
+      value: "hot"
     },
     {
       name: "Sale",
@@ -234,66 +242,72 @@ const Drop = ({
   const tagsList = Tags ? tagdata.SpecialTags : []; 
 
   return (
-    <div className='space-y-6'>
-      <label htmlFor="entryCategorySelect">Select Category: </label>
+    <div className="space-y-8 p-2 bg-gray-900 rounded-lg shadow-xl">
+  <div>
+    <label htmlFor="entryCategorySelect" className="block text-sm font-medium text-gray-300 mb-2">Select Category:</label>
+    <select
+      id="entryCategorySelect"
+      value={Category}
+      onChange={handleEntryCategory}
+      className="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 transition duration-300 ease-in-out"
+    >
+      <option value="" disabled className="text-gray-500">Select it</option>
+      {Object.keys(data).map((category) => (
+        <option key={category} value={category} className="text-black">{category}</option>
+      ))}
+    </select>
+  </div>
+
+  {Category && (
+    <div>
+      <label htmlFor="categoriesSelect" className="block text-sm font-medium text-gray-300 mb-2">Footwear Type:</label>
       <select
-        id="entryCategorySelect"
-        value={Category}
-        onChange={handleEntryCategory}
+        id="categoriesSelect"
+        value={Footwear_Type}
+        onChange={handleCategoryChanges}
+        className="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 transition duration-300 ease-in-out"
       >
-        <option value="" disabled>Select it</option>
-        {Object.keys(data).map((category) => (
-          <option key={category} value={category}>{category}</option>
+        <option value="" disabled className="text-gray-500">Select it</option>
+        {categories.map((category) => (
+          <option key={category.value} value={category.value} className="text-black">{category.name}</option>
         ))}
       </select>
-
-      {Category && (
-        <div>
-          <label htmlFor="categoriesSelect">Footwear Type: </label>
-          <select
-            id="categoriesSelect"
-            value={Footwear_Type}
-            onChange={handleCategoryChanges}
-          >
-            <option value="" disabled>Select it</option>
-            {categories.map((category) => (
-              <option key={category.value} value={category.value}>{category.name}</option>
-            ))}
-          </select>
-        </div>
-      )}
-
-      {currentCategory && (
-        <div>
-          <label htmlFor="subcategoriesSelect">Variety: </label>
-          <select
-            id="subcategoriesSelect"
-            value={Variety}
-            onChange={handleSubcategoryChanges}
-          >
-            <option value="" disabled>Select it</option>
-            {currentCategory.subcategories.map((subcategory) => (
-              <option key={subcategory} value={subcategory}>{subcategory}</option>
-            ))}
-          </select>
-        </div>
-      )}
-      <div className="space-y-3">
-               <label htmlFor="tagsSelect">Tags:</label>
-        <select
-          id="tagsSelect"
-          value={Tags || ""}
-          onChange={handleTagsChanges}
-          className="w-min px-2 py-1 border rounded"
-        >
-          <option value="" disabled>Select Tags</option>
-          {tagdata.SpecialTags.map((tag) => (
-            <option key={tag.value} value={tag.value}>{tag.name}</option>
-          ))}
-        </select>
-      </div>
-
     </div>
+  )}
+
+  {currentCategory && (
+    <div>
+      <label htmlFor="subcategoriesSelect" className="block text-sm font-medium text-gray-300 mb-2">Variety:</label>
+      <select
+        id="subcategoriesSelect"
+        value={Variety}
+        onChange={handleSubcategoryChanges}
+        className="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 transition duration-300 ease-in-out"
+      >
+        <option value="" disabled className="text-gray-500">Select it</option>
+        {currentCategory.subcategories.map((subcategory) => (
+          <option key={subcategory} value={subcategory} className="text-black">{subcategory}</option>
+        ))}
+      </select>
+    </div>
+  )}
+
+  <div>
+    <label htmlFor="tagsSelect" className="block text-sm font-medium text-gray-300 mb-2">Tags:</label>
+    <select
+      id="tagsSelect"
+      value={Tags || ""}
+      onChange={handleTagsChanges}
+      className="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 transition duration-300 ease-in-out"
+    >
+      <option value="" disabled className="text-gray-500">Select Tags</option>
+      {tagdata.SpecialTags.map((tag) => (
+        <option key={tag.value} value={tag.value} className="text-black">{tag.name}</option>
+      ))}
+    </select>
+  </div>
+</div>
+
   );
 }
 

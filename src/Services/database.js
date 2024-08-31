@@ -455,6 +455,34 @@ const getShoes = async (category, footwearType, variety) => {
   }
 };
 
+const gettag = async (tag, excludeTag = null) => {
+  try {
+    let query = [];
+
+    if (tag) {
+      query.push(Query.equal("Tags", tag));
+    }
+
+    if (excludeTag !== null) {
+      query.push(Query.notEqual("Tags", excludeTag));
+    }
+
+    const response = await databases.listDocuments(
+      conf.appwriteDatabaseId,
+      conf.appwriteCollectionId,
+      query
+    );
+
+    console.log("Fetching shoes with parameters:", tag, "Excluding:", excludeTag);
+
+    return response.documents;
+  } catch (error) {
+    console.error("Error fetching documents:", error);
+    throw error;
+  }
+};
+
+
 class bucketstorage {
   constructor() {
     this.bucket = new Storage(client);
@@ -531,4 +559,4 @@ const getProduct = async (productId) => {
 };
 
 const appwriteService = new bucketstorage();
-export { client, databases, getShoes, appwriteService ,getProduct};
+export { client, databases, getShoes,gettag, appwriteService ,getProduct};

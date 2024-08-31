@@ -7,12 +7,15 @@ import { appwriteService } from "../../Services/database";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css';
+import useCheckout from "../Checkout/useCheckout";
 
 const WishlistComponent = () => {
   const [wishlist, setWishlist] = useState([]);
   const [productDetails, setProductDetails] = useState({});
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+
+  const {handleCheckout,isInCart,handleRemove} = useCheckout();
 
   const getProduct = async (productId) => {
     try {
@@ -101,7 +104,8 @@ const WishlistComponent = () => {
                       {productDetails[item.productId]?.name || "Loading..."}
                     </h1>
                     <div className="flex items-center justify-between">
-                      <button className="text-indigo-600 font-semibold hover:text-indigo-800 inline-flex items-center">
+                      {!isInCart[item.productId] ? (
+                        <button onClick={()=> handleCheckout(item.productId)} className="text-indigo-600 font-semibold hover:text-indigo-800 inline-flex items-center">
                         Add to Cart
                         <svg
                           className="w-5 h-5 ml-2"
@@ -116,6 +120,23 @@ const WishlistComponent = () => {
                           <path d="M12 5l7 7-7 7"></path>
                         </svg>
                       </button>
+                      ):(
+                        <button onClick={()=> handleRemove(item.productId)} className="text-red-600 font-semibold hover:text-red-800 inline-flex items-center">
+                        Remove from Cart
+                        <svg
+                          className="w-5 h-5 ml-2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M19 19l-14-14"></path>
+                          <path d="M5 19l14-14"></path>
+                        </svg>
+                      </button>
+                      )}
                     </div>
                   </div>
                 </div>

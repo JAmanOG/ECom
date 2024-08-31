@@ -1,644 +1,671 @@
-// import { Fragment, useState } from "react";
-// import Carousel from "./Carousel";
-// import {
-//   Dialog,
-//   DialogBackdrop,
-//   DialogPanel,
-//   Popover,
-//   PopoverButton,
-//   PopoverGroup,
-//   PopoverPanel,
-//   Tab,
-//   TabGroup,
-//   TabList,
-//   TabPanel,
-//   TabPanels,
-// } from "@headlessui/react";
-// import {
-//   Bars3Icon,
-//   MagnifyingGlassIcon,
-//   ShoppingBagIcon,
-//   XMarkIcon,
-// } from "@heroicons/react/24/outline";
-// import { Link } from "react-router-dom";
+import { Fragment, useState } from "react";
+import CardCarousel from "./CardCarousel";
+import Carousel from "./Carousel";
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogPanel,
+  Popover,
+  PopoverButton,
+  PopoverGroup,
+  PopoverPanel,
+  Tab,
+  TabGroup,
+  TabList,
+  TabPanel,
+  TabPanels,
+} from "@headlessui/react";
+import {
+  Bars3Icon,
+  MagnifyingGlassIcon,
+  ShoppingBagIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
-// const navigation = {
-//   categories: [
-//     {
-//       id: "men",
-//       name: "Men",
-//       featured: [
-//         {
-//           name: "Dress Shoes",
-//           href: "#",
-//           imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
-//           imageAlt: "Image showing Link pair of dress shoes.",
-//         },
-//         {
-//           name: "Casual Shoes",
-//           href: "#",
-//           imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
-//           imageAlt: "Image showing casual shoes.",
-//         },
-//         {
-//           name: "tp Shoes",
-//           href: "#",
-//           imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
-//           imageAlt: "Image showing casual shoes.",
-//         },
-//       ],
-//       sections: [
-//         {
-//           id: "dress_shoes",
-//           name: "Dress Shoes",
-//           items: [
-//             { name: "Oxfords", href: "/men/dress_shoes/oxfords" },
-//             { name: "Derbies", href: "/men/dress_shoes/derbies" },
-//             { name: "Brogues", href: "/men/dress_shoes/brogues" },
-//             { name: "Loafers", href: "/men/dress_shoes/loafers" },
-//             { name: "Monk Straps", href: "/men/dress_shoes/monk-straps" },
-//           ],
-//         },
-//         {
-//           id: "casual_shoes",
-//           name: "Casual Shoes",
-//           items: [
-//             { name: "Sneakers", href: "#" },
-//             { name: "Boat Shoes", href: "#" },
-//             { name: "Espadrilles", href: "#" },
-//             { name: "Moccasins", href: "#" },
-//             { name: "Slip-Ons", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "boots",
-//           name: "Boots",
-//           items: [
-//             { name: "Ankle Boots", href: "#" },
-//             { name: "Chelsea Boots", href: "#" },
-//             { name: "Chukka Boots", href: "#" },
-//             { name: "Work Boots", href: "#" },
-//             { name: "Hiking Boots", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "sandals",
-//           name: "Sandals",
-//           items: [
-//             { name: "Flip Flops", href: "#" },
-//             { name: "Slide Sandals", href: "#" },
-//             { name: "Fisherman Sandals", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "athletic_footwear",
-//           name: "Athletic Footwear",
-//           items: [
-//             { name: "Running Shoes", href: "#" },
-//             { name: "Training Shoes", href: "#" },
-//             { name: "Basketball Shoes", href: "#" },
-//             { name: "Soccer Shoes", href: "#" },
-//             { name: "Tennis Shoes", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "slippers",
-//           name: "Slippers",
-//           items: [
-//             { name: "Indoor Slippers", href: "#" },
-//             { name: "Outdoor Slippers", href: "#" },
-//           ],
-//         },
-//       ],
-//     },
-//     {
-//       id: "women",
-//       name: "Women",
-//       featured: [
-//         {
-//           name: "Heels",
-//           href: "#",
-//           imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
-//           imageAlt: "Image showing Link pair of heels.",
-//         },
-//         {
-//           name: "Flats",
-//           href: "#",
-//           imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
-//           imageAlt: "Image showing flats.",
-//         },
-//       ],
-//       sections: [
-//         {
-//           id: "heels",
-//           name: "Heels",
-//           items: [
-//             { name: "Stilettos", href: "#" },
-//             { name: "Kitten Heels", href: "#" },
-//             { name: "Block Heels", href: "#" },
-//             { name: "Wedges", href: "#" },
-//             { name: "Platform Heels", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "flats",
-//           name: "Flats",
-//           items: [
-//             { name: "Ballet Flats", href: "#" },
-//             { name: "Loafers", href: "#" },
-//             { name: "Espadrilles", href: "#" },
-//             { name: "Moccasins", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "boots",
-//           name: "Boots",
-//           items: [
-//             { name: "Ankle Boots", href: "#" },
-//             { name: "Knee-High Boots", href: "#" },
-//             { name: "Over-the-Knee Boots", href: "#" },
-//             { name: "Chelsea Boots", href: "#" },
-//             { name: "Combat Boots", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "sandals",
-//           name: "Sandals",
-//           items: [
-//             { name: "Gladiator Sandals", href: "#" },
-//             { name: "Slide Sandals", href: "#" },
-//             { name: "Flip Flops", href: "#" },
-//             { name: "Slingback Sandals", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "sneakers",
-//           name: "Sneakers",
-//           items: [
-//             { name: "Running Shoes", href: "#" },
-//             { name: "Casual Sneakers", href: "#" },
-//             { name: "High-Top Sneakers", href: "#" },
-//             { name: "Slip-On Sneakers", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "slippers",
-//           name: "Slippers",
-//           items: [
-//             { name: "Indoor Slippers", href: "#" },
-//             { name: "Outdoor Slippers", href: "#" },
-//           ],
-//         },
-//       ],
-//     },
-//     {
-//       id: "kids",
-//       name: "Kids",
-//       featured: [
-//         {
-//           name: "Sports Shoes",
-//           href: "#",
-//           imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
-//           imageAlt: "Image showing sports shoes for kids.",
-//         },
-//         {
-//           name: "Casual Shoes",
-//           href: "#",
-//           imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
-//           imageAlt: "Image showing casual shoes for kids.",
-//         },
-//       ],
-//       sections: [
-//         {
-//           id: "sports_shoes",
-//           name: "Sports Shoes",
-//           items: [
-//             { name: "Running Shoes", href: "#" },
-//             { name: "Training Shoes", href: "#" },
-//             { name: "Soccer Shoes", href: "#" },
-//             { name: "Basketball Shoes", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "casual_shoes",
-//           name: "Casual Shoes",
-//           items: [
-//             { name: "Sneakers", href: "#" },
-//             { name: "Slip-Ons", href: "#" },
-//             { name: "Sandals", href: "#" },
-//             { name: "Flip Flops", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "boots",
-//           name: "Boots",
-//           items: [
-//             { name: "Ankle Boots", href: "#" },
-//             { name: "Winter Boots", href: "#" },
-//             { name: "Rain Boots", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "slippers",
-//           name: "Slippers",
-//           items: [
-//             { name: "Indoor Slippers", href: "#" },
-//             { name: "Outdoor Slippers", href: "#" },
-//           ],
-//         },
-//       ],
-//     },
-//     {
-//       id: "other_products",
-//       name: "Other Products",
-//       featured: [
-//         {
-//           name: "Footwear Accessories",
-//           href: "#",
-//           imageSrc: "",
-//           imageAlt: "Image showing footwear accessories.",
-//         },
-//         {
-//           name: "Footwear Care",
-//           href: "#",
-//           imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
-//           imageAlt: "Image showing footwear care products.",
-//         },
-//       ],
-//       sections: [
-//         {
-//           id: "footwear_accessories",
-//           name: "Footwear Accessories",
-//           items: [
-//             { name: "Shoe Laces", href: "#" },
-//             { name: "Insoles", href: "#" },
-//             { name: "Shoe Polish", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "footwear_care",
-//           name: "Footwear Care",
-//           items: [
-//             { name: "Waterproof Sprays", href: "#" },
-//             { name: "Shoe Cleaners", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "socks",
-//           name: "Socks",
-//           items: [
-//             { name: "Casual Socks", href: "#" },
-//             { name: "Athletic Socks", href: "#" },
-//             { name: "Dress Socks", href: "#" },
-//           ],
-//         },
-//         {
-//           id: "shoe_storage",
-//           name: "Shoe Storage",
-//           items: [
-//             { name: "Shoe Racks", href: "#" },
-//             { name: "Shoe Bags", href: "#" },
-//           ],
-//         },
-//       ],
-//     },
-//   ],
-//   pages: [
-//     { name: "Gallery", href: "#" },
-//     { name: "Stores", href: "#" },
-//   ],
-// };
+const navigation = {
+  categories: [
+    {
+      id: "men",
+      name: "Men",
+      featured: [
+        {
+          name: "Dress Shoes",
+          href: "#",
+          imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
+          imageAlt: "Image showing Link pair of dress shoes.",
+        },
+        {
+          name: "Casual Shoes",
+          href: "#",
+          imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
+          imageAlt: "Image showing casual shoes.",
+        },
+        {
+          name: "tp Shoes",
+          href: "#",
+          imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
+          imageAlt: "Image showing casual shoes.",
+        },
+      ],
+      sections: [
+        {
+          id: "dress_shoes",
+          name: "Dress Shoes",
+          items: [
+            { name: "Oxfords", href: "/men/dress_shoes/oxfords" },
+            { name: "Derbies", href: "/men/dress_shoes/derbies" },
+            { name: "Brogues", href: "/men/dress_shoes/brogues" },
+            { name: "Loafers", href: "/men/dress_shoes/loafers" },
+            { name: "Monk Straps", href: "/men/dress_shoes/monk-straps" },
+          ],
+        },
+        {
+          id: "casual_shoes",
+          name: "Casual Shoes",
+          items: [
+            { name: "Sneakers", href: "#" },
+            { name: "Boat Shoes", href: "#" },
+            { name: "Espadrilles", href: "#" },
+            { name: "Moccasins", href: "#" },
+            { name: "Slip-Ons", href: "#" },
+          ],
+        },
+        {
+          id: "boots",
+          name: "Boots",
+          items: [
+            { name: "Ankle Boots", href: "#" },
+            { name: "Chelsea Boots", href: "#" },
+            { name: "Chukka Boots", href: "#" },
+            { name: "Work Boots", href: "#" },
+            { name: "Hiking Boots", href: "#" },
+          ],
+        },
+        {
+          id: "sandals",
+          name: "Sandals",
+          items: [
+            { name: "Flip Flops", href: "#" },
+            { name: "Slide Sandals", href: "#" },
+            { name: "Fisherman Sandals", href: "#" },
+          ],
+        },
+        {
+          id: "athletic_footwear",
+          name: "Athletic Footwear",
+          items: [
+            { name: "Running Shoes", href: "#" },
+            { name: "Training Shoes", href: "#" },
+            { name: "Basketball Shoes", href: "#" },
+            { name: "Soccer Shoes", href: "#" },
+            { name: "Tennis Shoes", href: "#" },
+          ],
+        },
+        {
+          id: "slippers",
+          name: "Slippers",
+          items: [
+            { name: "Indoor Slippers", href: "#" },
+            { name: "Outdoor Slippers", href: "#" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "women",
+      name: "Women",
+      featured: [
+        {
+          name: "Heels",
+          href: "#",
+          imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
+          imageAlt: "Image showing Link pair of heels.",
+        },
+        {
+          name: "Flats",
+          href: "#",
+          imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
+          imageAlt: "Image showing flats.",
+        },
+      ],
+      sections: [
+        {
+          id: "heels",
+          name: "Heels",
+          items: [
+            { name: "Stilettos", href: "#" },
+            { name: "Kitten Heels", href: "#" },
+            { name: "Block Heels", href: "#" },
+            { name: "Wedges", href: "#" },
+            { name: "Platform Heels", href: "#" },
+          ],
+        },
+        {
+          id: "flats",
+          name: "Flats",
+          items: [
+            { name: "Ballet Flats", href: "#" },
+            { name: "Loafers", href: "#" },
+            { name: "Espadrilles", href: "#" },
+            { name: "Moccasins", href: "#" },
+          ],
+        },
+        {
+          id: "boots",
+          name: "Boots",
+          items: [
+            { name: "Ankle Boots", href: "#" },
+            { name: "Knee-High Boots", href: "#" },
+            { name: "Over-the-Knee Boots", href: "#" },
+            { name: "Chelsea Boots", href: "#" },
+            { name: "Combat Boots", href: "#" },
+          ],
+        },
+        {
+          id: "sandals",
+          name: "Sandals",
+          items: [
+            { name: "Gladiator Sandals", href: "#" },
+            { name: "Slide Sandals", href: "#" },
+            { name: "Flip Flops", href: "#" },
+            { name: "Slingback Sandals", href: "#" },
+          ],
+        },
+        {
+          id: "sneakers",
+          name: "Sneakers",
+          items: [
+            { name: "Running Shoes", href: "#" },
+            { name: "Casual Sneakers", href: "#" },
+            { name: "High-Top Sneakers", href: "#" },
+            { name: "Slip-On Sneakers", href: "#" },
+          ],
+        },
+        {
+          id: "slippers",
+          name: "Slippers",
+          items: [
+            { name: "Indoor Slippers", href: "#" },
+            { name: "Outdoor Slippers", href: "#" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "kids",
+      name: "Kids",
+      featured: [
+        {
+          name: "Sports Shoes",
+          href: "#",
+          imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
+          imageAlt: "Image showing sports shoes for kids.",
+        },
+        {
+          name: "Casual Shoes",
+          href: "#",
+          imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
+          imageAlt: "Image showing casual shoes for kids.",
+        },
+      ],
+      sections: [
+        {
+          id: "sports_shoes",
+          name: "Sports Shoes",
+          items: [
+            { name: "Running Shoes", href: "#" },
+            { name: "Training Shoes", href: "#" },
+            { name: "Soccer Shoes", href: "#" },
+            { name: "Basketball Shoes", href: "#" },
+          ],
+        },
+        {
+          id: "casual_shoes",
+          name: "Casual Shoes",
+          items: [
+            { name: "Sneakers", href: "#" },
+            { name: "Slip-Ons", href: "#" },
+            { name: "Sandals", href: "#" },
+            { name: "Flip Flops", href: "#" },
+          ],
+        },
+        {
+          id: "boots",
+          name: "Boots",
+          items: [
+            { name: "Ankle Boots", href: "#" },
+            { name: "Winter Boots", href: "#" },
+            { name: "Rain Boots", href: "#" },
+          ],
+        },
+        {
+          id: "slippers",
+          name: "Slippers",
+          items: [
+            { name: "Indoor Slippers", href: "#" },
+            { name: "Outdoor Slippers", href: "#" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "other_products",
+      name: "Other Products",
+      featured: [
+        {
+          name: "Footwear Accessories",
+          href: "#",
+          imageSrc: "",
+          imageAlt: "Image showing footwear accessories.",
+        },
+        {
+          name: "Footwear Care",
+          href: "#",
+          imageSrc: "src/assets/dummy-profile-pic-300x300-1.png",
+          imageAlt: "Image showing footwear care products.",
+        },
+      ],
+      sections: [
+        {
+          id: "footwear_accessories",
+          name: "Footwear Accessories",
+          items: [
+            { name: "Shoe Laces", href: "#" },
+            { name: "Insoles", href: "#" },
+            { name: "Shoe Polish", href: "#" },
+          ],
+        },
+        {
+          id: "footwear_care",
+          name: "Footwear Care",
+          items: [
+            { name: "Waterproof Sprays", href: "#" },
+            { name: "Shoe Cleaners", href: "#" },
+          ],
+        },
+        {
+          id: "socks",
+          name: "Socks",
+          items: [
+            { name: "Casual Socks", href: "#" },
+            { name: "Athletic Socks", href: "#" },
+            { name: "Dress Socks", href: "#" },
+          ],
+        },
+        {
+          id: "shoe_storage",
+          name: "Shoe Storage",
+          items: [
+            { name: "Shoe Racks", href: "#" },
+            { name: "Shoe Bags", href: "#" },
+          ],
+        },
+      ],
+    },
+  ],
+  pages: [
+    { name: "Gallery", href: "#" },
+    { name: "Stores", href: "#" },
+  ],
+};
 
-// export default function Example() {
-//     const [dropdownOpen, setDropdownOpen] = useState(false);
-  
-//     const handleToggle = () => {
-//       setDropdownOpen(!dropdownOpen);
-//     };
-//   const [open, setOpen] = useState(false);
-//   return (
-//     <>
+export default function Home() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-//     <div className="bg-white">
-//       {/* Mobile menu */}
-//       <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
-//         <DialogBackdrop
-//           transition
-//           className="fixed inset-0 bg-black bg-opacity-25 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
-//         />
-
-//         <div className="fixed inset-0 z-40 flex">
-//           <DialogPanel
-//             transition
-//             className="relative flex w-full max-w-xs transform flex-col overflow-y-auto bg-white pb-12 shadow-xl transition duration-300 ease-in-out data-[closed]:-translate-x-full"
-//           >
-//             <div className="flex px-4 pb-2 pt-5">
-//               <button
-//                 type="button"
-//                 onClick={() => setOpen(false)}
-//                 className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
-//               >
-//                 <span className="absolute -inset-0.5" />
-//                 <span className="sr-only">Close menu</span>
-//                 <XMarkIcon aria-hidden="true" className="h-6 w-6" />
-//               </button>
-//             </div>
-
-//             {/* Links */}
-//             <TabGroup className="mt-2">
-//               <div className="border-b border-gray-200">
-//                 <TabList className="-mb-px flex space-x-8 px-4">
-//                   {navigation.categories.map((category) => (
-//                     <Tab
-//                       key={category.name}
-//                       className="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900 data-[selected]:border-indigo-600 data-[selected]:text-indigo-600"
-//                     >
-//                       {category.name}
-//                     </Tab>
-//                   ))}
-//                 </TabList>
-//               </div>
-//               <TabPanels as={Fragment}>
-//                 {navigation.categories.map((category) => (
-//                   <TabPanel
-//                     key={category.name}
-//                     className="space-y-10 px-4 pb-8 pt-10"
-//                   >
-//                     <div className="grid grid-cols-2 gap-x-4">
-//                       {category.featured.map((item) => (
-//                         <div key={item.name} className="group relative text-sm">
-//                           <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-//                             <img
-//                               alt={item.imageAlt}
-//                               src={item.imageSrc}
-//                               className="object-cover object-center"
-//                             />
-//                           </div>
-//                           <Link
-//                             to={item.href}
-//                             className="mt-6 block font-medium text-gray-900"
-//                           >
-//                             <span
-//                               aria-hidden="true"
-//                               className="absolute inset-0 z-10"
-//                             />
-//                             {item.name}
-//                           </Link>
-//                           <p aria-hidden="true" className="mt-1">
-//                             Shop now
-//                           </p>
-//                         </div>
-//                       ))}
-//                     </div>
-//                     {category.sections.map((section) => (
-//                       <div key={section.name}>
-//                         <p
-//                           id={`${category.id}-${section.id}-heading-mobile`}
-//                           className="font-medium text-gray-900"
-//                         >
-//                           {section.name}
-//                         </p>
-//                         <ul
-//                           role="list"
-//                           aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
-//                           className="mt-6 flex flex-col space-y-6"
-//                         >
-//                           {section.items.map((item) => (
-//                             <li key={item.name} className="flow-root">
-//                               <Link
-//                                 to={item.href}
-//                                 className="-m-2 block p-2 text-gray-500"
-//                               >
-//                                 {item.name}
-//                               </Link>
-//                             </li>
-//                           ))}
-//                         </ul>
-//                       </div>
-//                     ))}
-//                   </TabPanel>
-//                 ))}
-//               </TabPanels>
-//             </TabGroup>
-
-//             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-//               {navigation.pages.map((page) => (
-//                 <div key={page.name} className="flow-root">
-//                   <Link
-//                     to={page.href}
-//                     className="-m-2 block p-2 font-medium text-gray-900"
-//                   >
-//                     {page.name}
-//                   </Link>
-//                 </div>
-//               ))}
-//             </div>
-
-//             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-//               <div className="flow-root">
-//                 <Link
-//                   to=""
-//                   className="-m-2 block p-2 font-medium text-gray-900"
-//                 >
-//                   Sign in
-//                 </Link>
-//               </div>
-//               <div className="flow-root">
-//                 <Link
-//                   to=""
-//                   className="-m-2 block p-2 font-medium text-gray-900"
-//                 >
-//                   Create account
-//                 </Link>
-//               </div>
-//             </div>
-//           </DialogPanel>
-//         </div>
-//       </Dialog>
-
-//       <header className="relative bg-white">
-        
-//         <nav
-//           aria-label="Top"
-//           className="mx-auto px-4 border-gray[#242424] border rounded-2xl shadow-2xl sm:px-6 lg:px-8"
-//         >
-//           <div className="border-b border-gray-200">
-//             <div className="flex h-16 items-center">
-//               <button
-//                 type="button"
-//                 onClick={() => setOpen(true)}
-//                 className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
-//               >
-//                 <span className="absolute -inset-0.5" />
-//                 <span className="sr-only">Open menu</span>
-//                 <Bars3Icon aria-hidden="true" className="h-6 w-6" />
-//               </button>
-
-//               {/* Logo */}
-//               <div className="ml-4 flex lg:ml-0">
-//                 <Link to="">
-//                   <span className="sr-only">Your Company</span>
-//                   {/* <img
-//                     alt=""
-//                     // src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-//                     className="h-8 w-auto"
-//                   /> */}
-//                   LOGO
-//                 </Link>
-//               </div>
-
-//               {/* Flyout menus */}
-//               <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
-//                 <div className="flex h-full space-x-8">
-//                   {navigation.categories.map((category) => (
-//                     <Popover
-//                       key={category.name}
-//                       className="flex hover:open={true}"
-//                     >
-//                       <div className="relative flex">
-                        
-//                           <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600 focus:outline-none">
-//                             {category.name}
-//                           </PopoverButton>
-//                         </div>
-                      
-
-//                       <PopoverPanel
-//                         transition
-//                         className="absolute inset-x-0 top-full text-sm text-gray-500 transition data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
-//                       >
-//                         {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-//                         <div
-//                           aria-hidden="true"
-//                           className="absolute inset-0 top-1/2 bg-white shadow"
-//                         />
-
-//                         <div className="relative bg-white">
-//                           <div className="mx-auto max-w-7xl px-8">
-//                             <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-//                               <div className="grid grid-cols-2 md:grid-cols-2 gap-4 ">
-//                                 {category.featured.map((item, index) => (
-//                                   <div
-//                                     key={index}
-//                                     className={`relative group ${
-//                                       index === 0 ? "md:col-span-2 w-full" : ""
-//                                     }`}
-//                                   >
-//                                     <img
-//                                       src={item.imageSrc}
-//                                       alt={item.imageAlt}
-//                                       className="w-full h-64 object-cover rounded-lg shadow-md"
-//                                     />
-//                                     <div className="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-lg">
-//                                       <div className="text-center">
-//                                         <h3 className="text-white font-semibold">
-//                                           {item.name}
-//                                         </h3>
-//                                         <p className="text-white">Shop now</p>
-//                                       </div>
-//                                     </div>
-//                                   </div>
-//                                 ))}
-//                               </div>
-//                               <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-//                                 {category.sections.map((section) => (
-//                                   <div key={section.name}>
-//                                     <p
-//                                       id={`${section.name}-heading`}
-//                                       className="font-medium text-gray-900"
-//                                     >
-//                                       {section.name}
-//                                     </p>
-//                                     <ul
-//                                       role="list"
-//                                       aria-labelledby={`${section.name}-heading`}
-//                                       className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-//                                     >
-//                                       {section.items.map((item) => (
-//                                         <li key={item.name} className="flex">
-//                                           <Link
-//                                             to={item.href}
-//                                             className="hover:text-gray-800"
-//                                           >
-//                                             {item.name}
-//                                           </Link>
-//                                         </li>
-//                                       ))}
-//                                     </ul>
-//                                   </div>
-//                                 ))}
-//                               </div>
-//                             </div>
-//                           </div>
-//                         </div>
-//                       </PopoverPanel>
-//                     </Popover>
-//                   ))}
-
-//                   {navigation.pages.map((page) => (
-//                     <Link
-//                       key={page.name}
-//                       to={page.href}
-//                       className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-//                     >
-//                       {page.name}
-//                     </Link>
-//                   ))}
-//                 </div>
-//               </PopoverGroup>
-
-//               <div className="ml-auto flex items-center">
-//                 {/* Search */}
-//                 <div className="flex lg:ml-6">
-//                   <Link to="" className="p-2 text-gray-400 hover:text-gray-500">
-//                     <span className="sr-only">Search</span>
-//                     <MagnifyingGlassIcon
-//                       aria-hidden="true"
-//                       className="h-6 w-6"
-//                     />
-//                   </Link>
-//                 </div>
-//                 <div className="flex lg:ml-6">
-//                   <Link to="" className="p-2 text-gray-400 hover:text-gray-500">
-//                     <span className="sr-only">Profile</span>
-//                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-//   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-// </svg>
-
-//                   </Link>
-//                 </div>
-
-//                 {/* Cart */}
-//                 <div className="ml-4 flow-root lg:ml-6">
-//                   <Link to="" className="group -m-2 flex items-center p-2">
-//                     <ShoppingBagIcon
-//                       aria-hidden="true"
-//                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-//                     />
-//                     <span className="sr-only">items in cart, view bag</span>
-//                   </Link>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </nav>
-//       </header>
-//     </div>
-//       <section>
-//         <Carousel/>
-//       </section>
-//       </>
-//   );
-// }
-
-import React from 'react'
-
-function Home() {
+  const handleToggle = () => {
+    setDropdownOpen(!dropdownOpen);
+    if (!dropdownOpen) {
+      setOpen(false); // Hide mobile menu when dropdown is opened
+    }
+  };
+  const [open, setOpen] = useState(false);
   return (
-    <div className="font-extrabold text-2xl py-8 flex justify-center">
-      Under Construction
-    </div>
-  )
+    <>
+      <div className="bg-white z-50">
+        {/* Mobile menu */}
+        <Dialog
+          open={open}
+          onClose={() => setOpen(false)}
+          className="relative z-40 lg:hidden"
+        >
+          <DialogBackdrop
+            transition
+            className="fixed inset-0 bg-black bg-opacity-25 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
+          />
+
+          <div className="fixed inset-0 z-40 flex">
+            <DialogPanel
+              transition
+              className="relative flex w-full max-w-xs transform flex-col overflow-y-auto bg-white pb-12 shadow-xl transition duration-300 ease-in-out data-[closed]:-translate-x-full"
+            >
+              <div className="flex px-4 pb-2 pt-5">
+                <button
+                  type="button"
+                  onClick={() => setOpen(!open)}
+                  className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                >
+                  <span className="absolute -inset-0.5" />
+                  <span className="sr-only">Close menu</span>
+                  <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+                </button>
+              </div>
+
+              {/* Links */}
+              <TabGroup className="mt-2">
+                <div className="border-b border-gray-200">
+                  <TabList className="-mb-px flex space-x-8 px-4">
+                    {navigation.categories.map((category) => (
+                      <Tab
+                        key={category.name}
+                        className="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900 data-[selected]:border-indigo-600 data-[selected]:text-indigo-600"
+                      >
+                        {category.name}
+                      </Tab>
+                    ))}
+                  </TabList>
+                </div>
+                <TabPanels as={Fragment}>
+                  {navigation.categories.map((category) => (
+                    <TabPanel
+                      key={category.name}
+                      className="space-y-10 px-4 pb-8 pt-10"
+                    >
+                      <div className="grid grid-cols-2 gap-x-4">
+                        {category.featured.map((item) => (
+                          <div
+                            key={item.name}
+                            className="group relative text-sm"
+                          >
+                            <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                              <img
+                                alt={item.imageAlt}
+                                src={item.imageSrc}
+                                className="object-cover object-center"
+                              />
+                            </div>
+                            <Link
+                              to={item.href}
+                              className="mt-6 block font-medium text-gray-900"
+                            >
+                              <span
+                                aria-hidden="true"
+                                className="absolute inset-0 z-10"
+                              />
+                              {item.name}
+                            </Link>
+                            <p aria-hidden="true" className="mt-1">
+                              Shop now
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      {category.sections.map((section) => (
+                        <div key={section.name}>
+                          <p
+                            id={`${category.id}-${section.id}-heading-mobile`}
+                            className="font-medium text-gray-900"
+                          >
+                            {section.name}
+                          </p>
+                          <ul
+                            role="list"
+                            aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
+                            className="mt-6 flex flex-col space-y-6"
+                          >
+                            {section.items.map((item) => (
+                              <li key={item.name} className="flow-root">
+                                <Link
+                                  to={item.href}
+                                  className="-m-2 block p-2 text-gray-500"
+                                >
+                                  {item.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </TabPanel>
+                  ))}
+                </TabPanels>
+              </TabGroup>
+
+              <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                {navigation.pages.map((page) => (
+                  <div key={page.name} className="flow-root">
+                    <Link
+                      to={page.href}
+                      className="-m-2 block p-2 font-medium text-gray-900"
+                    >
+                      {page.name}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                <div className="flow-root">
+                  <Link
+                    to=""
+                    className="-m-2 block p-2 font-medium text-gray-900"
+                  >
+                    Sign in
+                  </Link>
+                </div>
+                <div className="flow-root">
+                  <Link
+                    to=""
+                    className="-m-2 block p-2 font-medium text-gray-900"
+                  >
+                    Create account
+                  </Link>
+                </div>
+              </div>
+            </DialogPanel>
+          </div>
+        </Dialog>
+
+        <header className="relative bg-white">
+          <nav
+            aria-label="Top"
+            className="mx-auto px-4 border-gray[#242424] border rounded-2xl shadow-2xl sm:px-6 lg:px-8"
+          >
+            <div className="border-b border-gray-200">
+              <div className="flex h-16 items-center">
+                <button
+                  type="button"
+                  onClick={() => setOpen(true)}
+                  onClose={() => setOpen(false)}
+                  className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
+                >
+                  <span className="absolute -inset-0.5" />
+                  <span className="sr-only">Open menu</span>
+                  <Bars3Icon aria-hidden="true" className="h-6 w-6" />
+                </button>
+
+                {/* Logo */}
+                <div className="ml-4 flex lg:ml-0">
+                  <Link to="">
+                    <span className="sr-only">Your Company</span>
+                    {/* <img
+                    alt=""
+                    // src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    className="h-8 w-auto"
+                  /> */}
+                    LOGO
+                  </Link>
+                </div>
+
+                {/* Flyout menus */}
+                <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
+                  <div className="flex h-full space-x-8">
+                    {navigation.categories.map((category) => (
+                      <Popover
+                        key={category.name}
+                        className="flex hover:open={true}"
+                      >
+                        <div className="relative flex">
+                          <PopoverButton
+                            onClick={handleToggle}
+                            onClose={() => setOpen(false)}
+                            className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600 focus:outline-none"
+                          >
+                            {category.name}
+                          </PopoverButton>
+                        </div>
+
+                        <PopoverPanel
+                          transition
+                          className="absolute inset-x-0 top-full text-sm text-gray-500 transition z-20 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+                        >
+                          {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
+                          <div
+                            aria-hidden="true"
+                            className="absolute inset-0 top-1/2 bg-white shadow"
+                          />
+
+                          <div className="relative bg-white">
+                            <div className="mx-auto max-w-7xl px-8">
+                              <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
+                                <div className="grid grid-cols-2 md:grid-cols-2 gap-4 ">
+                                  {category.featured.map((item, index) => (
+                                    <div
+                                      key={index}
+                                      className={`relative group ${
+                                        index === 0
+                                          ? "md:col-span-2 w-full"
+                                          : ""
+                                      }`}
+                                    >
+                                      <img
+                                        src={item.imageSrc}
+                                        alt={item.imageAlt}
+                                        className="w-full h-64 object-cover rounded-lg shadow-md"
+                                      />
+                                      <div className="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-lg">
+                                        <div className="text-center">
+                                          <h3 className="text-white font-semibold">
+                                            {item.name}
+                                          </h3>
+                                          <p className="text-white">Shop now</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                                <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                                  {category.sections.map((section) => (
+                                    <div key={section.name}>
+                                      <p
+                                        id={`${section.name}-heading`}
+                                        className="font-medium text-gray-900"
+                                      >
+                                        {section.name}
+                                      </p>
+                                      <ul
+                                        role="list"
+                                        aria-labelledby={`${section.name}-heading`}
+                                        className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                                      >
+                                        {section.items.map((item) => (
+                                          <li key={item.name} className="flex">
+                                            <Link
+                                              to={item.href}
+                                              className="hover:text-gray-800"
+                                            >
+                                              {item.name}
+                                            </Link>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </PopoverPanel>
+                      </Popover>
+                    ))}
+
+                    {navigation.pages.map((page) => (
+                      <Link
+                        key={page.name}
+                        to={page.href}
+                        className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                      >
+                        {page.name}
+                      </Link>
+                    ))}
+                  </div>
+                </PopoverGroup>
+
+                <div className="ml-auto flex items-center">
+                  {/* Search */}
+                  <div className="flex lg:ml-6">
+                    <Link
+                      to=""
+                      className="p-2 text-gray-400 hover:text-gray-500"
+                    >
+                      <span className="sr-only">Search</span>
+                      <MagnifyingGlassIcon
+                        aria-hidden="true"
+                        className="h-6 w-6"
+                      />
+                    </Link>
+                  </div>
+                  <div className="flex lg:ml-6">
+                    <Link
+                      to=""
+                      className="p-2 text-gray-400 hover:text-gray-500"
+                    >
+                      <span className="sr-only">Profile</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
+
+                  {/* Cart */}
+                  <div className="ml-4 flow-root lg:ml-6">
+                    <Link to="" className="group -m-2 flex items-center p-2">
+                      <ShoppingBagIcon
+                        aria-hidden="true"
+                        className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      />
+                      <span className="sr-only">items in cart, view bag</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </header>
+      </div>
+    </>
+  );
 }
 
-export default Home
+// import React from 'react'
+
+// function Home() {
+//   return (
+//     <div className="font-extrabold text-2xl py-8 flex justify-center">
+//       Under Construction
+//     </div>
+//   )
+// }
+
+// export default Home

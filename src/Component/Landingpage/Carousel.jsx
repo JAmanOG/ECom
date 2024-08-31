@@ -49,12 +49,13 @@ function BannerCarousel() {
     }, []);
 
     return (
-        <div className="relative w-full h-80 sm:h-96 xl:h-112 2xl:h-128 overflow-hidden">
+        <div className="relative w-full h-80 sm:h-96 xl:h-112 2xl:h-128 overflow-hidden z-0"> {/* Ensure z-index is less than the menu */}
             <div className="relative w-full h-full">
                 {slides.map((slide, index) => (
                     <div
                         key={index}
                         className={`absolute inset-0 transition-opacity duration-1000 ease-in-out transform ${index === activeIndex ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-95 z-0'} ${slide.type === 'text' ? slide.backgroundClass : ''}`}
+                        style={{ transition: 'opacity 1s ease-in-out' }} // Add smooth transition for opacity
                     >
                         {slide.type === 'text' ? (
                             <div className="flex items-center justify-center h-full text-center text-white px-6 md:px-12">
@@ -143,5 +144,6 @@ function BannerCarousel() {
         </div>
     );
 }
+
 
 export default BannerCarousel;

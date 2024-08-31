@@ -21,7 +21,7 @@ import Carts from "./Component/Cart/Carts.jsx";
 import CheckoutPage from "./Component/Checkout/Checkout.jsx";
 import OrderConfirmation from "./Component/Modal/OrderConfirmationModal.jsx";
 import SingleCheckoutForm from "./Component/SingleCheckout/SingleProductCheckout.jsx";
-
+import TagsRoutes from "./Component/CategoryRoutes/TagsRoutes.jsx";
 
 import OrderPage from "./Component/Modal/OrderPage.jsx";
 import InvoiceComponent from "./Component/Invoice/InvoiceComponent.jsx";
@@ -130,10 +130,18 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 } />
 
               <Route
-                path="/:category/:subcategory/:subsubcategory/:slug"
+                path="/shop/:category/:subcategory/:subsubcategory/:slug"
                 element={
                   <AuthLayout authenticate>
                     <Product />
+                  </AuthLayout>
+                }
+              />
+              <Route
+                path="/my/:tag/:slug"
+                element={
+                  <AuthLayout authenticate>
+                    <TagsRoutes />
                   </AuthLayout>
                 }
               />

@@ -1,5 +1,3 @@
-// src/App.js
-
 import React from "react";
 import { CardContainer, CardBody, CardItem } from "./3DContainer";
 
@@ -10,7 +8,7 @@ const DCard = () => {
       {Array.from({ length: 6 }).map((_, index) => (
         <CardContainer key={index} className="lg:w-[30rem] md:w-[30rem] sm:w-full h-80 sm:h-96 bg-gray-800 rounded-lg shadow-lg">
           <CardBody className="relative p-3">
-            <CardItem translateZ={50} className="w-full h-40 mb-4">
+            <CardItem translateZ={80} className="w-full h-40 mb-4">
               <img
                 src={`src/assets/shoe-${index + 1}.png`}
                 alt={`product ${index + 1}`}

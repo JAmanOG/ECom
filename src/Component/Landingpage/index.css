@@ -25,3 +25,69 @@
 .rotate-y-270 {
     transform: rotateY(270deg);
 }
+
+/* Carousel item */
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  flex: 0 0 33.33%;
+  padding: 0 15px;
+}
+
+@media (max-width: 1024px) {
+  .carousel-item {
+    flex: 0 0 50%; /* Display two cards per row on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    flex: 0 0 50%; /* Display one card per row on mobile devices */
+  }
+}
+
+.carousel-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-button.left {
+  left: 10px; /* Adjusted for visibility on smaller screens */
+}
+
+.carousel-button.right {
+  right: 10px; /* Adjusted for visibility on smaller screens */
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.transition-none {
+  transition: none !important;
+}
+
+@media (max-width: 768px) {
+  .carousel-button {
+    padding: 8px; /* Slightly reduce padding for smaller screens */
+  }
+}

@@ -13,7 +13,7 @@ import Gallery from './Component/Gallery/Gallery';
 const App = () => (
   <Routes>
     <Route path="/:category/:subcategory/:subsubcategory" element={<Shoecategory />} />
-    <Route path="/" element={<Home />} />
+    {/* <Route path="/" element={<Home />} /> */}
     <Route path="/gallery" element={<Gallery />} />
     
   </Routes>

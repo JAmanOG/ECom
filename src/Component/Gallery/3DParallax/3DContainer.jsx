@@ -1,9 +1,6 @@
-// src/components/3DCard.js
-
 import React, { createContext, useContext, useState, useRef, useEffect, useCallback } from "react";
-import { cn } from "./cn"; // Utility function for conditional classnames
+import { cn } from "./cn"; 
 
-// Create a context to manage mouse enter state
 const MouseEnterContext = createContext([false, () => {}]);
 
 const useMouseEnter = () => {
