@@ -1,25 +1,29 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Shoecategory from './Component/Categories/Categories';
-import Home from './Component/Landingpage/Home';
-import Gallery from './Component/Gallery/Gallery';
-// import AuthServices from './Services/auth';
+// import React from "react";
+// import { Routes, Route } from "react-router-dom";
+// import Shoecategory from "./Component/Categories/Categories";
+// import Gallery from "./Component/Gallery/Gallery";
+// import TagsRoutes from "./Component/CategoryRoutes/TagsRoutes";
+// import HomePage from "./Component/Landingpage/HomePage";
 
-// const result = AuthServices.getCurrentUser()
-// result ? console.log(result) : console.log('No user logged in')
-// const session = AuthServices.getCurrentSession()
-// session ? console.log(session) : console.log('No session found')
+// const App = () => (
+//   <Routes>
+//     <Route
+//       path="/shops/:category([a-zA-Z-]+)?/:subcategory([a-zA-Z-]+)?/:subsubcategory([a-zA-Z-]+)?"
+//       element={<Shoecategory />}
+//     />
+//     <Route
+//       path="/shop/:tag"
+//       element={
+//           <TagsRoutes />
+//       }
+//     />
+//     <Route path="/" element={<HomePage />} />
+//     <Route path="/gallery" element={<Gallery />} />
+//   </Routes>
+// );
 
-const App = () => (
-  <Routes>
-    <Route path="/:category/:subcategory/:subsubcategory" element={<Shoecategory />} />
-    {/* <Route path="/" element={<Home />} /> */}
-    <Route path="/gallery" element={<Gallery />} />
-    
-  </Routes>
-);
+// export default App;
 
-export default App;
 // const googleAuth = async (e) => {
 //     e.preventDefault();
 //     AuthServices.account.createOAuth2Session(
@@ -38,3 +42,34 @@ export default App;
 
 //     </div>
 // );
+
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Shoecategory from "./Component/Categories/Categories";
+import Gallery from "./Component/Gallery/Gallery";
+import TagsRoutes from "./Component/CategoryRoutes/TagsRoutes";
+import HomePage from "./Component/Landingpage/HomePage";
+
+const App = () => (
+  <Routes>
+  {/* Product Listing Pages (less specific) */}
+  <Route
+    path="/shops/:category/:subcategory/:subsubcategory"
+    element={<Shoecategory />}
+  />
+  <Route
+    path="/shops/:category/:subcategory"
+    element={<Shoecategory />}
+  />
+  <Route
+    path="/shops/:category"
+    element={<Shoecategory />}
+  />
+
+    <Route path="/shop/:tag" element={<TagsRoutes />} />
+    <Route path="/" element={<HomePage />} />
+    <Route path="/gallery" element={<Gallery />} />
+  </Routes>
+);
+
+export default App;

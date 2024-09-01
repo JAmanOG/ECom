@@ -14,7 +14,8 @@ const Product = () => {
     isInCart,
   } = useCheckout();
 
-  const { category, subcategory, subsubcategory, slug } = useParams();
+  const { category, subcategory, subsubcategory, slugg } = useParams();
+  const { tag, slugs } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -23,11 +24,18 @@ const Product = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const fetchedProduct = await appwriteService.getPost(slug);
+        let fetchedProduct = null;
+
+        if (slugg) {
+          fetchedProduct = await appwriteService.getPost(slugg);
+        } else if (tag && slugs) {
+          fetchedProduct = await appwriteService.getTagsdata(slugs);
+        }
+        
         if (fetchedProduct) {
           setProduct(fetchedProduct);
         } else {
-          navigate("/404"); // Redirect to a 404 page or similar if the product is not found
+          navigate("/404");
         }
       } catch (err) {
         setError(err);
@@ -37,24 +45,57 @@ const Product = () => {
     };
 
     fetchProduct();
-  }, [slug, navigate]);
+  }, [slugg, tag, slugs, navigate]);
 
   if (loading) return <ProductDetailsSkeleton />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className="p-6">
-      <div className="mb-4">
+     <div className="mb-4">
+  {!slugs ? (
+    <>
+      {subcategory ? (
+        <>
+          {subsubcategory ? (
+            <Link
+              className="flex items-center text-indigo-600 hover:text-indigo-800 font-semibold"
+              to={`/shops/${category}/${subcategory}/${subsubcategory}`}
+            >
+              <span className="material-symbols-outlined">arrow_back_ios</span>
+              <span className="ml-1">Back to {subsubcategory.replace(/-/g, " ")}</span>
+            </Link>
+          ) : (
+            <Link
+              className="flex items-center text-indigo-600 hover:text-indigo-800 font-semibold"
+              to={`/shops/${category}/${subcategory}`}
+            >
+              <span className="material-symbols-outlined">arrow_back_ios</span>
+              <span className="ml-1">Back to {subcategory.replace(/-/g, " ")}</span>
+            </Link>
+          )}
+        </>
+      ) : (
         <Link
           className="flex items-center text-indigo-600 hover:text-indigo-800 font-semibold"
-          to={`/${category}/${subcategory}/${subsubcategory}`}
+          to={`/shops/${category}`}
         >
           <span className="material-symbols-outlined">arrow_back_ios</span>
-          <span className="ml-1">
-            Back to {subsubcategory.replace(/-/g, " ")}
-          </span>
+          <span className="ml-1">Back to {category.replace(/-/g, " ")}</span>
         </Link>
-      </div>
+      )}
+    </>
+  ) : (
+    <Link
+      className="flex items-center text-indigo-600 hover:text-indigo-800 font-semibold"
+      to={`/${tag}`}
+    >
+      <span className="material-symbols-outlined">arrow_back_ios</span>
+      <span className="ml-1">Back to {tag.replace(/-/g, " ")}</span>
+    </Link>
+  )}
+</div>
+
 
       <section className="text-gray-700 body-font overflow-hidden">
         <div className="container mx-auto px-5 py-12">

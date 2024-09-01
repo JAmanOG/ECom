@@ -158,6 +158,9 @@ import useCheckout from "../Checkout/useCheckout";
 
 const Shoecategory = () => {
   const { category, subcategory, subsubcategory } = useParams();
+  // const { categorys,subcategorys } = useParams();
+  // const { category, subcategory, subsubcategory, categorys, subcategorys } = useParams();
+
   const [shoes, setShoes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -178,13 +181,53 @@ const Shoecategory = () => {
   const wishlists = useSelector((state) => state.wishlist.items || []);
   const [wishlist, setWishlist] = useState([]);
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       if (categorys) {
+  //         const shoesData = await getCategoryShoes(categorys);
+  //         setShoes(shoesData);
+  //         console.log(shoesData);
+  //       }ifelse(subcategorys){
+  //         const shoesData = await getCategoryShoes(categorys,subcategorys);
+  //         setShoes(shoesData);
+  //         console.log(shoesData);
+  //       }        else{
+  //       const shoesData = await getShoes(category, subcategory, subsubcategory);
+  //       setShoes(shoesData);
+  //       console.log("this",shoesData)
+  //       }
+  //       const currentUser = await AuthServices.getCurrentUser();
+  //       if (currentUser && currentUser.$id) {
+  //         setUser(currentUser);
+  //         await dispatch(fetchWishlist(currentUser.$id));
+  //       } else {
+  //         console.error("User is not authenticated or user ID is missing.");
+  //       }
+  //     } catch (err) {
+  //       setError(err);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [category, subcategory, subsubcategory, dispatch]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const shoesData = await getShoes(category, subcategory, subsubcategory);
+        let shoesData;
+        if (!subcategory) {
+          shoesData = await getShoes(category);
+        } else if (!subsubcategory) {
+          shoesData = await getShoes(category, subcategory);
+        } else if (subsubcategory){
+          shoesData = await getShoes(category, subcategory, subsubcategory);
+        }
+        
         setShoes(shoesData);
-        console.log("this",shoesData)
-
+        
         const currentUser = await AuthServices.getCurrentUser();
         if (currentUser && currentUser.$id) {
           setUser(currentUser);
@@ -198,9 +241,10 @@ const Shoecategory = () => {
         setLoading(false);
       }
     };
-
+  
     fetchData();
   }, [category, subcategory, subsubcategory, dispatch]);
+  
 
   useEffect(() => {
     setWishlist(wishlists);
@@ -299,7 +343,10 @@ const Shoecategory = () => {
           </button>
         </div>
       )}
-      <h1 className="p-2 m-2 font-bold">{subcategory.replace(/-/g, " ")}</h1>
+      {
+  category ? <h1 className="p-2 m-2 font-bold">{category.replace(/-/g, " ")}</h1> : <h1 className="p-2 m-2 font-bold">{subcategory.replace(/-/g, " ")}</h1>
+}
+
 
       <section className="text-gray-700 body-font bg-gray-100">
         <div className="container px-6 py-10 mx-auto">
@@ -308,7 +355,7 @@ const Shoecategory = () => {
               <div key={shoe.$id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
                 <div className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
                   <Link
-                    to={`${location.pathname}/${shoe.$id}`}
+                    to={`/shops/${shoe.Category}/${shoe.Footwear_Type}/${shoe.Variety}/${shoe.$id}`}
                     className="block relative h-56 overflow-hidden"
                   >
                     <img

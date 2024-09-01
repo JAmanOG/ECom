@@ -361,6 +361,44 @@ export const getOrderDetails = async (userId) => {
     throw error;
   }
 };
+export const getAllOrderDetails = async () => {
+  try {
+    const response = await databases.listDocuments(
+      conf.appwriteDatabaseId,
+      conf.appwriteOrderDetailsCollectionId,
+    );
+    console.log("Fetched Order Details:", response.documents);
+    return response.documents;
+  } catch (error) {
+    console.error("Failed to fetch Order Details:", error);
+    throw error;
+  }
+};
+export const getAllProductDetails = async () => {
+  try {
+    // Fetching documents from Appwrite
+    const response = await databases.listDocuments(
+      conf.appwriteDatabaseId,
+      conf.appwriteCollectionId
+    );
+
+    // Log the full response for inspection
+    console.log("Fetched Order Details:", response);
+    
+    // Check if documents are available
+    if (response.documents && Array.isArray(response.documents)) {
+      console.log("Fetched Documents:", response.documents);
+      return response.documents;
+    } else {
+      console.warn("No documents found or response format is unexpected.");
+      return [];
+    }
+  } catch (error) {
+    console.error("Failed to fetch Order Details:", error);
+    throw error; // Re-throw the error after logging
+  }
+};
+
 
 
 export const updateStatus = async (userId, orderId, newStatus) => {
@@ -422,12 +460,12 @@ export const removeFromCart = async (userId,productId) => {
       await databases.deleteDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCartCollectionId,
-        itemToRemove.$id // Document ID to be removed
+        itemToRemove.$id
       );
       console.log("Item removed successfully");
-      return productId; // Return productId for state update
+      return productId;
     } else {
-      throw new Error("Item not found in Cart"); // Throw error if item not found
+      throw new Error("Item not found in Cart");
     }
   } catch (error) {
     console.error("Failed to remove from Cart:", error);
@@ -435,16 +473,67 @@ export const removeFromCart = async (userId,productId) => {
   }
 }
 
-const getShoes = async (category, footwearType, variety) => {
+// const getShoes = async (category, footwearType, variety) => {
+//   try {
+//     const response = await databases.listDocuments(
+//       conf.appwriteDatabaseId,
+//       conf.appwriteCollectionId,
+//       [
+//         Query.equal("Category", category),
+//         Query.equal("Footwear_Type", footwearType),
+//         Query.equal("Variety", variety),
+//       ]
+//     );
+//     console.log("Fetching shoes with parameters:", category, footwearType, variety);
+
+//     return response.documents;
+//   } catch (error) {
+//     console.error("Error:", error);
+//     throw error;
+//   }
+// };
+// const getCategoryShoes = async (categorys, subcategorys) => {
+  
+//   let query = [Query.equal("Category", categorys)];
+  
+//   if (subcategorys) {
+//     query.push(Query.equal("Footwear_Type", subcategorys));
+//   }
+  
+//   try {
+//     // Fetch documents from the database
+//     const response = await databases.listDocuments(
+//       conf.appwriteDatabaseId,
+//       conf.appwriteCollectionId,
+//       query
+//     );
+//     console.log("Fetching shoes with parameters:", categorys, subcategorys);
+
+//     return response.documents;
+//   } catch (error) {
+//     console.error("Error:", error);
+//     throw error; // Ensure errors are thrown to be caught in the component
+//   }
+// };
+
+const getShoes = async (category, footwearType = null, variety = null) => {
+  console.log("Fetching shoes with parameters:", category, footwearType, variety);
+  let query = [Query.equal("Category", category)];
+  
+  if (footwearType) {
+    query.push(Query.equal("Footwear_Type", footwearType));
+  }
+  
+  if (variety) {
+    query.push(Query.equal("Variety", variety));
+  }
+  
   try {
+    // Fetch documents from the database
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteCollectionId,
-      [
-        Query.equal("Category", category),
-        Query.equal("Footwear_Type", footwearType),
-        Query.equal("Variety", variety),
-      ]
+      query
     );
     console.log("Fetching shoes with parameters:", category, footwearType, variety);
 
@@ -454,6 +543,7 @@ const getShoes = async (category, footwearType, variety) => {
     throw error; // Ensure errors are thrown to be caught in the component
   }
 };
+
 
 const gettag = async (tag, excludeTag = null) => {
   try {
@@ -513,6 +603,32 @@ class bucketstorage {
       throw error; // Throw error for consistent error handling
     }
   }
+  async updatePost(id, status) {
+    try {
+      await databases.updateDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteOrderDetailsCollectionId,
+        id, // Pass the document ID here
+        { status } // Pass the status in an object
+      );
+    } catch (error) {
+      console.error("Appwrite service :: updatePost :: error", error);
+      throw error; // Throw error for consistent error handling
+    }
+  }
+  
+  async getTagsdata(slug) {
+    try {
+      return await databases.getDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionId,
+        slug
+      );
+    } catch (error) {
+      console.error("Appwrite service :: getPost :: error", error);
+      throw error; // Throw error for consistent error handling
+    }
+  }
 
   async deleteFile(fileId) {
     try {
@@ -535,20 +651,20 @@ class bucketstorage {
   async getPosts(productId) {
     try {
       return await databases.getDocument(
-        conf.appwriteDatabaseId,   // Database ID
-        conf.appwriteCollectionId, // Collection ID
-        productId                  // Document ID (this should be the productId)
+        conf.appwriteDatabaseId,   
+        conf.appwriteCollectionId, 
+        productId                  
       );
     } catch (error) {
       console.error("Appwrite service :: getPost :: error", error);
-      throw error; // Throw error for consistent error handling
+      throw error; 
     }
   }
   
 }
 const getProduct = async (productId) => {
   try {
-      console.log("Fetching product with ID:", productId); // Log the productId
+      console.log("Fetching product with ID:", productId); 
       const product = await appwriteService.getPosts(productId);
       const image = await appwriteService.getFilePreview(product.featuredImage);
       return { ...product, image };

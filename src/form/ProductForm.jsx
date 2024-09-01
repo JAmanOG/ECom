@@ -165,7 +165,7 @@ const ProductForm = ({ post }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-4xl mx-auto p-8 bg-gray-900 text-white rounded-lg shadow-lg">
+    <form onSubmit={handleSubmit} className="w-full min-h-screen mx-auto p-8 bg-gray-900 text-white rounded-lg shadow-lg">
   <h2 className="text-4xl font-semibold mb-8 text-center border-b-2 border-gray-700 pb-4">Product Management</h2>
 
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
