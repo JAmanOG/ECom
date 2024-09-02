@@ -8,6 +8,24 @@ const ManageProduct = () => {
   const [productEdits, setProductEdits] = useState({});
   const [selectedProducts, setSelectedProducts] = useState([]);
   const { products, updateProduct, deleteProduct } = useProduct();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
+  const currentItems = products.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   const handleEdit = async (productId) => {
     try {
@@ -84,7 +102,7 @@ const ManageProduct = () => {
                 type="checkbox"
                 onChange={(e) =>
                   setSelectedProducts(
-                    e.target.checked ? products.map((p) => p.$id) : []
+                    e.target.checked ? currentItems.map((p) => p.$id) : []
                   )
                 }
               />
@@ -102,14 +120,14 @@ const ManageProduct = () => {
           </tr>
         </thead>
         <tbody>
-          {products.length === 0 ? (
+          {currentItems.length === 0 ? (
             <tr>
               <td colSpan="11" className="text-center py-4">
                 No products available
               </td>
             </tr>
           ) : (
-            products.map((product, index) => (
+            currentItems.map((product, index) => (
               <tr key={product.$id} className="hover:bg-gray-100">
                 <td className="px-6 py-4 border-b">
                   <input
@@ -123,7 +141,7 @@ const ManageProduct = () => {
                   <img
                     src={appwriteService.getFilePreview(product.featuredImage)} // Adjust if necessary
                     alt={product.name}
-                    className="w-10 h-10 mr-4 object-cover"
+                    className="w-10 h-10 mr-4 rounded-md object-cover"
                   />
                   <input
                     type="text"
@@ -278,6 +296,25 @@ const ManageProduct = () => {
           </button>
         </div>
       )}
+      <div className="flex justify-between items-center mt-4">
+        <button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+          className={`px-4 py-2 rounded-md ${currentPage === 1 ? 'bg-gray-200' : 'bg-blue-500 text-white'}`}
+        >
+          Previous
+        </button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          className={`px-4 py-2 rounded-md ${currentPage === totalPages ? 'bg-gray-200' : 'bg-blue-500 text-white'}`}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

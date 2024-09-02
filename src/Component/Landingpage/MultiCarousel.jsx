@@ -100,7 +100,7 @@ const MultiCardCarousel = () => {
 
   return (
     <div
-      className="mt-2 relative max-w-7xl mx-auto overflow-hidden"
+      className="mt-2 relative max-w-screen-2xl mx-auto overflow-hidden"
       onMouseEnter={stopAutoSlide}
       onMouseLeave={startAutoSlide}
     >
