@@ -1,26 +1,31 @@
 import React, { useState } from 'react';
 import { useProduct } from './ProductContext';
+import { appwriteService } from '../../Services/database';
+
 
 const ManageProduct = () => {
-  const [isProductEditable, setIsProductEditable] = useState(false);
+  const [editableProductId, setEditableProductId] = useState(null);
   const [productEdits, setProductEdits] = useState({});
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const { products, updateProduct, deleteProduct, updateProductsBatch } = useProduct();
+  const { products, updateProduct, deleteProduct } = useProduct();
 
-  const handleEdit = () => {
-    // Prepare updates for batch processing
-    const updates = selectedProducts.map(productId => ({
-      id: productId,
-      updates: productEdits[productId] || {}
-    }));
-    updateProductsBatch(updates);
-    setIsProductEditable(false);
-    setProductEdits({});
+  const handleEdit = async (productId) => {
+    try {
+      const updates = productEdits[productId] || {};
+      await updateProduct(productId, updates);
+      setEditableProductId(null);
+      setProductEdits((prev) => ({
+        ...prev,
+        [productId]: {},
+      }));
+    } catch (error) {
+      console.error('Failed to update product:', error);
+    }
   };
 
   const handleChange = (e, productId, field) => {
     const value = e.target.value;
-    setProductEdits(prevEdits => ({
+    setProductEdits((prevEdits) => ({
       ...prevEdits,
       [productId]: {
         ...prevEdits[productId],
@@ -30,11 +35,33 @@ const ManageProduct = () => {
   };
 
   const toggleSelectProduct = (productId) => {
-    setSelectedProducts(prevSelected =>
+    setSelectedProducts((prevSelected) =>
       prevSelected.includes(productId)
-        ? prevSelected.filter(id => id !== productId)
+        ? prevSelected.filter((id) => id !== productId)
         : [...prevSelected, productId]
     );
+  };
+
+  const deleteProductsBatch = async (productIds) => {
+    try {
+      if (window.confirm(`Are you sure you want to delete the selected products?`)) {
+        const deletePromises = productIds.map((id) => deleteProduct(id));
+        await Promise.all(deletePromises);
+        setSelectedProducts([]);
+      }
+    } catch (error) {
+      console.error('Failed to delete products:', error);
+    }
+  };
+
+  const handleDelete = async (productId) => {
+    try {
+      if (window.confirm(`Are you sure you want to delete this product?`)) {
+        await deleteProduct(productId);
+      }
+    } catch (error) {
+      console.error('Failed to delete product:', error);
+    }
   };
 
   return (
@@ -56,7 +83,9 @@ const ManageProduct = () => {
               <input
                 type="checkbox"
                 onChange={(e) =>
-                  setSelectedProducts(e.target.checked ? products.map(p => p.$id) : [])
+                  setSelectedProducts(
+                    e.target.checked ? products.map((p) => p.$id) : []
+                  )
                 }
               />
             </th>
@@ -75,7 +104,9 @@ const ManageProduct = () => {
         <tbody>
           {products.length === 0 ? (
             <tr>
-              <td colSpan="11" className="text-center py-4">No products available</td>
+              <td colSpan="11" className="text-center py-4">
+                No products available
+              </td>
             </tr>
           ) : (
             products.map((product, index) => (
@@ -90,142 +121,162 @@ const ManageProduct = () => {
                 <td className="px-6 py-4 border-b">{index + 1}</td>
                 <td className="px-6 py-4 border-b flex items-center">
                   <img
-                    src={`path/to/images/${product.featuredImage}`} // Adjust if necessary
+                    src={appwriteService.getFilePreview(product.featuredImage)} // Adjust if necessary
                     alt={product.name}
                     className="w-10 h-10 mr-4 object-cover"
                   />
                   <input
                     type="text"
-                    className={`border outline-none w-full bg-transparent rounded-lg ${
-                      isProductEditable ? 'border-black/10 px-2' : 'border-transparent'
+                    className={`border outline-none w-max bg-transparent rounded-lg ${
+                      editableProductId === product.$id
+                        ? 'border-black/10 px-2'
+                        : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.name || product.name}
                     onChange={(e) => handleChange(e, product.$id, 'name')}
-                    readOnly={!isProductEditable}
+                    readOnly={editableProductId !== product.$id}
                   />
                 </td>
                 <td className="px-6 py-4 border-b">
                   <input
                     type="text"
                     className={`border outline-none w-full bg-transparent rounded-lg ${
-                      isProductEditable ? 'border-black/10 px-2' : 'border-transparent'
+                      editableProductId === product.$id
+                        ? 'border-black/10 px-2'
+                        : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.Category || product.Category || ''}
                     onChange={(e) => handleChange(e, product.$id, 'Category')}
-                    readOnly={!isProductEditable}
+                    readOnly={editableProductId !== product.$id}
                   />
                 </td>
                 <td className="px-6 py-4 border-b">
                   <input
                     type="text"
                     className={`border outline-none w-full bg-transparent rounded-lg ${
-                      isProductEditable ? 'border-black/10 px-2' : 'border-transparent'
+                      editableProductId === product.$id
+                        ? 'border-black/10 px-2'
+                        : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.Footwear_Type || product.Footwear_Type || ''}
                     onChange={(e) => handleChange(e, product.$id, 'Footwear_Type')}
-                    readOnly={!isProductEditable}
+                    readOnly={editableProductId !== product.$id}
                   />
                 </td>
                 <td className="px-6 py-4 border-b">
                   <input
                     type="text"
                     className={`border outline-none w-full bg-transparent rounded-lg ${
-                      isProductEditable ? 'border-black/10 px-2' : 'border-transparent'
+                      editableProductId === product.$id
+                        ? 'border-black/10 px-2'
+                        : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.Variety || product.Variety || ''}
                     onChange={(e) => handleChange(e, product.$id, 'Variety')}
-                    readOnly={!isProductEditable}
+                    readOnly={editableProductId !== product.$id}
                   />
                 </td>
                 <td className="px-6 py-4 border-b">
                   <input
                     type="number"
                     className={`border outline-none w-full bg-transparent rounded-lg ${
-                      isProductEditable ? 'border-black/10 px-2' : 'border-transparent'
+                      editableProductId === product.$id
+                        ? 'border-black/10 px-2'
+                        : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.price || product.price || ''}
                     onChange={(e) => handleChange(e, product.$id, 'price')}
-                    readOnly={!isProductEditable}
+                    readOnly={editableProductId !== product.$id}
                   />
                 </td>
                 <td className="px-6 py-4 border-b">
                   <input
                     type="number"
                     className={`border outline-none w-full bg-transparent rounded-lg ${
-                      isProductEditable ? 'border-black/10 px-2' : 'border-transparent'
+                      editableProductId === product.$id
+                        ? 'border-black/10 px-2'
+                        : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.discountPercent || product.discountPercent || ''}
                     onChange={(e) => handleChange(e, product.$id, 'discountPercent')}
-                    readOnly={!isProductEditable}
+                    readOnly={editableProductId !== product.$id}
                   />
                 </td>
                 <td className="px-6 py-4 border-b">
                   <input
                     type="number"
                     className={`border outline-none w-full bg-transparent rounded-lg ${
-                      isProductEditable ? 'border-black/10 px-2' : 'border-transparent'
+                      editableProductId === product.$id
+                        ? 'border-black/10 px-2'
+                        : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.discountedPrice || product.discountedPrice || ''}
                     onChange={(e) => handleChange(e, product.$id, 'discountedPrice')}
-                    readOnly={!isProductEditable}
+                    readOnly={editableProductId !== product.$id}
                   />
                 </td>
                 <td className="px-6 py-4 border-b">
                   <input
                     type="text"
-                    className={`border outline-none w-full bg-transparent rounded-lg ${
-                      isProductEditable ? 'border-black/10 px-2' : 'border-transparent'
+                    className={`border outline-none max-w-[8rem] bg-transparent rounded-lg ${
+                      editableProductId === product.$id
+                        ? 'border-black/10 px-2'
+                        : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.Tags || product.Tags || ''}
                     onChange={(e) => handleChange(e, product.$id, 'Tags')}
-                    readOnly={!isProductEditable}
+                    readOnly={editableProductId !== product.$id}
                   />
                 </td>
-                <td className="px-6 py-4 border-b flex items-center space-x-2">
-                  <button
-                    className="text-blue-500 hover:text-blue-700"
-                    onClick={() => {
-                      if (isProductEditable) {
-                        handleEdit();
-                      } else {
-                        setIsProductEditable(true);
-                        setProductEdits(prevEdits => ({
-                          ...prevEdits,
-                          [product.$id]: {
-                            name: product.name,
-                            Category: product.Category,
-                            Footwear_Type: product.Footwear_Type,
-                            Variety: product.Variety,
-                            price: product.price,
-                            discountPercent: product.discountPercent,
-                            discountedPrice: product.discountedPrice,
-                            Tags: product.Tags || ''
-                          }
-                        }));
-                      }
-                    }}
-                  >
-                    {isProductEditable ? 'Save' : 'Edit'}
-                  </button>
-                  <button
-                    className="text-red-500 hover:text-red-700"
-                    onClick={() => deleteProduct(product.$id)}
-                  >
-                    Delete
-                  </button>
+                <td className="px-6 py-4 border-b">
+                  <div className="flex items-center space-x-2">
+                    {editableProductId === product.$id ? (
+                      <>
+                        <button
+                          onClick={() => handleEdit(product.$id)}
+                          className="text-green-500 hover:text-green-700"
+                        >
+                          Save
+                        </button>
+                        <button
+                          onClick={() => setEditableProductId(null)}
+                          className="text-red-500 hover:text-red-700"
+                        >
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => setEditableProductId(product.$id)}
+                          className="text-blue-500 hover:text-blue-700"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(product.$id)}
+                          className="text-red-500 hover:text-red-700"
+                        >
+                          Delete
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </td>
               </tr>
             ))
           )}
         </tbody>
       </table>
-      {isProductEditable && (
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"
-          onClick={handleEdit}
-        >
-          Save All Changes
-        </button>
+      {selectedProducts.length > 0 && (
+        <div className="mt-4">
+          <button
+            onClick={() => deleteProductsBatch(selectedProducts)}
+            className="bg-red-500 text-white px-4 py-2 rounded-md"
+          >
+            Delete Selected
+          </button>
+        </div>
       )}
     </div>
   );
