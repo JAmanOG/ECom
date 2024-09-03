@@ -21,12 +21,13 @@ function InstagramFeed() {
                   alt="Profile"
                 />
                 <div>
-                  <h5 className="font-bold text-black">Inkkick</h5>
+                  <h5 className="font-bold text-black">SpectraZen
+                  </h5>
                   <span className="text-xs text-gray-500">Verified</span>
                 </div>
               </div>
               <p className="mt-2 text-sm text-gray-400">
-                Ready to make your dream sneakers a reality...
+              These shoes have been a game-changer! They’ve held up incredibly well over the past year. Highly recommend for anyone looking for durable footwear. 🌟👢
               </p>
             </div>
           </div>
@@ -48,12 +49,12 @@ function InstagramFeed() {
                   alt="Profile"
                 />
                 <div>
-                  <h5 className="font-bold text-black">Inkkick</h5>
+                  <h5 className="font-bold text-black">VortexWanderer</h5>
                   <span className="text-xs text-gray-500">Verified</span>
                 </div>
               </div>
               <p className="mt-2 text-sm text-gray-400">
-                Ready to make your dream sneakers a reality...
+              Absolutely in love with these sneakers! They’re so comfortable, I can wear them all day without any discomfort. Perfect for my daily runs and casual outings! 🏃‍♂️👟
               </p>
             </div>
           </div>
@@ -75,12 +76,13 @@ function InstagramFeed() {
                   alt="Profile"
                 />
                 <div>
-                  <h5 className="font-bold text-black">Inkkick</h5>
+                  <h5 className="font-bold text-black">PixelPioneer</h5>
                   <span className="text-xs text-gray-500">Verified</span>
                 </div>
               </div>
               <p className="mt-2 text-sm text-gray-400">
-                Ready to make your dream sneakers a reality...
+              Loving the chic design of these new sneakers. They’re not only stylish but also get tons of compliments! 🎨👟
+              The price is a bit higher, but the comfort and longevity make them worth every penny. Definitely a great investment! 💰👞
               </p>
             </div>
           </div>

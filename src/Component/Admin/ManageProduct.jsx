@@ -145,9 +145,9 @@ const ManageProduct = () => {
                   />
                   <input
                     type="text"
-                    className={`border outline-none w-max bg-transparent rounded-lg ${
+                    className={`outline-none w-max bg-transparent rounded-lg ${
                       editableProductId === product.$id
-                        ? 'border-black/10 px-2'
+                        ? 'border border-black/10 px-2'
                         : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.name || product.name}
@@ -158,9 +158,9 @@ const ManageProduct = () => {
                 <td className="px-6 py-4 border-b">
                   <input
                     type="text"
-                    className={`border outline-none w-full bg-transparent rounded-lg ${
+                    className={`outline-none w-full bg-transparent rounded-lg ${
                       editableProductId === product.$id
-                        ? 'border-black/10 px-2'
+                        ? 'border border-black/10 px-2'
                         : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.Category || product.Category || ''}
@@ -171,9 +171,9 @@ const ManageProduct = () => {
                 <td className="px-6 py-4 border-b">
                   <input
                     type="text"
-                    className={`border outline-none w-full bg-transparent rounded-lg ${
+                    className={`outline-none w-full bg-transparent rounded-lg ${
                       editableProductId === product.$id
-                        ? 'border-black/10 px-2'
+                        ? 'border border-black/10 px-2'
                         : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.Footwear_Type || product.Footwear_Type || ''}
@@ -184,9 +184,9 @@ const ManageProduct = () => {
                 <td className="px-6 py-4 border-b">
                   <input
                     type="text"
-                    className={`border outline-none w-full bg-transparent rounded-lg ${
+                    className={`outline-none w-full bg-transparent rounded-lg ${
                       editableProductId === product.$id
-                        ? 'border-black/10 px-2'
+                        ? 'border border-black/10 px-2'
                         : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.Variety || product.Variety || ''}
@@ -197,9 +197,9 @@ const ManageProduct = () => {
                 <td className="px-6 py-4 border-b">
                   <input
                     type="number"
-                    className={`border outline-none w-full bg-transparent rounded-lg ${
+                    className={` outline-none w-full bg-transparent rounded-lg ${
                       editableProductId === product.$id
-                        ? 'border-black/10 px-2'
+                        ? 'border border-black/10 px-2'
                         : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.price || product.price || ''}
@@ -210,9 +210,9 @@ const ManageProduct = () => {
                 <td className="px-6 py-4 border-b">
                   <input
                     type="number"
-                    className={`border outline-none w-full bg-transparent rounded-lg ${
+                    className={` outline-none w-full bg-transparent rounded-lg ${
                       editableProductId === product.$id
-                        ? 'border-black/10 px-2'
+                        ? 'border border-black/10 px-2'
                         : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.discountPercent || product.discountPercent || ''}
@@ -223,9 +223,9 @@ const ManageProduct = () => {
                 <td className="px-6 py-4 border-b">
                   <input
                     type="number"
-                    className={`border outline-none w-full bg-transparent rounded-lg ${
+                    className={` outline-none w-full bg-transparent rounded-lg ${
                       editableProductId === product.$id
-                        ? 'border-black/10 px-2'
+                        ? 'border border-black/10 px-2'
                         : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.discountedPrice || product.discountedPrice || ''}
@@ -236,9 +236,9 @@ const ManageProduct = () => {
                 <td className="px-6 py-4 border-b">
                   <input
                     type="text"
-                    className={`border outline-none max-w-[8rem] bg-transparent rounded-lg ${
+                    className={`outline-none max-w-[8rem] bg-transparent rounded-lg ${
                       editableProductId === product.$id
-                        ? 'border-black/10 px-2'
+                        ? 'border border-black/10 px-2'
                         : 'border-transparent'
                     }`}
                     value={productEdits[product.$id]?.Tags || product.Tags || ''}

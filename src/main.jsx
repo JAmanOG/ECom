@@ -221,6 +221,7 @@ import ProductForm from "./form/ProductForm.jsx";
 import ManageProducts from "./Component/Admin/ManageProduct.jsx";
 import ManageOrder from "./Component/Admin/ManageOrder.jsx";
 import { ProductProvider } from './Component/Admin/ProductContext';
+import About from "./Component/AboutUSPage/About.jsx";
 
 let persistor = persistStore(store);
 
@@ -336,6 +337,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               element={
                 <AuthLayout authenticate>
                   <Product />
+                </AuthLayout>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <AuthLayout authenticate>
+                  <About  />
                 </AuthLayout>
               }
             />

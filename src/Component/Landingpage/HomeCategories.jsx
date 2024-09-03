@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { gettag } from '../../Services/database';
 import { appwriteService } from '../../Services/database';
+import useCheckout from '../Checkout/useCheckout';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const ProductCard = ({ product }) => {
+  const {
+    checkout,
+    handleCheckout,
+    handleRemove,
+    isInCart,
+  } = useCheckout();
     return (
       <div className="max-w-sm rounded font-poppins overflow-hidden shadow-lg">
         <div className="relative">
@@ -42,7 +50,11 @@ const ProductCard = ({ product }) => {
           <div className="flex justify-between items-center mt-4">
             <span className="text-red-500 font-bold">${product.discountedPrice}</span>
             <span className="line-through text-gray-500">${product.price}</span>
-            <button className="bg-purple-500 text-white px-4 py-2 rounded">Add to Cart</button>
+            {!isInCart[product.$id] ? (
+              <button onClick={()=>handleCheckout(product.$id,1)} className="bg-purple-500 text-white px-4 py-2 rounded">Add to Cart</button>
+            ): (
+              <button className="bg-red-500 text-white px-4 py-2 rounded" onClick={() => handleRemove(product.$id)}>Remove</button>
+            )}
           </div>
         </div>
       </div>
@@ -51,17 +63,50 @@ const ProductCard = ({ product }) => {
   
   
 
-const ProductGrid = ({ filteredProducts }) => {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
-      {filteredProducts.map((product, index) => (
-        <ProductCard key={index} product={product} />
-      ))}
-    </div>
-  );
-};
+  const ProductGrid = ({ filteredProducts }) => {
+    const [showAll, setShowAll] = useState(false);
+  
+    const handleShowAll = () => setShowAll(true);
+    const handleShowLess = () => setShowAll(false);
+  
+    const displayedProducts = showAll ? filteredProducts : filteredProducts.slice(0, 8);
+  
+    return (
+      <div className="p-6">
+        <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {displayedProducts.map((product, index) => (
+            <CSSTransition
+              key={product.$id} // Use a unique key for each product
+              timeout={500} // Duration of the animation
+              classNames="fade-slide" // CSS class for the animation
+            >
+              <ProductCard product={product} />
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
+        {filteredProducts.length > 8 && (
+          <div className="flex justify-center mt-6">
+            {!showAll ? (
+              <button 
+                onClick={handleShowAll} 
+                className="bg-blue-500 text-white px-4 py-2 rounded transition-transform transform hover:scale-105">
+                Show All
+              </button>
+            ) : (
+              <button 
+                onClick={handleShowLess} 
+                className="bg-red-500 text-white px-4 py-2 rounded transition-transform transform hover:scale-105">
+                Show Less
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  };
+  
 
-function HomeCategories() {
+  function HomeCategories() {
     const [tag, setTag] = useState('');
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [active, setActive] = useState('All');
@@ -84,7 +129,7 @@ function HomeCategories() {
     };
   
     return (
-        <div className="HomeCategories">
+      <div className="HomeCategories">
         <header className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6 rounded-t-lg shadow-lg">
           <h1 className="text-center font-poppins font-extrabold text-3xl tracking-wide">Recommended</h1>
         </header>
@@ -114,7 +159,6 @@ function HomeCategories() {
           <ProductGrid filteredProducts={filteredProducts} />
         </main>
       </div>
-      
     );
   }
   

@@ -1,151 +1,8 @@
-// {// import React, { useEffect, useState } from "react";
-// // import { Link, useParams, useLocation } from "react-router-dom";
-// // import { getShoes } from "../../Services/database";
-// // import { appwriteService,getWishlist } from "../../Services/database";
-// // import { useDispatch, useSelector } from "react-redux";
-// // import { fetchWishlist, addWishlist, removeWishlist } from "../../Rtk/Slices/WishlistSlice";
-// // import AuthServices from "../../Services/auth";
-
-// // const Shoecategory = () => {
-// //   const { category, subcategory, subsubcategory } = useParams();
-// //   const [shoes, setShoes] = useState([]);
-// //   const [loading, setLoading] = useState(true);
-// //   const [error, setError] = useState(null);
-// //   const location = useLocation();
-// //   const dispatch = useDispatch();
-
-// //   const wishlist = useSelector((state) => state.wishlist.items || []);
-
-// //   useEffect(() => {
-
-// //     const fetchData = async () => {
-// //       try {
-// //         // Fetch shoes
-// //         const shoesData = await getShoes(category, subcategory, subsubcategory);
-// //         setShoes(shoesData);
-
-// //         // Fetch wishlist
-// //         const user = await AuthServices.getCurrentUser();
-
-// //         if (user && user.$id) {
-// //           await dispatch(fetchWishlist(user.$id));
-// //         } else {
-// //           console.error("User is not authenticated or user ID is missing.");
-// //         }
-// //       } catch (err) {
-// //         setError(err);
-// //       } finally {
-// //         setLoading(false);
-// //       }
-// //     };
-
-// //     fetchData();
-// //   }, [category, subcategory, subsubcategory, dispatch]);
-
-// //   const handleWishlist = async (productId) => {
-// //     try {
-// //       const user = await AuthServices.getCurrentUser();
-// //       if (!user || !user.$id) {
-// //         console.error("User is not authenticated or user ID is missing.");
-// //         return;
-// //       }
-
-// //       const userId = user.$id;
-// //       console.log('wishlist:', wishlist);
-// //       if(productId){
-// //         console.log("Entry ProductId: ",productId);
-
-// //         const productInWishlist = wishlist.find(item => item.productId === productId);
-// //         console.log("Product in wishlist:", productInWishlist);
-// //         if (productInWishlist) {
-// //           console.log("data sent : ",productInWishlist.$id);
-
-// //           dispatch(removeWishlist({ userId, productId: productId }));
-// //         } else {
-// //           dispatch(addWishlist({ userId, productId }));
-// //         }
-// //       }else{
-// //         console.log("issue");
-
-// //       }
-
-// //     } catch (err) {
-// //       console.error("Error handling wishlist:", err);
-// //     }
-// //   };
-
-// //   if (loading) return <div>Loading...</div>;
-// //   // if (error) return <div>Error: {error.message}</div>;
-
-// //   return (
-// //     <div>
-// //       <h1>{subcategory.replace(/-/g, " ")}</h1>
-// //       <section className="text-gray-600 body-font">
-// //         <div className="container px-5 py-24 mx-auto">
-// //           <div className="flex flex-wrap -m-4">
-// //             {shoes.map((shoe) => (
-// //               <div key={shoe.$id} className="lg:w-1/4 z-0 md:w-1/2 p-4 w-full">
-// //                 <Link
-// //                   to={`${location.pathname}/${shoe.$id}`}
-// //                   className="block relative h-48 rounded overflow-hidden"
-// //                 >
-// //                   <img
-// //                     alt={shoe.name}
-// //                     className="object-cover object-center w-full h-full block"
-// //                     src={
-// //                       shoe.featuredImage
-// //                         ? appwriteService.getFilePreview(shoe.featuredImage)
-// //                         : "fallback-image-url"
-// //                     }
-// //                   />
-// //                 </Link>
-// //                 <div className="mt-4">
-// //                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-// //                     {shoe.Variety}
-// //                   </h3>
-// //                   <h2 className="text-gray-900 title-font text-lg font-medium">
-// //                     {shoe.name}
-// //                   </h2>
-// //                   {shoe.discountPercent > 0 ? (
-// //                     <>
-// //                       <span className="flex">
-// //                         <strike>
-// //                           <p className="mt-1 font-bold">${shoe.price}</p>
-// //                         </strike>
-// //                         <span>
-// //                           &nbsp;{shoe.discountPercent}% <span>Off</span>
-// //                         </span>
-// //                       </span>
-// //                       <p className="mt-1 font-bold underline">
-// //                         ${shoe.discountedPrice}
-// //                       </p>
-// //                     </>
-// //                   ) : (
-// //                     <div className="flex justify-between">
-// //                       <p className="mt-1 font-bold">${shoe.price}</p>
-// //                       <span className="z-40 material-symbols-outlined relative bottom-5 right-3">
-// //                         <button onClick={() => handleWishlist(shoe.$id)}>
-// //                           favorite
-// //                         </button>
-// //                       </span>
-// //                     </div>
-// //                   )}
-// //                 </div>
-// //               </div>
-// //             ))}
-// //           </div>
-// //         </div>
-// //       </section>
-// //     </div>
-// //   );
-// // };
-// }
-
-import React, { useEffect, useState } from "react";
+import React,{useState,useEffect} from 'react'
 import { Link, useParams, useLocation } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css"; // Import the CSS for the skeleton
-import { getShoes } from "../../Services/database";
+import { getSpecialShoes,getSpecialSportShoes } from "../../Services/database";
 import { appwriteService } from "../../Services/database";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -155,11 +12,11 @@ import {
 } from "../../Rtk/Slices/WishlistSlice";
 import AuthServices from "../../Services/auth";
 import useCheckout from "../Checkout/useCheckout";
+import { Category } from '@mui/icons-material';
 
-const Shoecategory = () => {
-  const { category, subcategory, subsubcategory } = useParams();
- 
-
+function SpecialCategories() {
+    const {special} = useParams()
+    console.log('useParams: ',special)
   const [shoes, setShoes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -179,21 +36,65 @@ const Shoecategory = () => {
 
   const wishlists = useSelector((state) => state.wishlist.items || []);
   const [wishlist, setWishlist] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         let shoesData;
-        if (!subcategory) {
-          shoesData = await getShoes(category);
-        } else if (!subsubcategory) {
-          shoesData = await getShoes(category, subcategory);
-        } else if (subsubcategory){
-          shoesData = await getShoes(category, subcategory, subsubcategory);
+        let category = null
+        let subcategory = null
+        let tagss = null
+  
+        switch (special) {
+          case 'MenCollection':
+            shoesData = await getSpecialShoes('Men', 50);
+            break;
+          case 'WomenCollection':
+            shoesData = await getSpecialShoes('Women', 50);
+            break;
+          case 'KidsCollection':
+            shoesData = await getSpecialShoes('Kids', 50);
+            break;
+          case 'FormalsCollection':
+            shoesData = await getSpecialShoes('Men', 30);
+            break;
+          case 'SportsCollection':
+            shoesData = await getSpecialSportShoes(category, 'athletic_footwear', tagss, 30);
+            break;
+          case 'SportsCollectionMen':
+            shoesData = await getSpecialSportShoes('Men', 'athletic_footwear', tagss, 30);
+            break;
+          case 'SportsCollectionWomen':
+            shoesData = await getSpecialSportShoes('Women', 'athletic_footwear', tagss, 30);
+            break;
+          case 'SportsCollectionKids':
+            shoesData = await getSpecialSportShoes('Kids', 'sports_shoes', tagss, 0);
+            break;
+          case 'SchoolCollectionKids':
+            shoesData = await getSpecialSportShoes('Kids', 'school_shoes', tagss, 0);
+            break;
+          case 'FormalCollection':
+            shoesData = await getSpecialSportShoes('Men', 'formal_shoes', tagss, 30);
+            break;
+          case 'NewArrivalWomen':
+            shoesData = await getSpecialSportShoes('Women', subcategory, 'new_arrival', 1);
+            break;
+          case 'HeelsCollection':
+            shoesData = await getSpecialSportShoes('Women', 'heels', tagss, 0);
+            break;
+          case 'NewArrivalKids':
+            shoesData = await getSpecialSportShoes('Kids',subcategory,'new_arrival',0);
+            break;
+          case 'SchoolCollection':
+            shoesData = await getSpecialShoes('Kids', 50);
+            break;
+          default:
+            // Consider using a state for error messages
+            setAlert({ type: 'warning', message: 'No Data Found' });
+            return; // Exit early if no data found
         }
-        
+  
         setShoes(shoesData);
-        
+  
         const currentUser = await AuthServices.getCurrentUser();
         if (currentUser && currentUser.$id) {
           setUser(currentUser);
@@ -203,13 +104,14 @@ const Shoecategory = () => {
         }
       } catch (err) {
         setError(err);
+        console.error("Error fetching data:", err);
       } finally {
         setLoading(false);
       }
     };
   
     fetchData();
-  }, [category, subcategory, subsubcategory, dispatch]);
+  }, [special, dispatch]);
   
 
   useEffect(() => {
@@ -289,32 +191,10 @@ const Shoecategory = () => {
     );
   }
 
-  if (error) return <div>Error: {error.message}</div>;
+//   if (error) return <div>Error: {error.message}</div>;
   return (
-    <div className="">
-      {alert.message && (
-        <div
-          className={`alert alert-${alert.type} alert-dismissible fade show`}
-          role="alert"
-        >
-          {alert.message}
-          <button
-            type="button"
-            className="close"
-            data-dismiss="alert"
-            aria-label="Close"
-            onClick={() => setAlert({ type: "", message: "" })} // Clear the alert when the close button is clicked
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      )}
-      {
-  category ? <h1 className="p-2 m-2 font-bold">{category.replace(/-/g, " ")}</h1> : <h1 className="p-2 m-2 font-bold">{subcategory.replace(/-/g, " ")}</h1>
-}
-
-
-      <section className="text-gray-700 body-font bg-gray-100">
+    <div>
+        <section className="text-gray-700 body-font bg-gray-100">
         <div className="container px-6 py-10 mx-auto">
           <div className="flex flex-wrap -m-4">
             {shoes.map((shoe) => (
@@ -444,7 +324,7 @@ const Shoecategory = () => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default Shoecategory;
+export default SpecialCategories

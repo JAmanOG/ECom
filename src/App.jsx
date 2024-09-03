@@ -49,6 +49,7 @@ import Shoecategory from "./Component/Categories/Categories";
 import Gallery from "./Component/Gallery/Gallery";
 import TagsRoutes from "./Component/CategoryRoutes/TagsRoutes";
 import HomePage from "./Component/Landingpage/HomePage";
+import SpecialCategories from "./Component/SpecialCategories/SpecialCategories";
 
 const App = () => (
   <Routes>
@@ -64,6 +65,10 @@ const App = () => (
   <Route
     path="/shops/:category"
     element={<Shoecategory />}
+  />
+  <Route
+    path="/special/:special"
+    element={<SpecialCategories />}
   />
 
     <Route path="/shop/:tag" element={<TagsRoutes />} />

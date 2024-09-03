@@ -26,6 +26,29 @@
       top: 0;
     }
   }
+  /* ProductGrid.css */
+.fade-slide-enter {
+  opacity: 0;
+  transform: translateY(20px); /* Start from below */
+}
 
+.fade-slide-enter-active {
+  opacity: 1;
+  transform: translateY(0); /* Slide into place */
+  transition: opacity 500ms, transform 500ms; /* Match timeout in JS */
+}
+
+.fade-slide-exit {
+  opacity: 1;
+  transform: translateY(0); /* Start from current position */
+}
+
+.fade-slide-exit-active {
+  opacity: 0;
+  transform: translateY(20px); /* Slide out below */
+  transition: opacity 500ms, transform 500ms;
+}
+
+  
 
 }

@@ -747,7 +747,7 @@ function Main_nav() {
       >
         Open Cart
       </button>
-
+``
       <Shopping_cart open={open} setOpen={setOpen} />
     </div>
         </div>

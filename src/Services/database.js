@@ -543,6 +543,70 @@ const getShoes = async (category, footwearType = null, variety = null) => {
     throw error; // Ensure errors are thrown to be caught in the component
   }
 };
+const getSpecialShoes = async (category, percent) => {
+  let queries = [
+    Query.equal("Category", category),
+    Query.greaterThanEqual("discountPercent", percent)
+  ];
+
+  try {
+    // Fetch documents from the database
+    const response = await databases.listDocuments(
+      conf.appwriteDatabaseId,
+      conf.appwriteCollectionId,
+      queries
+    );
+    console.log("Fetching shoes with parameters:", category, percent);
+
+    return response.documents;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error; // Ensure errors are thrown to be caught in the component
+  }
+};
+const getSpecialSportShoes = async (category = null, subcategory = null, tagss = null, percent) => {
+  let queries = [
+    Query.greaterThanEqual("discountPercent", percent)
+  ];
+  
+  // Add subcategory filter if provided
+  if (subcategory !== null) {
+    queries.push(Query.equal("Footwear_Type", subcategory));
+  }
+
+  // Add category filter if provided
+  if (category !== null) {
+    queries.push(Query.equal("Category", category));
+  }
+
+  // Add tags filter if provided
+  if (tagss !== null) {
+    // Assuming tags is a string. If it's an array or requires a different query type, adjust accordingly.
+    queries.push(Query.equal("Tags", tagss));
+  }
+
+  try {
+    // Fetch documents from the database
+    const response = await databases.listDocuments(
+      conf.appwriteDatabaseId,
+      conf.appwriteCollectionId,
+      queries
+    );
+    console.log("Fetching shoes with parameters:", {
+      subcategory,
+      percent,
+      category,
+      tagss
+    });
+
+    return response.documents;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error; // Ensure errors are thrown to be caught in the component
+  }
+};
+
+
 
 
 const gettag = async (tag, excludeTag = null) => {
@@ -675,4 +739,4 @@ const getProduct = async (productId) => {
 };
 
 const appwriteService = new bucketstorage();
-export { client, databases, getShoes,gettag, appwriteService ,getProduct};
+export { client, databases, getShoes,gettag, appwriteService,getSpecialSportShoes,getProduct,getSpecialShoes};

@@ -9,19 +9,16 @@ import {
   PopoverButton,
   PopoverGroup,
   PopoverPanel,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
 } from "@headlessui/react";
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
   ShoppingBagIcon,
   XMarkIcon,
+  HeartIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import Shopping_cart from "../NavigationBar/MainBar/Shopping_cart";
 
 const navigation = {
   categories: [
@@ -31,19 +28,19 @@ const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href: "#",
+          href: "/shop/new_arrival",
           imageSrc: "/src/assets/AICardsbanners/newArrivalM.png",
           imageAlt: "Image showing Link pair of dress shoes.",
         },
         {
           name: "Sports Collection",
-          href: "#",
+          href: "/special/SportsCollectionMen",
           imageSrc: "/src/assets/AICardsbanners/sportsM.jpeg",
           imageAlt: "Image showing casual shoes.",
         },
         {
           name: "Formals Shoes",
-          href: "#",
+          href: "/special/FormalCollection",
           imageSrc: "/src/assets/AICardsbanners/FormalsM.jpeg",
           imageAlt: "Image showing casual shoes.",
         },
@@ -88,26 +85,50 @@ const navigation = {
           items: [
             { name: "Flip Flops", href: "/shops/men/sandals/flip-flops" },
             { name: "Slide Sandals", href: "/shops/men/sandals/slide-sandals" },
-            { name: "Fisherman Sandals", href: "/shops/men/sandals/fisherman-sandals" },
+            {
+              name: "Fisherman Sandals",
+              href: "/shops/men/sandals/fisherman-sandals",
+            },
           ],
         },
         {
           id: "athletic_footwear",
           name: "Athletic Footwear",
           items: [
-            { name: "Running Shoes", href: "/shops/men/athletic_footwear/running-shoes" },
-            { name: "Training Shoes", href: "/shops/men/athletic_footwear/training-shoes" },
-            { name: "Basketball Shoes", href: "/shops/men/athletic_footwear/basketball-shoes" },
-            { name: "Soccer Shoes", href: "/shops/men/athletic_footwear/soccer-shoes" },
-            { name: "Tennis Shoes", href: "/shops/men/athletic_footwear/tennis-shoes" },
+            {
+              name: "Running Shoes",
+              href: "/shops/men/athletic_footwear/running-shoes",
+            },
+            {
+              name: "Training Shoes",
+              href: "/shops/men/athletic_footwear/training-shoes",
+            },
+            {
+              name: "Basketball Shoes",
+              href: "/shops/men/athletic_footwear/basketball-shoes",
+            },
+            {
+              name: "Soccer Shoes",
+              href: "/shops/men/athletic_footwear/soccer-shoes",
+            },
+            {
+              name: "Tennis Shoes",
+              href: "/shops/men/athletic_footwear/tennis-shoes",
+            },
           ],
         },
         {
           id: "slippers",
           name: "Slippers",
           items: [
-            { name: "Indoor Slippers", href: "/shops/men/slippers/indoor-slippers" },
-            { name: "Outdoor Slippers", href: "/shops/men/slippers/indoor-slippers" },
+            {
+              name: "Indoor Slippers",
+              href: "/shops/men/slippers/indoor-slippers",
+            },
+            {
+              name: "Outdoor Slippers",
+              href: "/shops/men/slippers/indoor-slippers",
+            },
           ],
         },
       ],
@@ -118,19 +139,19 @@ const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href: "#",
+          href: "/special/NewArrivalWomen",
           imageSrc: "/src/assets/AICardsbanners/newArrivalW.png",
           imageAlt: "Image showing Link pair of heels.",
         },
         {
           name: "Heels Collection",
-          href: "#",
+          href: "/special/HeelsCollection",
           imageSrc: "/src/assets/AICardsbanners/HeelsW.jpeg",
           imageAlt: "Image showing flats.",
         },
         {
           name: "Sports Collection",
-          href: "#",
+          href: "/special/SportsCollectionWomen",
           imageSrc: "/src/assets/AICardsbanners/sportsW.jpeg",
           imageAlt: "Image showing flats.",
         },
@@ -144,7 +165,10 @@ const navigation = {
             { name: "Kitten Heels", href: "/shops/women/heels/kitten-heels" },
             { name: "Block Heels", href: "/shops/women/heels/block-heels" },
             { name: "Wedges", href: "/shops/women/heels/wedges" },
-            { name: "Platform Heels", href: "/shops/women/heels/platform-heels" },
+            {
+              name: "Platform Heels",
+              href: "/shops/women/heels/platform-heels",
+            },
           ],
         },
         {
@@ -162,9 +186,18 @@ const navigation = {
           name: "Boots",
           items: [
             { name: "Ankle Boots", href: "/shops//women/boots/ankle-boots" },
-            { name: "Knee-High Boots", href: "/shops//women/boots/knee-high-boots" },
-            { name: "Over-the-Knee Boots", href: "/shops//women/boots/over-the-knee-boots" },
-            { name: "Chelsea Boots", href: "/shops//women/boots/chelsea-boots" },
+            {
+              name: "Knee-High Boots",
+              href: "/shops//women/boots/knee-high-boots",
+            },
+            {
+              name: "Over-the-Knee Boots",
+              href: "/shops//women/boots/over-the-knee-boots",
+            },
+            {
+              name: "Chelsea Boots",
+              href: "/shops//women/boots/chelsea-boots",
+            },
             { name: "Combat Boots", href: "/shops//women/boots/combat-boots" },
           ],
         },
@@ -172,30 +205,59 @@ const navigation = {
           id: "sandals",
           name: "Sandals",
           items: [
-            { name: "Gladiator Sandals", href: "/shops/women/sandals/gladiator-sandals" },
-            { name: "Slide Sandals", href: "/shops/women/sandals/slide-sandals" },
+            {
+              name: "Gladiator Sandals",
+              href: "/shops/women/sandals/gladiator-sandals",
+            },
+            {
+              name: "Slide Sandals",
+              href: "/shops/women/sandals/slide-sandals",
+            },
             { name: "Flip Flops", href: "/shops/women/sandals/flip-flops" },
-            { name: "Slingback Sandals", href: "/shops/women/sandals/slingback-sandals" },
+            {
+              name: "Slingback Sandals",
+              href: "/shops/women/sandals/slingback-sandals",
+            },
           ],
         },
         {
           id: "sneakers",
           name: "Sneakers",
           items: [
-            { name: "Running Shoes", href: "/shops//women/sneakers/running-shoes" },
-            { name: "Casual Sneakers", href: "/shops//women/sneakers/casual-sneakers" },
-            { name: "High-Top Sneakers", href: "/shops//women/sneakers/high-top-sneakers" },
-            { name: "Slip-On Sneakers", href: "/shops//women/sneakers/slip-on-sneakers" },
+            {
+              name: "Running Shoes",
+              href: "/shops//women/sneakers/running-shoes",
+            },
+            {
+              name: "Casual Sneakers",
+              href: "/shops//women/sneakers/casual-sneakers",
+            },
+            {
+              name: "High-Top Sneakers",
+              href: "/shops//women/sneakers/high-top-sneakers",
+            },
+            {
+              name: "Slip-On Sneakers",
+              href: "/shops//women/sneakers/slip-on-sneakers",
+            },
           ],
         },
         {
           id: "athletic_footwear",
           name: "ATHLETIC FOOTWEAR",
           items: [
-            { name: "Training Shoes", href: "/shops//women/athletic_footwear/training-shoes" },
-            { name: "Hiking Boots", href: "/shops//women/athletic_footwear/hiking-boots" },
-            { name: "Walking Shoes", href: "/shops//women/athletic_footwear/walking-shoes" },
-            
+            {
+              name: "Training Shoes",
+              href: "/shops//women/athletic_footwear/training-shoes",
+            },
+            {
+              name: "Hiking Boots",
+              href: "/shops//women/athletic_footwear/hiking-boots",
+            },
+            {
+              name: "Walking Shoes",
+              href: "/shops//women/athletic_footwear/walking-shoes",
+            },
           ],
         },
       ],
@@ -206,14 +268,20 @@ const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href: "#",
+          href: "/special/NewArrivalKids",
           imageSrc: "/src/assets/AICardsbanners/newArrivalK.jpeg",
           imageAlt: "Image showing sports shoes for kids.",
         },
         {
           name: "Sport Shoes",
-          href: "#",
+          href: "/special/SportsCollectionKids",
           imageSrc: "/src/assets/AICardsbanners/sportsK.jpeg",
+          imageAlt: "Image showing casual shoes for kids.",
+        },
+        {
+          name: "School Shoes",
+          href: "/special/SchoolCollectionKids",
+          imageSrc: "/src/assets/AICardsbanners/SchoolShoeK.png",
           imageAlt: "Image showing casual shoes for kids.",
         },
       ],
@@ -222,10 +290,22 @@ const navigation = {
           id: "sports_shoes",
           name: "Sports Shoes",
           items: [
-            { name: "Running Shoes", href: "/shops/kids/sports_shoes/running-shoes" },
-            { name: "Training Shoes", href: "/shops/kids/sports_shoes/training-shoes" },
-            { name: "Soccer Shoes", href: "/shops/kids/sports_shoes/soccer-shoes" },
-            { name: "Basketball Shoes", href: "/shops/kids/sports_shoes/basketball-shoes" },
+            {
+              name: "Running Shoes",
+              href: "/shops/kids/sports_shoes/running-shoes",
+            },
+            {
+              name: "Training Shoes",
+              href: "/shops/kids/sports_shoes/training-shoes",
+            },
+            {
+              name: "Soccer Shoes",
+              href: "/shops/kids/sports_shoes/soccer-shoes",
+            },
+            {
+              name: "Basketball Shoes",
+              href: "/shops/kids/sports_shoes/basketball-shoes",
+            },
           ],
         },
         {
@@ -251,8 +331,14 @@ const navigation = {
           id: "school shoes",
           name: "SCHOOL SHOES",
           items: [
-            { name: "Boys", href: "/shops/kids/school_shoes/school-shoes-boys" },
-            { name: "Girls", href: "/shops/kids/school_shoes/school-shoes-girls" },
+            {
+              name: "Boys",
+              href: "/shops/kids/school_shoes/school-shoes-boys",
+            },
+            {
+              name: "Girls",
+              href: "/shops/kids/school_shoes/school-shoes-girls",
+            },
           ],
         },
       ],
@@ -313,32 +399,56 @@ const navigation = {
     },
   ],
   pages: [
-    { name: "Gallery", href: "#" },
-    { name: "Stores", href: "#" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "About Us", href: "/about" },
   ],
 };
 
 export default function Home() {
   const [dropdownOpen, setDropdownOpen] = useState(null); // Track active category dropdown
+  const [copen, setCOpen] = useState(false);
+  const [clicked, setClicked] = useState(false);
+
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const handleToggle = (category) => {
-    setDropdownOpen((prev) => (prev === category ? null : category));
+  const handleToggle = (categoryName) => {
+    setDropdownOpen((prev) => (prev === categoryName ? null : categoryName));
   };
+  
+  const handleLinkClick = () => {
+    setDropdownOpen(null);
+  };
+
+  const handleButtonClick = () => {
+    setCOpen(true);
+  };
+
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  //       setDropdownOpen(null);
+  //     }
+  //   };
+
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
+
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdownOpen(null); 
+        setDropdownOpen(null);
       }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    }
+  
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
+  
+  
   return (
     <>
       <div className="bg-white z-50">
@@ -409,16 +519,16 @@ export default function Home() {
                           </PopoverButton>
                         </div>
 
-                        {dropdownOpen === category.name && ( // Show dropdown only if active
+                        {dropdownOpen === category.name && (
                           <PopoverPanel
                             ref={dropdownRef}
-                            className="absolute inset-x-0 top-full text-sm text-gray-500 transition z-50"
+                            className="absolute inset-x-0 top-full text-sm text-gray-500 transition z-30"
                           >
                             <div
                               className="absolute inset-0 top-1/2 bg-white shadow"
                               aria-hidden="true"
                             />
-                            <div className="relative bg-white">
+                            <div className="relative bg-white overflow-y-scroll scrollbar-hide">
                               <div className="mx-auto max-w-7xl px-8">
                                 <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-8">
                                   <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
@@ -436,25 +546,27 @@ export default function Home() {
                                           alt={item.imageAlt}
                                           className="w-full h-[22rem] object-fill rounded-lg shadow-md"
                                         />
-                                        <div className="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-lg">
-                                          <div className="text-center">
-                                            <h3 className="text-white font-semibold">
-                                              {item.name}
-                                            </h3>
-                                            <p className="text-white">
-                                              Shop now
-                                            </p>
+                                        <Link to={item.href}>
+                                          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg p-4">
+                                            <div className="text-center text-white">
+                                              <h3 className="text-xl font-bold mb-2">
+                                                {item.name}
+                                              </h3>
+                                              <p className="text-sm">
+                                                Shop now
+                                              </p>
+                                            </div>
                                           </div>
-                                        </div>
+                                        </Link>
                                       </div>
                                     ))}
                                   </div>
                                   <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                                     {category.sections.map((section) => (
-                                      <div key={section.name}>
+                                      <div className="" key={section.name}>
                                         <p
                                           id={`${section.name}-heading`}
-                                          className="font-medium text-gray-900"
+                                          className="font-medium text-xl text-gray-900"
                                         >
                                           {section.name}
                                         </p>
@@ -466,11 +578,12 @@ export default function Home() {
                                           {section.items.map((item) => (
                                             <li
                                               key={item.name}
-                                              className="flex"
+                                              className="flex text-lg"
                                             >
                                               <Link
                                                 to={item.href}
-                                                className="hover:text-gray-800"
+                                                
+                                                onClick={handleLinkClick}                                              className="hover:text-gray-800"
                                               >
                                                 {item.name}
                                               </Link>
@@ -516,7 +629,16 @@ export default function Home() {
                   </div>
                   <div className="flex lg:ml-6">
                     <Link
-                      to=""
+                      to="/my/Wishlist"
+                      className="p-2 text-gray-400 hover:text-gray-500"
+                    >
+                      <span className="sr-only">Search</span>
+                      <HeartIcon aria-hidden="true" className="h-6 w-6" />
+                    </Link>
+                  </div>
+                  <div className="flex lg:ml-6">
+                    <Link
+                      to="/my/Dashboard"
                       className="p-2 text-gray-400 hover:text-gray-500"
                     >
                       <span className="sr-only">Profile</span>
@@ -539,13 +661,17 @@ export default function Home() {
 
                   {/* Cart */}
                   <div className="ml-4 flow-root lg:ml-6">
-                    <Link to="" className="group -m-2 flex items-center p-2">
+                    <button
+                      onClick={handleButtonClick}
+                      className="group -m-2 flex items-center p-2 focus:outline-none"
+                    >
                       <ShoppingBagIcon
                         aria-hidden="true"
                         className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       />
+                      <Shopping_cart open={copen} setOpen={setCOpen} />
                       <span className="sr-only">items in cart, view bag</span>
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

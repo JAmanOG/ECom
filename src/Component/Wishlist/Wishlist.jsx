@@ -64,7 +64,10 @@ const WishlistComponent = () => {
     <>
       <div className="m-3">
         <Link className="flex font-bold" to={`/`}>
-          <span className="material-symbols-outlined">arrow_back_ios</span>{" "}
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+</svg>
+{" "}
           <span>Back to Home</span>
         </Link>
       </div>
@@ -105,7 +108,7 @@ const WishlistComponent = () => {
                     </h1>
                     <div className="flex items-center justify-between">
                       {!isInCart[item.productId] ? (
-                        <button onClick={()=> handleCheckout(item.productId)} className="text-indigo-600 font-semibold hover:text-indigo-800 inline-flex items-center">
+                        <button onClick={()=> handleCheckout(item.productId)} className="text-indigo-600 font-semibold hover:text-indigo-800 focus:outline-none inline-flex items-center">
                         Add to Cart
                         <svg
                           className="w-5 h-5 ml-2"
@@ -121,7 +124,7 @@ const WishlistComponent = () => {
                         </svg>
                       </button>
                       ):(
-                        <button onClick={()=> handleRemove(item.productId)} className="text-red-600 font-semibold hover:text-red-800 inline-flex items-center">
+                        <button onClick={()=> handleRemove(item.productId)} className="text-red-600 focus:outline-none font-semibold hover:text-red-800 inline-flex items-center">
                         Remove from Cart
                         <svg
                           className="w-5 h-5 ml-2"
