@@ -7,42 +7,42 @@ const MultiCardCarousel = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const cards = [
     {
-      image: "src/assets/minicard/MenCollection.jpg",
+      image: "/minicard/MenCollection.jpg",
       title: "Men Collection",
       discount: "Upto 50% off",
       description: "Get the best Deal",
       to: "/special/MenCollection",
     },
     {
-      image: "src/assets/minicard/women card.jpg",
+      image: "/minicard/women card.jpg",
       title: "Women Collection",
       discount: "Upto 50% off",
       description: "Get the best Deal For Women",
       to: "/special/WomenCollection",
     },
     {
-      image: "src/assets/minicard/kids.jpg",
+      image: "/minicard/kids.jpg",
       title: "Kids Collection",
       discount: "Upto 50% off",
       description: "Get the best Deal For Kids",
       to: "/special/KidsCollection",
     },
     {
-      image: "src/assets/minicard/FormalsCollection.jpg",
+      image: "/minicard/FormalsCollection.jpg",
       title: "Formals Collection",
       discount: "Upto 30% off",
       description: "Get the best Deal For Formals Shoes",
       to: "/special/FormalsCollection",
     },
     {
-      image: "src/assets/minicard/sportCollection.jpg",
+      image: "/minicard/sportCollection.jpg",
       title: "Sports Collection",
       discount: "Upto 40% off",
       description: "Get the best Deal For Sports Shoes",
       to: "/special/SportsCollection",
     },
     {
-      image: "src/assets/minicard/schoolCollection.jpg",
+      image: "/minicard/schoolCollection.jpg",
       title: "School Collection",
       discount: "Upto 40% off",
       description: "Get the best Deal For School Shoes",

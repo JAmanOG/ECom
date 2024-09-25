@@ -5,21 +5,21 @@ export function MasonryGridGallery() {
           <div>
             <img
               className="h-full max-w-full rounded-lg object-cover object-center"
-              src="src/assets/ProductGrid/product.jpg"
+              src="/ProductGrid/product.jpg"
               alt="gallery-photo"
             />
           </div>
           <div>
             <img
               className="h-full max-w-full rounded-lg object-cover object-center "
-              src="src/assets/ProductGrid/product2.jpg"
+              src="/ProductGrid/product2.jpg"
               alt="gallery-photo"
             />
           </div>
           <div>
             <img
               className="h-full max-w-full rounded-lg object-cover object-center"
-              src="src/assets/ProductGrid/product4.jpg"
+              src="/ProductGrid/product4.jpg"
               alt="gallery-photo"
             />
           </div>
@@ -28,21 +28,21 @@ export function MasonryGridGallery() {
           <div>
             <img
               className="h-full max-w-full rounded-lg object-cover object-center"
-              src="src/assets/ProductGrid/product6.jpg"
+              src="/ProductGrid/product6.jpg"
               alt="gallery-photo"
             />
           </div>
           <div>
             <img
               className="h-full max-w-full rounded-lg object-cover object-center"
-              src="src/assets/ProductGrid/product10.jpg"
+              src="/ProductGrid/product10.jpg"
               alt="gallery-photo"
             />
           </div>
           <div>
             <img
               className="h-full max-w-full rounded-lg object-cover object-center "
-              src="src/assets/ProductGrid/product8.jpg"
+              src="/ProductGrid/product8.jpg"
               alt="gallery-photo"
             />
           </div>
@@ -51,21 +51,21 @@ export function MasonryGridGallery() {
           <div>
             <img
               className="h-full max-w-full rounded-lg object-cover object-center"
-              src="src/assets/ProductGrid/product9.jpg"
+              src="/ProductGrid/product9.jpg"
               alt="gallery-photo"
             />
           </div>
           <div>
             <img
               className="h-full max-w-full rounded-lg object-cover object-center "
-              src="src/assets/ProductGrid/product7.jpg"
+              src="/ProductGrid/product7.jpg"
               alt="gallery-photo"
             />
           </div>
           <div>
             <img
               className="h-full max-w-full rounded-lg object-cover object-center"
-              src="src/assets/ProductGrid/product5.jpg"
+              src="/ProductGrid/product5.jpg"
               alt="gallery-photo"
             />
           </div>
@@ -74,14 +74,14 @@ export function MasonryGridGallery() {
           <div>
             <img
               className="h-full max-w-full rounded-lg object-cover object-center"
-              src="src/assets/ProductGrid/product3.avif"
+              src="/ProductGrid/product3.avif"
               alt="gallery-photo"
             />
           </div>
           <div>
             <img
               className="h-full max-w-full rounded-lg object-cover object-center"
-              src="src/assets/ProductGrid/product1.jpg"
+              src="/ProductGrid/product1.jpg"
               alt="gallery-photo"
             />
           </div>

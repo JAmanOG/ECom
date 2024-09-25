@@ -16,7 +16,7 @@ function PaymentButton({ amount, receipt, post, formdata,orderId, user,productId
         const data = formdata;
 
         // Create order
-        const response = await fetch("http://localhost:5000/order", {
+        const response = await fetch("https://razorpayapp.azurewebsites.net//order", {
             method: "POST",
             body: JSON.stringify({ amount, currency, receipt }),
             headers: { "Content-Type": "application/json" },
@@ -35,7 +35,7 @@ function PaymentButton({ amount, receipt, post, formdata,orderId, user,productId
             order_id: order.id,
             handler: async function (response) {
                 // Validate payment
-                const validateRes = await fetch("http://localhost:5000/order/validate", {
+                const validateRes = await fetch("https://razorpayapp.azurewebsites.net//order/validate", {
                     method: "POST",
                     body: JSON.stringify(response),
                     headers: { "Content-Type": "application/json" },

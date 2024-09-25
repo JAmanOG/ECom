@@ -15,7 +15,7 @@ function Main_nav() {
       <nav className="border-b-[3px] shadow-sm text-center justify-center">
         <div className="flex justify-between bg-white align-middle text-center text-gray-600 pl-[3rem] p-2 w-full">
           <div className="flex space-x-4 align-middle text-center">
-            <span className="p-2">LOGO</span>
+            <span className="p-2">FootDise</span>
             <span className="p-2 font-medium transition duration-300 ease-in transform hover:translate-y-1">
               <NavLink to="/" rel="noopener noreferrer">
                 HOME

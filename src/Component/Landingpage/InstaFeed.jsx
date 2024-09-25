@@ -10,7 +10,7 @@ function InstagramFeed() {
           <div className="bg-white shadow-lg  rounded-lg overflow-hidden">
             <img
               className="w-full h-48 object-cover"
-              src="src/assets/shoe-1.png"
+              src="/shoe-1.png"
               alt="Sneaker"
             />
             <div className="p-4 bg-white">
@@ -38,7 +38,7 @@ function InstagramFeed() {
           <div className="bg-white shadow-lg rounded-lg overflow-hidden">
             <img
               className="w-full h-80 object-cover"
-              src="src/assets/shoe-3.png"
+              src="/shoe-3.png"
               alt="Sneaker"
             />
             <div className="p-4 bg-white">
@@ -65,7 +65,7 @@ function InstagramFeed() {
           <div className="bg-white shadow-lg rounded-lg overflow-hidden">
             <img
               className="w-full h-48 object-cover"
-              src="src/assets/shoe-5.png"
+              src="/shoe-5.png"
               alt="Sneaker"
             />
             <div className="p-4 bg-white">

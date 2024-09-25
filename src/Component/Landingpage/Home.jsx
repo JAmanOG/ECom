@@ -29,19 +29,19 @@ const navigation = {
         {
           name: "New Arrivals",
           href: "/shop/new_arrival",
-          imageSrc: "/src/assets/AICardsbanners/newArrivalM.png",
+          imageSrc: "/AICardsbanners/newArrivalM.png",
           imageAlt: "Image showing Link pair of dress shoes.",
         },
         {
           name: "Sports Collection",
           href: "/special/SportsCollectionMen",
-          imageSrc: "/src/assets/AICardsbanners/sportsM.jpeg",
+          imageSrc: "/AICardsbanners/sportsM.jpeg",
           imageAlt: "Image showing casual shoes.",
         },
         {
           name: "Formals Shoes",
           href: "/special/FormalCollection",
-          imageSrc: "/src/assets/AICardsbanners/FormalsM.jpeg",
+          imageSrc: "/AICardsbanners/FormalsM.jpeg",
           imageAlt: "Image showing casual shoes.",
         },
       ],
@@ -140,19 +140,19 @@ const navigation = {
         {
           name: "New Arrivals",
           href: "/special/NewArrivalWomen",
-          imageSrc: "/src/assets/AICardsbanners/newArrivalW.png",
+          imageSrc: "/AICardsbanners/newArrivalW.png",
           imageAlt: "Image showing Link pair of heels.",
         },
         {
           name: "Heels Collection",
           href: "/special/HeelsCollection",
-          imageSrc: "/src/assets/AICardsbanners/HeelsW.jpeg",
+          imageSrc: "/AICardsbanners/HeelsW.jpeg",
           imageAlt: "Image showing flats.",
         },
         {
           name: "Sports Collection",
           href: "/special/SportsCollectionWomen",
-          imageSrc: "/src/assets/AICardsbanners/sportsW.jpeg",
+          imageSrc: "/AICardsbanners/sportsW.jpeg",
           imageAlt: "Image showing flats.",
         },
       ],
@@ -269,19 +269,19 @@ const navigation = {
         {
           name: "New Arrivals",
           href: "/special/NewArrivalKids",
-          imageSrc: "/src/assets/AICardsbanners/newArrivalK.jpeg",
+          imageSrc: "/AICardsbanners/newArrivalK.jpeg",
           imageAlt: "Image showing sports shoes for kids.",
         },
         {
           name: "Sport Shoes",
           href: "/special/SportsCollectionKids",
-          imageSrc: "/src/assets/AICardsbanners/sportsK.jpeg",
+          imageSrc: "/AICardsbanners/sportsK.jpeg",
           imageAlt: "Image showing casual shoes for kids.",
         },
         {
           name: "School Shoes",
           href: "/special/SchoolCollectionKids",
-          imageSrc: "/src/assets/AICardsbanners/SchoolShoeK.png",
+          imageSrc: "/AICardsbanners/SchoolShoeK.png",
           imageAlt: "Image showing casual shoes for kids.",
         },
       ],
@@ -343,60 +343,60 @@ const navigation = {
         },
       ],
     },
-    {
-      id: "other_products",
-      name: "Other Products",
-      featured: [
-        {
-          name: "Footwear Accessories",
-          href: "#",
-          imageSrc: "",
-          imageAlt: "Image showing footwear accessories.",
-        },
-        {
-          name: "Footwear Care",
-          href: "#",
-          imageSrc: "/src/assets/dummy-profile-pic-300x300-1.png",
-          imageAlt: "Image showing footwear care products.",
-        },
-      ],
-      sections: [
-        {
-          id: "footwear_accessories",
-          name: "Footwear Accessories",
-          items: [
-            { name: "Shoe Laces", href: "#" },
-            { name: "Insoles", href: "#" },
-            { name: "Shoe Polish", href: "#" },
-          ],
-        },
-        {
-          id: "footwear_care",
-          name: "Footwear Care",
-          items: [
-            { name: "Waterproof Sprays", href: "#" },
-            { name: "Shoe Cleaners", href: "#" },
-          ],
-        },
-        {
-          id: "socks",
-          name: "Socks",
-          items: [
-            { name: "Casual Socks", href: "#" },
-            { name: "Athletic Socks", href: "#" },
-            { name: "Dress Socks", href: "#" },
-          ],
-        },
-        {
-          id: "shoe_storage",
-          name: "Shoe Storage",
-          items: [
-            { name: "Shoe Racks", href: "#" },
-            { name: "Shoe Bags", href: "#" },
-          ],
-        },
-      ],
-    },
+    // {
+    //   id: "other_products",
+    //   name: "Other Products",
+    //   featured: [
+    //     {
+    //       name: "Footwear Accessories",
+    //       href: "#",
+    //       imageSrc: "",
+    //       imageAlt: "Image showing footwear accessories.",
+    //     },
+    //     {
+    //       name: "Footwear Care",
+    //       href: "#",
+    //       imageSrc: "/dummy-profile-pic-300x300-1.png",
+    //       imageAlt: "Image showing footwear care products.",
+    //     },
+    //   ],
+    //   sections: [
+    //     {
+    //       id: "footwear_accessories",
+    //       name: "Footwear Accessories",
+    //       items: [
+    //         { name: "Shoe Laces", href: "#" },
+    //         { name: "Insoles", href: "#" },
+    //         { name: "Shoe Polish", href: "#" },
+    //       ],
+    //     },
+    //     {
+    //       id: "footwear_care",
+    //       name: "Footwear Care",
+    //       items: [
+    //         { name: "Waterproof Sprays", href: "#" },
+    //         { name: "Shoe Cleaners", href: "#" },
+    //       ],
+    //     },
+    //     {
+    //       id: "socks",
+    //       name: "Socks",
+    //       items: [
+    //         { name: "Casual Socks", href: "#" },
+    //         { name: "Athletic Socks", href: "#" },
+    //         { name: "Dress Socks", href: "#" },
+    //       ],
+    //     },
+    //     {
+    //       id: "shoe_storage",
+    //       name: "Shoe Storage",
+    //       items: [
+    //         { name: "Shoe Racks", href: "#" },
+    //         { name: "Shoe Bags", href: "#" },
+    //       ],
+    //     },
+    //   ],
+    // },
   ],
   pages: [
     { name: "Gallery", href: "/gallery" },
@@ -415,7 +415,7 @@ export default function Home() {
   const handleToggle = (categoryName) => {
     setDropdownOpen((prev) => (prev === categoryName ? null : categoryName));
   };
-  
+
   const handleLinkClick = () => {
     setDropdownOpen(null);
   };
@@ -443,12 +443,11 @@ export default function Home() {
         setDropdownOpen(null);
       }
     }
-  
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-  
-  
+
   return (
     <>
       <div className="bg-white z-50">
@@ -482,7 +481,7 @@ export default function Home() {
             className="mx-auto px-4 border-gray[#242424] border rounded-2xl shadow-2xl sm:px-6 lg:px-8"
           >
             <div className="border-b border-gray-200">
-              <div className="flex h-16 items-center">
+              <div className="flex h-24 items-center">
                 <button
                   type="button"
                   onClick={() => setOpen(true)}
@@ -495,8 +494,7 @@ export default function Home() {
                 {/* Logo */}
                 <div className="ml-4 flex lg:ml-0">
                   <Link to="">
-                    <span className="sr-only">Your Company</span>
-                    LOGO
+                    <img className="w-28" src="/Logo.png" alt="" srcset="" />
                   </Link>
                 </div>
 
@@ -508,7 +506,7 @@ export default function Home() {
                         <div className="relative flex">
                           <PopoverButton
                             onClick={() => handleToggle(category.name)}
-                            className={`relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm focus:outline-none font-medium transition-colors duration-200 ease-out 
+                            className={`relative z-10 -mb-px flex items-center border-b-2 pt-px text-xl focus:outline-none font-medium transition-colors duration-200 ease-out 
     ${
       dropdownOpen === category.name
         ? "border-indigo-600 text-indigo-600"
@@ -522,7 +520,7 @@ export default function Home() {
                         {dropdownOpen === category.name && (
                           <PopoverPanel
                             ref={dropdownRef}
-                            className="absolute inset-x-0 top-full text-sm text-gray-500 transition z-30"
+                            className="absolute inset-x-0 top-full text-xl text-gray-500 transition z-30"
                           >
                             <div
                               className="absolute inset-0 top-1/2 bg-white shadow"
@@ -552,7 +550,7 @@ export default function Home() {
                                               <h3 className="text-xl font-bold mb-2">
                                                 {item.name}
                                               </h3>
-                                              <p className="text-sm">
+                                              <p className="text-xl">
                                                 Shop now
                                               </p>
                                             </div>
@@ -561,7 +559,7 @@ export default function Home() {
                                       </div>
                                     ))}
                                   </div>
-                                  <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                                  <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-xl">
                                     {category.sections.map((section) => (
                                       <div className="" key={section.name}>
                                         <p
@@ -582,8 +580,8 @@ export default function Home() {
                                             >
                                               <Link
                                                 to={item.href}
-                                                
-                                                onClick={handleLinkClick}                                              className="hover:text-gray-800"
+                                                onClick={handleLinkClick}
+                                                className="hover:text-gray-800"
                                               >
                                                 {item.name}
                                               </Link>
@@ -605,7 +603,7 @@ export default function Home() {
                       <Link
                         key={page.name}
                         to={page.href}
-                        className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                        className="flex items-center text-xl font-medium text-gray-700 hover:text-gray-800"
                       >
                         {page.name}
                       </Link>
@@ -646,13 +644,13 @@ export default function Home() {
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        strokeWidth="1.5"
                         stroke="currentColor"
-                        class="size-6"
+                        className="size-6"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
                         />
                       </svg>

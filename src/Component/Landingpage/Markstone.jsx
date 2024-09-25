@@ -6,7 +6,7 @@ const Markstone = () => {
       {/* Left Section - Shoe and Text */}
       <div className="flex items-center space-x-4 sm:space-x-8 border-r-2 border-gradient-to-r from-cyan-500 to-blue-500">
         <img
-          src="src/assets/markstoneShoe.png"
+          src="/markstoneShoe.png"
           alt="Shoe"
           className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
         />

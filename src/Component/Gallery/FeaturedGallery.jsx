@@ -3,29 +3,29 @@ export function FeaturedImageGallery() {
   const data = [
     {
       imgelink:
-        "src/assets/banner/Sports_Shoes_Banner.webp",
+        "/banner/Sports_Shoes_Banner.webp",
     },
     {
       imgelink:
-        "/src/assets/AIBanner/bannerAI-Cover.jpeg",
+        "/AIBanner/bannerAI-Cover.jpeg",
     },
     {
       imgelink:
-        "src/assets/banner/banner2.webp",
+        "/banner/banner2.webp",
     },
     {
       imgelink:
-        "src/assets/banner/banner3.webp",
+        "/banner/banner3.webp",
     },
     {
       imgelink:
-        "/src/assets/AIBanner/bannerAI-3.jpeg",
+        "/AIBanner/bannerAI-3.jpeg",
     },
     
   ];
  
   const [active, setActive] = React.useState(
-    "/src/assets/AIBanner/bannerAICoverPage.jpeg",
+    "/AIBanner/bannerAICoverPage.jpeg",
   );
  
   return (

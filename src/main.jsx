@@ -187,8 +187,6 @@
 //     .finally(() => setLoading(false));
 // }, []);
 
-
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import ErrorBoundary from "./Component/ErrorBoundary.jsx";
@@ -220,8 +218,10 @@ import AdminApp from "./Component/Admin/AdminApp.jsx";
 import ProductForm from "./form/ProductForm.jsx";
 import ManageProducts from "./Component/Admin/ManageProduct.jsx";
 import ManageOrder from "./Component/Admin/ManageOrder.jsx";
-import { ProductProvider } from './Component/Admin/ProductContext';
+import { ProductProvider } from "./Component/Admin/ProductContext";
 import About from "./Component/AboutUSPage/About.jsx";
+import FAQPage from "./Component/FAQ/faqPage.jsx";
+import AdminRoute from "./Component/Admin/PrivatePage.jsx";
 
 let persistor = persistStore(store);
 
@@ -231,16 +231,21 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Router>
         <ErrorBoundary>
           <Routes>
-
-          <Route path="/admin" element={<AdminLayout />}>
-          
-          {/* <Route index element={<div>Welcome to Admin Dashboard</div>} /> */}
-          <Route path="add-product" element={<ProductForm />} />
-          <Route path="manage-product" element={<ProductProvider>
-      <ManageProducts />
-    </ProductProvider>} />
-          <Route path="manage-order" element={<ManageOrder />} />
-        </Route>
+            <Route path="/admin" element={
+              <AdminRoute><AdminLayout /></AdminRoute>}>
+              {/* <Route index element={<div>Welcome to Admin Dashboard</div>} /> */}
+              <Route path="add-product" element={<AdminRoute><ProductForm /></AdminRoute>} />
+              <Route
+                path="manage-product"
+                element={
+                  <AdminRoute>
+                  <ProductProvider>
+                    <ManageProducts />
+                  </ProductProvider></AdminRoute>
+                }
+              />
+              <Route path="manage-order" element={<AdminRoute><ManageOrder /></AdminRoute>} />
+            </Route>
             <Route
               path="/login"
               element={
@@ -329,8 +334,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 </AuthLayout>
               }
             />
-            <Route path="/view-order/:orderId" element={<ViewOrderComponent />} />
-
+            <Route
+              path="/view-order/:orderId"
+              element={<ViewOrderComponent />}
+            />
             Specific Product Detail Routes
             <Route
               path="/shops/:category/:subcategory/:subsubcategory/:slugg"
@@ -340,15 +347,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 </AuthLayout>
               }
             />
-            <Route
-              path="/about"
-              element={
-                <AuthLayout authenticate>
-                  <About  />
-                </AuthLayout>
-              }
-            />
-
+            <Route path="/about" element={<About />} />
+            <Route path="/faq" element={<FAQPage />} />
             {/* Default Layout and App Route */}
             <Route path="/*" element={<Layout />}>
               <Route path="*" element={<App />} />

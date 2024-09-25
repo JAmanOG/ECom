@@ -34,7 +34,7 @@ const PromoSection = () => {
       <div className="">
         
         <img
-          src="src/assets/Deliveryboy.png"
+          src="/Deliveryboy.png"
           alt="Delivery Boy Holding Package"
           className="w-48 sm:w-56 lg:w-80 object-cover mt-3 rounded-lg shadow-lg"
         />
@@ -50,7 +50,7 @@ const PromoSection = () => {
           aria-label="Happy Clients"
         >
           <img
-            src="src/assets/ClientProfile.png"
+            src="/ClientProfile.png"
             alt="Happy Clients Profile"
             className="w-22 h-8 sm:w-10 sm:h-10 lg:w-1/2 lg:h-14 rounded-full mr-2"
           />

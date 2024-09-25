@@ -1,11 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  // content: [
+  //   "./index.html",
+  //   "./src/**/*.{html,js,jsx,ts,tsx}",
+  //   "./src/sidebar.html",
+  //   "./base.html",
+  //   "./src/**/*.{js,ts,jsx,tsx}",
+  // ],
   content: [
-    "./index.html",
-    "./src/**/*.{html,js,jsx,ts,tsx}",
-    "./src/sidebar.html",
-    "./base.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx,html}", // Target your source files explicitly
+    "./public/index.html",
+    "!./node_modules", // Explicitly exclude node_modules
+    "!./src/razorpay-backend"
   ],
   theme: {
     extend: {
@@ -24,19 +30,16 @@ export default {
         },
       },
       colors: {
-        redd: '#FF0000',
-        blackk: '#000000',
-        yelloww: '#FFFF00',
-        greenn: '#00FF00',
+        redd: "#FF0000",
+        blackk: "#000000",
+        yelloww: "#FFFF00",
+        greenn: "#00FF00",
         // Add other colors as needed
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        poppins: ["Poppins", "sans-serif"],
       },
     },
   },
-  plugins: [
-
-  ],
-}
-
+  plugins: [],
+};

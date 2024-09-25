@@ -66,7 +66,7 @@ function Login() {
         <div className="mb-6 text-center">
           <img
             alt="Your Company"
-            src="src/assets/Profile.png"
+            src="/Profile.png"
             className="mx-auto h-12 w-auto transition-transform transform-gpu hover:rotate-12"
           />
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 transition-opacity duration-300 ease-in-out hover:opacity-80">
@@ -134,7 +134,7 @@ function Login() {
               onClick={googleAuth}
               className="flex items-center space-x-2 w-max py-3 px-4 bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition ease-in-out duration-150"
             >
-              <img src="/src/assets/google.svg" alt="Google Icon" className="h-6 w-6" />
+              <img src="/google.svg" alt="Google Icon" className="h-6 w-6" />
               <span className="text-gray-800 font-medium">Sign in with Google</span>
             </button>
           </div>

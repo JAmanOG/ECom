@@ -46,7 +46,7 @@ function Dashboard() {
         <div className="w-48 h-48">
           <img
             className="w-full h-full object-cover rounded-full"
-            src="/src/assets/dummy-profile-pic-300x300-1.png"
+            src="/dummy-profile-pic-300x300-1.png"
             alt="Profile"
           />
         </div>
