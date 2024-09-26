@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Added useEffect import
 import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../Rtk/Slices/authSlice";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import AuthServices from "../Services/auth";
 
-
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [error, setError] = useState("");
 
   const googleAuth = async (e) => {
@@ -19,15 +22,37 @@ function Login() {
       // Trigger OAuth2 session and redirect user to Google
       await AuthServices.account.createOAuth2Session(
         "google",
-        "https://www.footdise.live",
-        "https://www.footdise.live/login"
+        "https://www.footdise.live", // Success URL after login
+        "https://www.footdise.live/login" // Failure URL if login fails
       );
     } catch (error) {
       console.error("Google authentication error:", error);
       setError("An error occurred during Google authentication.");
     }
   };
-  
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        console.log("Fetching current user data...");
+        const userData = await AuthServices.getCurrentUser();
+        if (userData) {
+          console.log("User data retrieved:", userData);
+          dispatch(authLogin(userData));
+          navigate("/"); // Redirect to home page after successful login
+        } else {
+          console.error("Failed to fetch user data after OAuth login.");
+          setError("Failed to fetch user data.");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setError("An error occurred while fetching user data.");
+      }
+    };
+
+    // Fetch user data when the user lands on the login page after OAuth redirection
+    fetchUserData();
+  }, [dispatch, navigate]); // Added dependencies
 
   const login = async (data) => {
     setError("");
@@ -66,11 +91,16 @@ function Login() {
           </h2>
         </div>
 
-        {error && <p className="text-red-600 text-center mb-4 animate-pulse">{error}</p>}
+        {error && (
+          <p className="text-red-600 text-center mb-4 animate-pulse">{error}</p>
+        )}
 
         <form onSubmit={handleSubmit(login)} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
               Email address
             </label>
             <input
@@ -82,16 +112,25 @@ function Login() {
                 required: "Email is required",
                 pattern: {
                   value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-                  message: "Invalid email address"
-                }
+                  message: "Invalid email address",
+                },
               })}
-              className={`mt-1 block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm transition-transform duration-300 ease-in-out transform hover:scale-105`}
+              className={`mt-1 block w-full px-3 py-2 border ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm transition-transform duration-300 ease-in-out transform hover:scale-105`}
             />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
               Password
             </label>
             <input
@@ -99,14 +138,29 @@ function Login() {
               name="password"
               type="password"
               placeholder="Enter your password"
-              {...register("password", { required: "Password is required" })}
-              className={`mt-1 block w-full px-3 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm transition-transform duration-300 ease-in-out transform hover:scale-105`}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                }, // Added validation
+              })}
+              className={`mt-1 block w-full px-3 py-2 border ${
+                errors.password ? "border-red-500" : "border-gray-300"
+              } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm transition-transform duration-300 ease-in-out transform hover:scale-105`}
             />
-            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           <div className="flex items-center justify-between">
-            <Link to="/forgot-password" className="text-sm font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300">
+            <Link
+              to="/forgot-password"
+              className="text-sm font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300"
+            >
               Forgot password?
             </Link>
           </div>
@@ -127,14 +181,19 @@ function Login() {
               className="flex items-center space-x-2 w-max py-3 px-4 bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition ease-in-out duration-150"
             >
               <img src="/google.svg" alt="Google Icon" className="h-6 w-6" />
-              <span className="text-gray-800 font-medium">Sign in with Google</span>
+              <span className="text-gray-800 font-medium">
+                Sign in with Google
+              </span>
             </button>
           </div>
         </div>
 
         <p className="mt-6 text-center text-sm text-gray-600">
-          Not a member?{' '}
-          <Link to="/signup" className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300">
+          Not a member?{" "}
+          <Link
+            to="/signup"
+            className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300"
+          >
             Sign up now
           </Link>
         </p>
