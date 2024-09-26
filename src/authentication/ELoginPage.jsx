@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import AuthServices from "../Services/auth";
 
+
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,27 +16,18 @@ function Login() {
     e.preventDefault();
     try {
       console.log("Initiating Google OAuth2 session...");
+      // Trigger OAuth2 session and redirect user to Google
       await AuthServices.account.createOAuth2Session(
         "google",
-        "http://localhost:5173/",
-        "http://localhost:5173/login"
+        "https://www.footdise.live",
+        "https://www.footdise.live/login"
       );
-
-      console.log("Fetching current user data...");
-      const userData = await AuthServices.getCurrentUser();
-      if (userData) {
-        console.log("User data retrieved:", userData);
-        dispatch(authLogin(userData));
-        navigate("/");
-      } else {
-        console.error("Failed to fetch user data after OAuth login.");
-        setError("Failed to fetch user data.");
-      }
     } catch (error) {
       console.error("Google authentication error:", error);
       setError("An error occurred during Google authentication.");
     }
   };
+  
 
   const login = async (data) => {
     setError("");

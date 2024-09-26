@@ -7,13 +7,12 @@ export default defineConfig({
   plugins: [
     react(),
     {
-      // Use the Terser plugin in the build process
       ...terser({
         compress: {
-          drop_console: true, // Remove console.* calls
+          drop_console: true,
         },
       }),
-      apply: 'build', // Apply only during the build process
+      apply: 'build', 
     },
   ],
   optimizeDeps: {
