@@ -205,48 +205,54 @@
 // export default Login;
 
 
-import { useState, useEffect } from "react";
+
+import { useState, useEffect } from "react"; // Added useEffect import
 import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../Rtk/Slices/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; // Added useSelector to check auth state
 import { useForm } from "react-hook-form";
 import AuthServices from "../Services/auth";
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const auth = useSelector((state) => state.auth); // Check if user is already authenticated
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // Added loading state
 
+  // Google OAuth handler
   const googleAuth = async (e) => {
     e.preventDefault();
-    setLoading(true);
     try {
       console.log("Initiating Google OAuth2 session...");
+      // Trigger OAuth2 session and redirect user to Google
       await AuthServices.account.createOAuth2Session(
         "google",
-        "https://www.footdise.live",
-        "https://www.footdise.live/login"
+        "https://www.footdise.live", // Success URL after login
+        "https://www.footdise.live/login" // Failure URL if login fails
       );
-      // No need to navigate or do anything here as we handle login after redirection in useEffect
     } catch (error) {
       console.error("Google authentication error:", error);
       setError("An error occurred during Google authentication.");
-      setLoading(false); // stop loading if there is an error
     }
   };
 
+  // Fetch user data if redirected back from Google OAuth
   useEffect(() => {
     const fetchUserData = async () => {
-      setLoading(true);
       try {
+        setLoading(true);
         console.log("Fetching current user data...");
         const userData = await AuthServices.getCurrentUser();
         if (userData) {
           console.log("User data retrieved:", userData);
           dispatch(authLogin(userData));
-          navigate("/");  // Redirect to home page after successful login
+          navigate("/"); // Redirect to home page after successful login
         } else {
           console.error("Failed to fetch user data after OAuth login.");
           setError("Failed to fetch user data.");
@@ -255,27 +261,30 @@ function Login() {
         console.error("Error fetching user data:", error);
         setError("An error occurred while fetching user data.");
       } finally {
-        setLoading(false); // stop loading after fetching user data
+        setLoading(false);
       }
     };
 
-    // Call the function when the user lands on the login page after redirection
-    fetchUserData();
-  }, [dispatch, navigate]);
+    // Only attempt to fetch user data if they are not already authenticated
+    if (!auth.isAuthenticated) {
+      fetchUserData();
+    }
+  }, [auth.isAuthenticated, dispatch, navigate]);
 
+  // Manual login
   const login = async (data) => {
     setError("");
-    setLoading(true);
+    setLoading(true); // Set loading while login is in progress
     try {
       console.log("Logging in with data:", data);
-      const session = await AuthServices.login(data);
+      const session = await AuthServices.login(data); // Login API call
       if (session) {
         console.log("Session established:", session);
-        const userData = await AuthServices.getCurrentUser();
+        const userData = await AuthServices.getCurrentUser(); // Fetch user data after login
         if (userData) {
           console.log("User data retrieved:", userData);
           dispatch(authLogin(userData));
-          navigate("/");
+          navigate("/"); // Redirect to home after successful login
         } else {
           console.error("Failed to fetch user data after login.");
           setError("Failed to fetch user data.");
@@ -283,7 +292,7 @@ function Login() {
       }
     } catch (error) {
       console.error("Login error:", error);
-      setError(error.message);
+      setError(error.message || "Login failed.");
     } finally {
       setLoading(false);
     }
@@ -303,13 +312,16 @@ function Login() {
           </h2>
         </div>
 
-        {error && <p className="text-red-600 text-center mb-4 animate-pulse">{error}</p>}
-
-        {loading && <p className="text-center text-indigo-500 mb-4">Loading...</p>}
+        {error && (
+          <p className="text-red-600 text-center mb-4 animate-pulse">{error}</p>
+        )}
 
         <form onSubmit={handleSubmit(login)} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
               Email address
             </label>
             <input
@@ -321,16 +333,25 @@ function Login() {
                 required: "Email is required",
                 pattern: {
                   value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-                  message: "Invalid email address"
-                }
+                  message: "Invalid email address",
+                },
               })}
-              className={`mt-1 block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm transition-transform duration-300 ease-in-out transform hover:scale-105`}
+              className={`mt-1 block w-full px-3 py-2 border ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm transition-transform duration-300 ease-in-out transform hover:scale-105`}
             />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
               Password
             </label>
             <input
@@ -338,14 +359,29 @@ function Login() {
               name="password"
               type="password"
               placeholder="Enter your password"
-              {...register("password", { required: "Password is required" })}
-              className={`mt-1 block w-full px-3 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm transition-transform duration-300 ease-in-out transform hover:scale-105`}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                }, // Added validation
+              })}
+              className={`mt-1 block w-full px-3 py-2 border ${
+                errors.password ? "border-red-500" : "border-gray-300"
+              } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm transition-transform duration-300 ease-in-out transform hover:scale-105`}
             />
-            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           <div className="flex items-center justify-between">
-            <Link to="/forgot-password" className="text-sm font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300">
+            <Link
+              to="/forgot-password"
+              className="text-sm font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300"
+            >
               Forgot password?
             </Link>
           </div>
@@ -354,7 +390,7 @@ function Login() {
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-transform transform-gpu hover:scale-105"
           >
-            Sign in
+            {loading ? "Signing in..." : "Sign in"}
           </button>
         </form>
 
@@ -366,14 +402,19 @@ function Login() {
               className="flex items-center space-x-2 w-max py-3 px-4 bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition ease-in-out duration-150"
             >
               <img src="/google.svg" alt="Google Icon" className="h-6 w-6" />
-              <span className="text-gray-800 font-medium">Sign in with Google</span>
+              <span className="text-gray-800 font-medium">
+                Sign in with Google
+              </span>
             </button>
           </div>
         </div>
 
         <p className="mt-6 text-center text-sm text-gray-600">
-          Not a member?{' '}
-          <Link to="/signup" className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300">
+          Not a member?{" "}
+          <Link
+            to="/signup"
+            className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300"
+          >
             Sign up now
           </Link>
         </p>
