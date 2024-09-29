@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaHome,FaUserCircle, FaBox, FaListAlt, FaShoppingCart } from 'react-icons/fa';
+import LogoutButton from '../../authentication/logoutbtn';
 
 export const Sidebar = () => {
   const location = useLocation();
@@ -61,9 +62,11 @@ export const Navbar = () => {
           </button>
           {dropdownOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Settings</a>
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</a>
+              <a href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Home</a>
+              <a href="/my/Dashboard" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
+              <a href="/logout"className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+              <LogoutButton className='bg-none' />
+              </a>
             </div>
           )}
         </div>

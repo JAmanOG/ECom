@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 function Header() {
@@ -140,6 +141,9 @@ function Policies() {
 }
 
 function Shipping() {
+  const Navigate = useNavigate();
+
+
   return (
     <section className="bg-white p-12 text-center">
       <motion.h2
@@ -154,6 +158,7 @@ function Shipping() {
         className="bg-purple-600 text-white px-8 py-3 rounded-lg"
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.3 }}
+        onClick={() => Navigate('/faq')}
       >
         Frequently Asked Questions (FAQs)
       </motion.button>

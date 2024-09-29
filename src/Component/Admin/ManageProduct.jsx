@@ -25,7 +25,7 @@ const ManageProduct = () => {
   const currentItems = products.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
-  );
+  );  
 
   const handleEdit = async (productId) => {
     try {

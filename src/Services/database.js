@@ -175,7 +175,11 @@ export const getWishlist = async (userId) => {
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteWishlistCollectionId,
-      [Query.equal("userId", userId)]
+      [Query.equal("userId", userId)],
+      [
+        Query.limit(200),
+        Query.offset(0)
+    ]
     );
     console.log("Fetched wishlist:", response.documents);
     return response.documents;
@@ -267,7 +271,11 @@ export const getCart = async (userId) => {
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteCartCollectionId,
-      [Query.equal("userId", userId)]
+      [Query.equal("userId", userId)],
+      [
+        Query.limit(200),
+        Query.offset(0)
+    ]
     );
     console.log("Fetched CartList: ", response.documents);
     return response.documents;
@@ -352,7 +360,12 @@ export const getOrderDetails = async (userId) => {
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteOrderDetailsCollectionId,
-      [Query.equal("user", userId)] // Adjust the field name if needed
+      [Query.equal("user", userId)],
+      [
+        Query.limit(200),
+        Query.offset(0)
+    ]
+       // Adjust the field name if needed
     );
     console.log("Fetched Order Details:", response.documents);
     return response.documents;
@@ -366,6 +379,10 @@ export const getAllOrderDetails = async () => {
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteOrderDetailsCollectionId,
+      [
+        Query.limit(200),
+        Query.offset(0)
+    ]
     );
     console.log("Fetched Order Details:", response.documents);
     return response.documents;
@@ -379,7 +396,11 @@ export const getAllProductDetails = async () => {
     // Fetching documents from Appwrite
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
-      conf.appwriteCollectionId
+      conf.appwriteCollectionId,
+      [
+        Query.limit(200),
+        Query.offset(0)
+    ]
     );
 
     // Log the full response for inspection
@@ -533,7 +554,11 @@ const getShoes = async (category, footwearType = null, variety = null) => {
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteCollectionId,
-      query
+      query,
+      [
+        Query.limit(200),
+        Query.offset(0)
+    ]
     );
     console.log("Fetching shoes with parameters:", category, footwearType, variety);
 
@@ -554,7 +579,11 @@ const getSpecialShoes = async (category, percent) => {
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteCollectionId,
-      queries
+      queries,
+      [
+        Query.limit(200),
+        Query.offset(0)
+    ]
     );
     console.log("Fetching shoes with parameters:", category, percent);
 
@@ -590,7 +619,11 @@ const getSpecialSportShoes = async (category = null, subcategory = null, tagss =
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteCollectionId,
-      queries
+      queries,
+      [
+        Query.limit(200),
+        Query.offset(0)
+    ]
     );
     console.log("Fetching shoes with parameters:", {
       subcategory,
@@ -624,7 +657,11 @@ const gettag = async (tag, excludeTag = null) => {
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteCollectionId,
-      query
+      query,
+      [
+        Query.limit(200),
+        Query.offset(0)
+    ]
     );
 
     console.log("Fetching shoes with parameters:", tag, "Excluding:", excludeTag);
