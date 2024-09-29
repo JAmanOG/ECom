@@ -62,10 +62,10 @@ const navigation = {
           name: "Casual Shoes",
           items: [
             { name: "Sneakers", href: "/shops/men/casual_shoes/sneakers" },
-            { name: "Boat Shoes", href: "/shops/men/boat-shoes" },
-            { name: "Espadrilles", href: "/shops/men/espadrilles" },
-            { name: "Moccasins", href: "/shops/men/moccasins" },
-            { name: "Slip-Ons", href: "/shops/men/slip-ons" },
+            { name: "Boat Shoes", href: "/shops/men/casual_shoes/boat-shoes" },
+            { name: "Espadrilles", href: "/shops/men/casual_shoes/espadrilles" },
+            { name: "Moccasins", href: "/shops/men/casual_shoes/moccasins" },
+            { name: "Slip-Ons", href: "/shops/men/casual_shoes/slip-ons" },
           ],
         },
         {
