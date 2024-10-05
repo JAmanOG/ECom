@@ -3,10 +3,11 @@ import { useLocation, Link } from 'react-router-dom';
 import html2pdf from 'html2pdf.js';
 import { databases } from "../../Services/database";
 import conf from "../../Services/conf";
+import { motion } from 'framer-motion';
 
 const OrderConfirmation = () => {
   const location = useLocation();
-  const { orderId, PaymentId, orderDetails, ConsumerName,user,appOrderId} = location.state || {};
+  const { orderId, PaymentId, orderDetails, ConsumerName, user, appOrderId } = location.state || {};
 
   const [dataStored, setDataStored] = useState(false);
 
@@ -75,8 +76,19 @@ const OrderConfirmation = () => {
   };
 
   return (
-    <div className="container orderConformationContainer mx-auto p-4">
-      <div id='invoice' className="bg-white shadow-md rounded-lg p-6 max-w-2xl mx-auto mt-10 text-center">
+    <motion.div
+      className="container orderConformationContainer mx-auto p-4"
+      initial={{ opacity: 0, y: -50 }} // Initial state
+      animate={{ opacity: 1, y: 0 }} // Final state
+      transition={{ duration: 0.5 }} // Animation duration
+    >
+      <motion.div
+        id='invoice'
+        className="bg-white shadow-md rounded-lg p-6 max-w-2xl mx-auto mt-10 text-center"
+        initial={{ scale: 0 }} // Initial scale
+        animate={{ scale: 1 }} // Final scale
+        transition={{ duration: 0.3, ease: "easeInOut" }} // Scale animation
+      >
         <div className="flex items-center justify-center mb-6">
           <div className="bg-green-500 m-auto text-white rounded-full p-4">
             <svg
@@ -103,7 +115,13 @@ const OrderConfirmation = () => {
         <div id="order-summary" className="bg-gray-100 rounded-lg p-4 mb-6">
           <h2 className="text-xl font-semibold mb-2">Order Summary</h2>
           {orderDetails.items.map((item) => (
-            <div key={item.id} className="flex items-center justify-between mb-3">
+            <motion.div
+              key={item.id}
+              className="flex items-center justify-between mb-3"
+              initial={{ opacity: 0 }} // Initial opacity
+              animate={{ opacity: 1 }} // Final opacity
+              transition={{ duration: 0.3 }} // Fade-in animation
+            >
               <div className="flex items-center">
                 <div>
                   <p className="font-medium">{item.name}</p>
@@ -111,7 +129,7 @@ const OrderConfirmation = () => {
                 </div>
               </div>
               <p className="font-medium">${item.price.toFixed(2)}</p>
-            </div>
+            </motion.div>
           ))}
           <div className="flex justify-between font-semibold mt-4">
             <p>Total</p>
@@ -138,14 +156,18 @@ const OrderConfirmation = () => {
           Continue Shopping
         </Link>
 
-        <button data-html2canvas-ignore="true"
+        <motion.button
+          data-html2canvas-ignore="true"
           onClick={handleDownloadPDF}
           className="mt-4 py-2 px-4 rounded-lg bg-green-600 text-white font-semibold text-center hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 transition duration-200 ease-in-out"
+          initial={{ scale: 0 }} // Initial scale for button
+          animate={{ scale: 1 }} // Final scale for button
+          transition={{ duration: 0.3, ease: "easeInOut" }} // Scale animation for button
         >
           Download PDF
-        </button>
-      </div>
-    </div>
+        </motion.button>
+      </motion.div>
+    </motion.div>
   );
 };
 

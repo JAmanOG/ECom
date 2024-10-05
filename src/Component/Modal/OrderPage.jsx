@@ -426,6 +426,7 @@ function OrderPage() {
 
     fetchUserAndOrders();
   }, []);
+  
   console.log("orderDetails : ", orderDetails);
   useEffect(() => {
     const fetchProductImages = async () => {
@@ -549,7 +550,12 @@ function OrderPage() {
                 >
                   View Order
                 </Link>
-                <InvoiceComponent orderId={order.appOrderId} />{" "}
+                {order.status !== "Canceled" ? (
+                  <>
+                  <InvoiceComponent orderId={order.appOrderId} />{" "}
+                  </>
+                            ) : null}
+
                 {/* <-- Render the InvoicePage component */}
               </div>
             </div>
@@ -604,20 +610,36 @@ function OrderPage() {
                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
                           ></path>
                         </svg>
-                        Confirmed on{" "}
-                        {renderOrderDate(order.orderDetails.createdAt)}
+                        {order.status === "Order Placed" ? (
+                          <span>
+                            Confirmed on{" "}
+                            {renderOrderDate(order.orderDetails.createdAt)}
+                          </span>
+                        ) : (
+                          <span>
+                            {order.status === "Canceled" ? (
+                              <span className="text-red-600 flex items-center font-medium">
+                                Canceled on{" "}
+                                {renderOrderDate(order.$updatedAt)}
+                              </span>
+                            ) : (
+                              <>
+                                {order.orderDetails.status}{" "}
+                                {renderOrderDate(order.orderDetails.createdAt)}
+                              </>
+                            )}
+                          </span>
+                        )}
                       </p>
                       <div className="space-x-4">
-                        {
-                          productCategory !== undefined ? (
-                            <Link
-                              to={`/shops/${productCategory}/${productSubcategory}/${productSubsubcategory}/${productId}`}
-                              className="text-blue-600 hover:underline"
-                            >
-                              View Product
-                            </Link>
-                          ) : null 
-                        }
+                        {productCategory !== undefined ? (
+                          <Link
+                            to={`/shops/${productCategory}/${productSubcategory}/${productSubsubcategory}/${productId}`}
+                            className="text-blue-600 hover:underline"
+                          >
+                            View Product
+                          </Link>
+                        ) : null}
 
                         <Link
                           to={`/my/CheckoutForm/${productId}`}

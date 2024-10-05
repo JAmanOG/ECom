@@ -15,6 +15,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
   },
+  status: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    color: 'red',
+  },
   section: {
     marginBottom: 15,
   },
@@ -84,10 +90,14 @@ const styles = StyleSheet.create({
 const Invoice = ({ data }) => (
   <Document>
     <Page size="A4" style={styles.page}>
-      <Text style={styles.header}>Tax Invoice/Bill of Supply/Cash Memo</Text>
-
+      <Text style={styles.header}>FootDise OrderConfirmation Invoice </Text>
+      {
+        data.status ? (
+          <Text style={styles.status}>Order Status: {data.status}</Text>
+        ) : null
+      }
       <View style={styles.section}>
-        <Text style={styles.soldBy}>Sold By: Aman</Text>
+        <Text style={styles.soldBy}>Sold By: FootDise aka Aman</Text>
         <br />
         <Text style={styles.To}>To: {data.customerName}</Text>
         <Text style={styles.email}>Email: {data.email}</Text>
@@ -141,7 +151,7 @@ const Invoice = ({ data }) => (
       <View style={styles.footer}>
         <Text style={styles.footerText}>Payment Method: {data.paymentMethod}</Text>
         <Text style={styles.footerText}>Special Instructions: {data.instructions}</Text>
-        <Text style={styles.footerText}>Order Date: {data.orderDate}</Text>
+        <Text style={styles.footerText}>Order Date: {data.createdAt}</Text>
         <Text style={styles.footerText}>Order ID: {data.orderId}</Text>
       </View>
     </Page>

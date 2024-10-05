@@ -176,10 +176,7 @@ export const getWishlist = async (userId) => {
       conf.appwriteDatabaseId,
       conf.appwriteWishlistCollectionId,
       [Query.equal("userId", userId)],
-      [
-        Query.limit(200),
-        Query.offset(0)
-    ]
+      [Query.limit(200), Query.offset(0)]
     );
     console.log("Fetched wishlist:", response.documents);
     return response.documents;
@@ -272,10 +269,7 @@ export const getCart = async (userId) => {
       conf.appwriteDatabaseId,
       conf.appwriteCartCollectionId,
       [Query.equal("userId", userId)],
-      [
-        Query.limit(200),
-        Query.offset(0)
-    ]
+      [Query.limit(200), Query.offset(0)]
     );
     console.log("Fetched CartList: ", response.documents);
     return response.documents;
@@ -292,14 +286,14 @@ export const addToCart = async (userId, productId, quantity = 1) => {
     }
 
     const cart = await getCart(userId);
-    const existingItem = cart.find(item => item.productId === productId);
+    const existingItem = cart.find((item) => item.productId === productId);
     if (existingItem) {
       // Update existing item
       const updatedQuantity = existingItem.quantity + quantity;
       await databases.updateDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCartCollectionId,
-        existingItem.$id,  // Ensure this is correct
+        existingItem.$id, // Ensure this is correct
         { quantity: updatedQuantity }
       );
     } else {
@@ -311,7 +305,7 @@ export const addToCart = async (userId, productId, quantity = 1) => {
         {
           userId: userId.toString(),
           productId: productId.toString(),
-          quantity: quantity
+          quantity: quantity,
         }
       );
     }
@@ -328,7 +322,7 @@ export const updateCart = async (userId, productId, quantity = 1) => {
     }
 
     const cart = await getCart(userId);
-    const existingItem = cart.find(item => item.productId === productId);
+    const existingItem = cart.find((item) => item.productId === productId);
 
     if (existingItem) {
       const updatedQuantity = existingItem.quantity - quantity;
@@ -361,11 +355,8 @@ export const getOrderDetails = async (userId) => {
       conf.appwriteDatabaseId,
       conf.appwriteOrderDetailsCollectionId,
       [Query.equal("user", userId)],
-      [
-        Query.limit(200),
-        Query.offset(0)
-    ]
-       // Adjust the field name if needed
+      [Query.limit(200), Query.offset(0)]
+      // Adjust the field name if needed
     );
     console.log("Fetched Order Details:", response.documents);
     return response.documents;
@@ -374,15 +365,70 @@ export const getOrderDetails = async (userId) => {
     throw error;
   }
 };
+
+export const updateOrderpage = async (appOrderId, newStatus) => {
+  try {
+    if (!appOrderId || !newStatus) {
+      throw new Error("OrderId or new status is missing");
+    }
+
+    // First, query to find the document with the matching appOrderId
+    const result = await databases.listDocuments(
+      conf.appwriteDatabaseId,
+      conf.appwriteOrderDetailsCollectionId,
+      [Query.equal("appOrderId", appOrderId)]
+    );
+
+    if (result.documents.length === 0) {
+      throw new Error("Order not found with the provided appOrderId");
+    }
+
+    const documentId = result.documents[0].$id; // Extract the document ID
+
+    // Now, update the document using the document ID
+    await databases.updateDocument(
+      conf.appwriteDatabaseId,
+      conf.appwriteOrderDetailsCollectionId,
+      documentId, // Use the retrieved document ID
+      { status: newStatus } // Update the status
+    );
+
+    console.log(`Order status updated to ${newStatus}`);
+  } catch (error) {
+    console.error("Failed to update order status:", error);
+    throw error;
+  }
+};
+
+export const getUpdateOrderPage = async (appOrderId) => {
+  try {
+    if (!appOrderId) {
+      throw new Error("OrderId is missing");
+    }
+
+    const result = await databases.listDocuments(
+      conf.appwriteDatabaseId,
+      conf.appwriteOrderDetailsCollectionId,
+      [Query.equal("appOrderId", appOrderId)]
+    );
+
+    if (result.documents.length === 0) {
+      throw new Error("Order not found with the provided appOrderId");
+    }
+
+    return result.documents[0];
+  } catch (error) {
+    console.error("Failed to fetch order details:", error);
+    throw error;
+  }
+}
+
 export const getAllOrderDetails = async () => {
   try {
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteOrderDetailsCollectionId,
-      [
-        Query.limit(200),
-        Query.offset(0)
-    ]
+      [Query.limit(200), Query.offset(0)]
     );
     console.log("Fetched Order Details:", response.documents);
     return response.documents;
@@ -397,15 +443,12 @@ export const getAllProductDetails = async () => {
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteCollectionId,
-      [
-        Query.limit(200),
-        Query.offset(0)
-    ]
+      [Query.limit(200), Query.offset(0)]
     );
 
     // Log the full response for inspection
     console.log("Fetched Order Details:", response);
-    
+
     // Check if documents are available
     if (response.documents && Array.isArray(response.documents)) {
       console.log("Fetched Documents:", response.documents);
@@ -420,8 +463,6 @@ export const getAllProductDetails = async () => {
   }
 };
 
-
-
 export const updateStatus = async (userId, orderId, newStatus) => {
   try {
     // Validate input
@@ -431,21 +472,25 @@ export const updateStatus = async (userId, orderId, newStatus) => {
 
     // Fetch order details for the user
     const orderDetails = await getOrderDetails(userId);
-    const existingOrder = orderDetails.find(order => order.orderId === orderId);
+    const existingOrder = orderDetails.find(
+      (order) => order.orderId === orderId
+    );
 
     if (existingOrder) {
       const allowedStatusUpdates = {
-        pending: ['processing', 'canceled'],
-        processing: ['shipped', 'canceled'],
-        shipped: ['delivered'],
-        delivered: ['completed'],
+        pending: ["processing", "canceled"],
+        processing: ["shipped", "canceled"],
+        shipped: ["delivered"],
+        delivered: ["completed"],
       };
 
       if (
         existingOrder.status in allowedStatusUpdates &&
         !allowedStatusUpdates[existingOrder.status].includes(newStatus)
       ) {
-        console.warn(`Cannot update status from ${existingOrder.status} to ${newStatus}`);
+        console.warn(
+          `Cannot update status from ${existingOrder.status} to ${newStatus}`
+        );
         return;
       }
 
@@ -466,13 +511,13 @@ export const updateStatus = async (userId, orderId, newStatus) => {
   }
 };
 
-export const removeFromCart = async (userId,productId) => {
-  try{
+export const removeFromCart = async (userId, productId) => {
+  try {
     console.log("Attempting to remove item with productId:", productId);
 
     const cart = await getCart(userId);
-    
-    console.log("Fetched Cart for removal: ",cart);
+
+    console.log("Fetched Cart for removal: ", cart);
 
     const itemToRemove = cart.find((item) => item.productId === productId);
     console.log("Item to remove:", itemToRemove);
@@ -492,7 +537,7 @@ export const removeFromCart = async (userId,productId) => {
     console.error("Failed to remove from Cart:", error);
     throw error;
   }
-}
+};
 
 // const getShoes = async (category, footwearType, variety) => {
 //   try {
@@ -514,13 +559,13 @@ export const removeFromCart = async (userId,productId) => {
 //   }
 // };
 // const getCategoryShoes = async (categorys, subcategorys) => {
-  
+
 //   let query = [Query.equal("Category", categorys)];
-  
+
 //   if (subcategorys) {
 //     query.push(Query.equal("Footwear_Type", subcategorys));
 //   }
-  
+
 //   try {
 //     // Fetch documents from the database
 //     const response = await databases.listDocuments(
@@ -538,29 +583,36 @@ export const removeFromCart = async (userId,productId) => {
 // };
 
 const getShoes = async (category, footwearType = null, variety = null) => {
-  console.log("Fetching shoes with parameters:", category, footwearType, variety);
+  console.log(
+    "Fetching shoes with parameters:",
+    category,
+    footwearType,
+    variety
+  );
   let query = [Query.equal("Category", category)];
-  
+
   if (footwearType) {
     query.push(Query.equal("Footwear_Type", footwearType));
   }
-  
+
   if (variety) {
     query.push(Query.equal("Variety", variety));
   }
-  
+
   try {
     // Fetch documents from the database
     const response = await databases.listDocuments(
       conf.appwriteDatabaseId,
       conf.appwriteCollectionId,
       query,
-      [
-        Query.limit(200),
-        Query.offset(0)
-    ]
+      [Query.limit(200), Query.offset(0)]
     );
-    console.log("Fetching shoes with parameters:", category, footwearType, variety);
+    console.log(
+      "Fetching shoes with parameters:",
+      category,
+      footwearType,
+      variety
+    );
 
     return response.documents;
   } catch (error) {
@@ -571,7 +623,7 @@ const getShoes = async (category, footwearType = null, variety = null) => {
 const getSpecialShoes = async (category, percent) => {
   let queries = [
     Query.equal("Category", category),
-    Query.greaterThanEqual("discountPercent", percent)
+    Query.greaterThanEqual("discountPercent", percent),
   ];
 
   try {
@@ -580,10 +632,7 @@ const getSpecialShoes = async (category, percent) => {
       conf.appwriteDatabaseId,
       conf.appwriteCollectionId,
       queries,
-      [
-        Query.limit(200),
-        Query.offset(0)
-    ]
+      [Query.limit(200), Query.offset(0)]
     );
     console.log("Fetching shoes with parameters:", category, percent);
 
@@ -593,11 +642,14 @@ const getSpecialShoes = async (category, percent) => {
     throw error; // Ensure errors are thrown to be caught in the component
   }
 };
-const getSpecialSportShoes = async (category = null, subcategory = null, tagss = null, percent) => {
-  let queries = [
-    Query.greaterThanEqual("discountPercent", percent)
-  ];
-  
+const getSpecialSportShoes = async (
+  category = null,
+  subcategory = null,
+  tagss = null,
+  percent
+) => {
+  let queries = [Query.greaterThanEqual("discountPercent", percent)];
+
   // Add subcategory filter if provided
   if (subcategory !== null) {
     queries.push(Query.equal("Footwear_Type", subcategory));
@@ -620,16 +672,13 @@ const getSpecialSportShoes = async (category = null, subcategory = null, tagss =
       conf.appwriteDatabaseId,
       conf.appwriteCollectionId,
       queries,
-      [
-        Query.limit(200),
-        Query.offset(0)
-    ]
+      [Query.limit(200), Query.offset(0)]
     );
     console.log("Fetching shoes with parameters:", {
       subcategory,
       percent,
       category,
-      tagss
+      tagss,
     });
 
     return response.documents;
@@ -638,9 +687,6 @@ const getSpecialSportShoes = async (category = null, subcategory = null, tagss =
     throw error; // Ensure errors are thrown to be caught in the component
   }
 };
-
-
-
 
 const gettag = async (tag, excludeTag = null) => {
   try {
@@ -658,13 +704,15 @@ const gettag = async (tag, excludeTag = null) => {
       conf.appwriteDatabaseId,
       conf.appwriteCollectionId,
       query,
-      [
-        Query.limit(200),
-        Query.offset(0)
-    ]
+      [Query.limit(200), Query.offset(0)]
     );
 
-    console.log("Fetching shoes with parameters:", tag, "Excluding:", excludeTag);
+    console.log(
+      "Fetching shoes with parameters:",
+      tag,
+      "Excluding:",
+      excludeTag
+    );
 
     return response.documents;
   } catch (error) {
@@ -672,7 +720,6 @@ const gettag = async (tag, excludeTag = null) => {
     throw error;
   }
 };
-
 
 class bucketstorage {
   constructor() {
@@ -717,7 +764,7 @@ class bucketstorage {
       throw error; // Throw error for consistent error handling
     }
   }
-  
+
   async getTagsdata(slug) {
     try {
       return await databases.getDocument(
@@ -752,28 +799,36 @@ class bucketstorage {
   async getPosts(productId) {
     try {
       return await databases.getDocument(
-        conf.appwriteDatabaseId,   
-        conf.appwriteCollectionId, 
-        productId                  
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionId,
+        productId
       );
     } catch (error) {
       console.error("Appwrite service :: getPost :: error", error);
-      throw error; 
+      throw error;
     }
   }
-  
 }
 const getProduct = async (productId) => {
   try {
-      console.log("Fetching product with ID:", productId); 
-      const product = await appwriteService.getPosts(productId);
-      const image = await appwriteService.getFilePreview(product.featuredImage);
-      return { ...product, image };
+    console.log("Fetching product with ID:", productId);
+    const product = await appwriteService.getPosts(productId);
+    const image = await appwriteService.getFilePreview(product.featuredImage);
+    return { ...product, image };
   } catch (error) {
-      console.error("Error fetching product:", error);
-      return null;
+    console.error("Error fetching product:", error);
+    return null;
   }
 };
 
 const appwriteService = new bucketstorage();
-export { client, databases, getShoes,gettag, appwriteService,getSpecialSportShoes,getProduct,getSpecialShoes};
+export {
+  client,
+  databases,
+  getShoes,
+  gettag,
+  appwriteService,
+  getSpecialSportShoes,
+  getProduct,
+  getSpecialShoes,
+};

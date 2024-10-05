@@ -8,6 +8,7 @@ import PaymentButton from "../Payment/PaymentButton";
 import useSubmit from "../Payment/useSubmit";
 import useSingleFetchCheckout from "./useSinglefetchCheckout";
 import useSingleCalculateTotals from "./useSingleCalculateTotal";
+import CODPaymentButton from "../Payment/CODPaymentButton";
 
 const SingleCheckoutForm = ({ post }) => {
     const [firstname, setFirstname] = useState("");
@@ -109,12 +110,6 @@ const SingleCheckoutForm = ({ post }) => {
         formdata
       );
   
-    const handleCOD = async (e) => {
-      e.preventDefault();
-      handleSubmit();
-      await handleRemoveAll();
-    };
-    
     return (
     <div className="bg-gray-50">
       {productId ?(
@@ -458,14 +453,18 @@ const SingleCheckoutForm = ({ post }) => {
                       productId={productId}
                     />
                   ) : (
-                    <button
-                      type="submit"
-                      disabled={submitLoading}
-                      onClick={handleCOD}
-                      className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md"
-                    >
-                      Pay Now
-                    </button>
+                    <CODPaymentButton
+                      // disabled={submitLoading}
+                      // onClick={handleCOD}
+                      amount={total * 100}
+                      receipt={orderId}
+                      post={post}
+                      formdata={formdata}
+                      user={user}
+                      orderId={orderId}
+                    />
+                    //   Pay Now
+                    // </CODPaymentButton>
                   )}
                 </div>
               </div>

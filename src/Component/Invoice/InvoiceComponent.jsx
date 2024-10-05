@@ -76,6 +76,7 @@ const InvoicePage = ({ orderId }) => {
           const parsedOrderData = JSON.parse(order.OrderData[0]);
           setOrderDetails({ ...order, parsedOrderData });
         }
+        console.log("orderDetails",orderDetails);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching order details:", error);
@@ -96,7 +97,7 @@ const InvoicePage = ({ orderId }) => {
 
   // Construct the data object based on the orderDetails
   const data = {
-    soldBy: "Your Company Name",
+    soldBy: "FootDise",
     customerName: `${orderDetails.firstname} ${orderDetails.lastname}`,
     email: orderDetails.email,
     phone: orderDetails.phone,
