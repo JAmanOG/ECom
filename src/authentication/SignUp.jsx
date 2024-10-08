@@ -51,7 +51,7 @@ function SignUp() {
         <div className="mb-6 text-center">
         <img
             alt="Your Company"
-            src="/Profile.png"
+            src="/Logo.png"
             className="mx-auto h-12 w-auto transition-transform transform-gpu hover:rotate-12"
           />
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 transition-opacity duration-300 ease-in-out hover:opacity-80">
