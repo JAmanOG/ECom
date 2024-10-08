@@ -397,7 +397,7 @@ const SingleCheckoutForm = ({ post }) => {
                         </span>
                       </div>
                       <span className="text-gray-900   font-medium">
-                        $
+                      ₹
                         {singleProductDetails?.discountedPrice ||
                           "Loading ..."}
                       </span>

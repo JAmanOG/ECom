@@ -48,8 +48,8 @@ const ProductCard = ({ product }) => {
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{product.name}</div>
           <div className="flex justify-between items-center mt-4">
-            <span className="text-red-500 font-bold">${product.discountedPrice}</span>
-            <span className="line-through text-gray-500">${product.price}</span>
+            <span className="text-red-500 font-bold">₹{product.discountedPrice}</span>
+            <span className="line-through text-gray-500">₹{product.price}</span>
             {!isInCart[product.$id] ? (
               <button onClick={()=>handleCheckout(product.$id,1)} className="bg-purple-500 text-white px-4 py-2 rounded">Add to Cart</button>
             ): (

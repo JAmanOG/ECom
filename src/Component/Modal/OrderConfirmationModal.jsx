@@ -128,12 +128,12 @@ const OrderConfirmation = () => {
                   <p className="text-gray-500">Qty: {item.quantity}</p>
                 </div>
               </div>
-              <p className="font-medium">${item.price.toFixed(2)}</p>
+              <p className="font-medium">₹{item.price.toFixed(2)}</p>
             </motion.div>
           ))}
           <div className="flex justify-between font-semibold mt-4">
             <p>Total</p>
-            <p>${orderDetails.totalAmount}</p>
+            <p>₹{orderDetails.totalAmount}</p>
           </div>
           <div>
             <p className='text-lg text-gray-800 font-bold my-2'>

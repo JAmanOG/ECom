@@ -540,7 +540,7 @@ function OrderPage() {
                 </div>
                 <div>
                   <dt className="font-semibold">Total Amount</dt>
-                  <dd>${order.orderDetails.totalAmount || "N/A"}</dd>
+                  <dd>₹{order.orderDetails.totalAmount || "N/A"}</dd>
                 </div>
               </dl>
               <div className="flex space-x-6">
@@ -585,7 +585,7 @@ function OrderPage() {
                             {item.name || "Product Name"}
                           </h5>
                           <p className="text-gray-500 font-medium">
-                            ${item.price || "N/A"}
+                          ₹{item.price || "N/A"}
                           </p>
                         </div>
                       </div>

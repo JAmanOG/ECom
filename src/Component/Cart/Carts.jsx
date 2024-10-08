@@ -392,24 +392,24 @@ function Carts() {
                   <>
                     <div className="flex justify-between mb-6">
                       <span>Original Price</span>
-                      <span>${subtotal + savings}</span>
+                      <span>₹{subtotal + savings}</span>
                     </div>
                     <div className="flex justify-between mb-6">
                       <span>Savings</span>
-                      <span className="text-green-500">-${savings}</span>
+                      <span className="text-green-500">-₹{savings}</span>
                     </div>
                     <div className="flex justify-between mb-6">
                       <span>Shipping</span>
-                      <span>${shipping}</span>
+                      <span>₹{shipping}</span>
                     </div>
                     <div className="flex justify-between mb-6">
                       <span>Tax</span>
-                      <span>${tax.toFixed(2)}</span>
+                      <span>₹{tax.toFixed(2)}</span>
                     </div>
                     <div className="divider"></div>
                     <div className="flex justify-between text-xl font-bold">
                       <span>Total</span>
-                      <span>${total.toFixed(2)}</span>
+                      <span>₹{total.toFixed(2)}</span>
                     </div>
                     <Button
                       component={Link}

@@ -178,11 +178,11 @@ const Product = () => {
                 {product.discountPercent > 0 ? (
                   <div className="flex items-center space-x-3">
                     <span className="title-font font-semibold text-2xl text-indigo-600">
-                      ${product.discountedPrice}
+                      ₹{product.discountedPrice}
                     </span>
                     <span className="flex items-center text-gray-500">
                       <strike>
-                        <span className="text-lg">${product.price}</span>
+                        <span className="text-lg">₹{product.price}</span>
                       </strike>
                       <span className="ml-2 text-sm">
                         {product.discountPercent}% Off
@@ -191,7 +191,7 @@ const Product = () => {
                   </div>
                 ) : (
                   <span className="title-font font-semibold text-2xl text-indigo-600">
-                    ${product.price}
+                    ₹{product.price}
                   </span>
                 )}
 

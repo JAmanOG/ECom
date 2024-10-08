@@ -225,10 +225,10 @@ function SpecialCategories() {
                       <div className="flex items-center justify-between">
                         <div>
                           <span className="text-gray-500 text-sm">
-                            <strike>${shoe.price}</strike>
+                            <strike>₹{shoe.price}</strike>
                           </span>
                           <p className="text-red-500 text-xl font-bold">
-                            ${shoe.discountedPrice}
+                            ₹{shoe.discountedPrice}
                           </p>
                           <span className="text-green-500 text-xs font-semibold">
                             {shoe.discountPercent}% Off
@@ -256,7 +256,7 @@ function SpecialCategories() {
                     ) : (
                       <div className="flex items-center justify-between">
                         <p className="text-gray-900 text-xl font-bold">
-                          ${shoe.price}
+                          ₹{shoe.price}
                         </p>
                         <button
                           className="text-red-500 hover:text-red-700 cursor-pointer transition duration-300"

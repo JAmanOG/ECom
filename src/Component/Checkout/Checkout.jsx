@@ -7,7 +7,8 @@ import useCheckout from "./useCheckout";
 import useCalculateTotals from "../Cart/useCalculateTotal";
 import PaymentButton from "../Payment/PaymentButton";
 
-function Checkout() {
+function 
+Checkout() {
   const { loading, productDetails } = useFetchCheckout();
   const { checkout } = useCheckout();
   const navigate = useNavigate();
@@ -286,7 +287,7 @@ function Checkout() {
                   </div>
                   <div className="flex justify-between text-lg sm:text-xl font-semibold text-gray-900">
                     <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>₹{total.toFixed(2)}</span>
                   </div>
                   {/* <button
                     type="submit"
