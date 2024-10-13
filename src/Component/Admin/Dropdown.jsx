@@ -5,7 +5,7 @@ const data = {
     {
       name: "DRESS SHOES",
       value: "dress_shoes",
-      subcategories: ["Oxfords", "Derbies", "Brogues", "Loafers", "Monk Straps"]
+      subcategories: ["Oxfords", "Derbies", "Brogues", "Loafers", "Monk-Straps"]
     },
     {
       name: "CASUAL SHOES",
@@ -15,74 +15,74 @@ const data = {
     {
       name: "BOOTS",
       value: "boots",
-      subcategories: ["Ankle Boots", "Chelsea Boots", "Chukka Boots", "Work Boots", "Hiking Boots"]
+      subcategories: ["Ankle-Boots", "Chelsea-Boots", "Chukka-Boots", "Work-Boots", "Hiking-Boots"]
     },
     {
       name: "SANDALS",
       value: "sandals",
-      subcategories: ["Flip Flops", "Slide Sandals", "Fisherman Sandals"]
+      subcategories: ["Flip-Flops", "Slide-Sandals", "Fisherman-Sandals"]
     },
     {
       name: "ATHLETIC FOOTWEAR",
       value: "athletic_footwear",
-      subcategories: ["Running Shoes", "Training Shoes", "Basketball Shoes", "Soccer Shoes", "Tennis Shoes"]
+      subcategories: ["Running-Shoes", "Training-Shoes", "Basketball-Shoes", "Soccer-Shoes", "Tennis-Shoes"]
     },
     {
       name: "FORMAL SHOES",
       value: "formal_shoes",
-      subcategories: ["Dress Boots", "Patent Leather Shoes"]
+      subcategories: ["Dress-Boots", "Patent-Leather-Shoes"]
     },
     {
       name: "OUTDOOR SHOES",
       value: "outdoor_shoes",
-      subcategories: ["Hiking Boots", "Trail Shoes"]
+      subcategories: ["Hiking-Boots", "Trail-Shoes"]
     },
     {
       name: "SLIPPERS",
       value: "slippers",
-      subcategories: ["Indoor Slippers", "Outdoor Slippers"]
+      subcategories: ["Indoor-Slippers", "Outdoor-Slippers"]
     }
   ],
   WOMEN: [
     {
       name: "HEELS",
       value: "heels",
-      subcategories: ["Stilettos", "Kitten Heels", "Block Heels", "Wedges", "Platform Heels"]
+      subcategories: ["Stilettos", "Kitten-Heels", "Block-Heels", "Wedges", "Platform-Heels"]
     },
     {
       name: "FLATS",
       value: "flats",
-      subcategories: ["Ballet Flats", "Loafers", "Espadrilles", "Moccasins"]
+      subcategories: ["Ballet-Flats", "Loafers", "Espadrilles", "Moccasins"]
     },
     {
       name: "BOOTS",
       value: "boots",
-      subcategories: ["Ankle Boots", "Knee-High Boots", "Over-the-Knee Boots", "Chelsea Boots", "Combat Boots"]
+      subcategories: ["Ankle-Boots", "Knee-High-Boots", "Over-the-Knee-Boots", "Chelsea-Boots", "Combat-Boots"]
     },
     {
       name: "SANDALS",
       value: "sandals",
-      subcategories: ["Gladiator Sandals", "Slide Sandals", "Flip Flops", "Slingback Sandals"]
+      subcategories: ["Gladiator-Sandals", "Slide-Sandals", "Flip-Flops", "Slingback-Sandals"]
     },
     {
       name: "SNEAKERS",
       value: "sneakers",
-      subcategories: ["Running Shoes", "Casual Sneakers", "High-Top Sneakers", "Slip-On Sneakers"]
+      subcategories: ["Running-Shoes", "Casual-Sneakers", "High-Top-Sneakers", "Slip-On-Sneakers"]
     },
     {
       name: "FORMAL SHOES",
       value: "formal_shoes",
-      subcategories: ["Dress Shoes", "Pumps"]
+      subcategories: ["Dress-Shoes", "Pumps"]
     },
     {
       name: "ATHLETIC FOOTWEAR",
       value: "athletic_footwear",
-      subcategories: ["Training Shoes", "Hiking Boots", "Walking Shoes"]
+      subcategories: ["Training-Shoes", "Hiking-Boots", "Walking-Shoes"]
     },
     {
       name: "SLIPPERS",
       value: "slippers",
-      subcategories: ["Indoor Slippers", "Outdoor Slippers"]
+      subcategories: ["Indoor-Slippers", "Outdoor-Slippers"]
     }
   ],
   KIDS: [
@@ -90,10 +90,10 @@ const data = {
       name: "SPORTS SHOES",
       value: "sports_shoes",
       subcategories: [
-        "Running Shoes",
-        "Training Shoes",
-        "Soccer Shoes",
-        "Basketball Shoes"
+        "Running-Shoes",
+        "Training-Shoes",
+        "Soccer-Shoes",
+        "Basketball-Shoes"
       ]
     },
     {
@@ -103,7 +103,7 @@ const data = {
         "Sneakers",
         "Slip-Ons",
         "Sandals",
-        "Flip Flops"
+        "Flip-Flops"
       ]
     },
     {
@@ -118,17 +118,17 @@ const data = {
       name: "BOOTS",
       value: "boots",
       subcategories: [
-        "Ankle Boots",
-        "Winter Boots",
-        "Rain Boots"
+        "Ankle-Boots",
+        "Winter-Boots",
+        "Rain-Boots"
       ]
     },
     {
       name: "SLIPPERS",
       value: "slippers",
       subcategories: [
-        "Indoor Slippers",
-        "Outdoor Slippers"
+        "Indoor-Slippers",
+        "Outdoor-Slippers"
       ]
     },
     {
@@ -145,9 +145,9 @@ const data = {
       name: "FOOTWEAR ACCESSORIES",
       value: "footwear_accessories",
       subcategories: [
-        "Shoe Laces",
+        "Shoe-Laces",
         "Insoles",
-        "Shoe Polish"
+        "Shoe-Polish"
       ]
     },
     {
@@ -162,9 +162,9 @@ const data = {
       name: "SOCKS",
       value: "socks",
       subcategories: [
-        "Casual Socks",
-        "Athletic Socks",
-        "Dress Socks"
+        "Casual-Socks",
+        "Athletic-Socks",
+        "Dress-Socks"
       ]
     },
     {

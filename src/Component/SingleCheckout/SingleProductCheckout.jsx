@@ -26,6 +26,8 @@ const SingleCheckoutForm = ({ post }) => {
     const [PaymentMethod, setPaymentMethod] = useState("");
     const [OrderData, setOrderData] = useState([]);
     const [orderId, setOrderId] = useState("");
+      const [isFormValid, setIsFormValid] = useState(false);
+
   
     const { productId } = useParams();
     const { loading, singleProductDetails } = useSingleFetchCheckout(productId);
@@ -110,6 +112,25 @@ const SingleCheckoutForm = ({ post }) => {
         formdata
       );
   
+      useEffect(() => {
+        const isValid = !(
+          !formdata.firstname?.value ||
+          !formdata.lastname?.value ||
+          !formdata.phone?.value ||
+          !formdata.email?.value ||
+          !formdata.StreetAddress?.value ||
+          !formdata.OrderData?.value
+        );
+        setIsFormValid(isValid);
+      }, [
+        formdata.firstname?.value,
+        formdata.lastname?.value,
+        formdata.phone?.value,
+        formdata.email?.value,
+        formdata.StreetAddress?.value,
+        formdata.OrderData?.value,
+      ]);
+
     return (
     <div className="bg-gray-50">
       {productId ?(
@@ -442,31 +463,30 @@ const SingleCheckoutForm = ({ post }) => {
                 </div>
                 {/* Submit Button */}
                 <div className="mt-8">
-                  {PaymentMethod === "razorpay" ? (
-                    <PaymentButton
-                      amount={total * 100}
-                      receipt={orderId}
-                      post={post}
-                      formdata={formdata}
-                      user={user}
-                      orderId={orderId}
-                      productId={productId}
-                    />
-                  ) : (
-                    <CODPaymentButton
-                      // disabled={submitLoading}
-                      // onClick={handleCOD}
-                      amount={total * 100}
-                      receipt={orderId}
-                      post={post}
-                      formdata={formdata}
-                      user={user}
-                      orderId={orderId}
-                    />
-                    //   Pay Now
-                    // </CODPaymentButton>
-                  )}
-                </div>
+                    {isFormValid && PaymentMethod === "razorpay" ? (
+                      <PaymentButton
+                        amount={total * 100}
+                        receipt={orderId}
+                        post={post}
+                        formdata={formdata}
+                        user={user}
+                        orderId={orderId}
+                      />
+                    ) : (
+                      isFormValid && (
+                        <CODPaymentButton
+                          // disabled={submitLoading}
+                          // onClick={handleCOD}
+                          amount={total * 100}
+                          receipt={orderId}
+                          post={post}
+                          formdata={formdata}
+                          user={user}
+                          orderId={orderId}
+                        />
+                      )
+                    )}
+                  </div>
               </div>
             )}
           </div>

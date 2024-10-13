@@ -54,7 +54,7 @@ const navigation = {
             { name: "Derbies", href: "/shops/men/dress_shoes/derbies" },
             { name: "Brogues", href: "/shops/men/dress_shoes/brogues" },
             { name: "Loafers", href: "/shops/men/dress_shoes/loafers" },
-            { name: "Monk Straps", href: "/men/dress_shoes/monk-straps" },
+            { name: "Monk Straps", href: "/shops/men/dress_shoes/monk-straps" },
           ],
         },
         {

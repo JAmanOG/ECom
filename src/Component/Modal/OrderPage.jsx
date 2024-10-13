@@ -426,7 +426,7 @@ function OrderPage() {
 
     fetchUserAndOrders();
   }, []);
-  
+
   console.log("orderDetails : ", orderDetails);
   useEffect(() => {
     const fetchProductImages = async () => {
@@ -552,9 +552,9 @@ function OrderPage() {
                 </Link>
                 {order.status !== "Canceled" ? (
                   <>
-                  <InvoiceComponent orderId={order.appOrderId} />{" "}
+                    <InvoiceComponent orderId={order.appOrderId} />{" "}
                   </>
-                            ) : null}
+                ) : null}
 
                 {/* <-- Render the InvoicePage component */}
               </div>
@@ -585,7 +585,7 @@ function OrderPage() {
                             {item.name || "Product Name"}
                           </h5>
                           <p className="text-gray-500 font-medium">
-                          ₹{item.price || "N/A"}
+                            ₹{item.price || "N/A"}
                           </p>
                         </div>
                       </div>
@@ -615,19 +615,19 @@ function OrderPage() {
                             Confirmed on{" "}
                             {renderOrderDate(order.orderDetails.createdAt)}
                           </span>
+                        ) : order.status === "Canceled" ? (
+                          <span className="text-red-600 flex items-center font-medium">
+                            Canceled on {renderOrderDate(order.$updatedAt)}
+                          </span>
+                        ) : order.status ? (
+                          <span>
+                            {order.status} on{" "}
+                            {renderOrderDate(order.orderDetails.createdAt)}
+                          </span>
                         ) : (
                           <span>
-                            {order.status === "Canceled" ? (
-                              <span className="text-red-600 flex items-center font-medium">
-                                Canceled on{" "}
-                                {renderOrderDate(order.$updatedAt)}
-                              </span>
-                            ) : (
-                              <>
-                                {order.orderDetails.status}{" "}
-                                {renderOrderDate(order.orderDetails.createdAt)}
-                              </>
-                            )}
+                            {order.orderDetails.status} on{" "}
+                            {renderOrderDate(order.orderDetails.createdAt)}
                           </span>
                         )}
                       </p>
