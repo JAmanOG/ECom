@@ -49,7 +49,7 @@ function SpecialCategories() {
             shoesData = await getSpecialShoes('Men', 50);
             break;
           case 'WomenCollection':
-            shoesData = await getSpecialShoes('Women', 50);
+            shoesData = await getSpecialShoes('Women', 0);
             break;
           case 'KidsCollection':
             shoesData = await getSpecialShoes('Kids', 50);

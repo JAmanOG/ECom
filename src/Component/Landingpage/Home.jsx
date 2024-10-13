@@ -333,11 +333,11 @@ const navigation = {
           items: [
             {
               name: "Boys",
-              href: "/shops/kids/school_shoes/school-shoes-boys",
+              href: "/shops/kids/school_shoes/boys",
             },
             {
               name: "Girls",
-              href: "/shops/kids/school_shoes/school-shoes-girls",
+              href: "/shops/kids/school_shoes/girls",
             },
           ],
         },
