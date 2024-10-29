@@ -67,7 +67,7 @@ function Dashboard() {
         />
       </Link>
   
-      <Link to="/wishlist" className="p-6 border border-gray-300 rounded-lg shadow-lg hover:bg-gray-100 transition">
+      <Link to="/my/wishlist" className="p-6 border border-gray-300 rounded-lg shadow-lg hover:bg-gray-100 transition">
         <h4 className="text-xl font-semibold mb-4">Wishlist</h4>
         <svg
           xmlns="http://www.w3.org/2000/svg"
