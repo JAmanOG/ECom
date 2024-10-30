@@ -1,16 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.footdise.live/</loc>
+    <lastmod>2024-10-13T19:04:02+00:00</lastmod>
+  </url>
 
+  <!-- Auth Pages -->
+  <url>
+    <loc>https://www.footdise.live/login</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/signup</loc>
+  </url>
 
-<url>
-  <loc>https://www.footdise.live/</loc>
-  <lastmod>2024-10-13T19:04:02+00:00</lastmod>
-</url>
+  <!-- User Pages -->
+  <url>
+    <loc>https://www.footdise.live/orders</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/my/Wishlist</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/my/CheckoutPage</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/my/CheckoutForm</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/my/Cart</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/my/Dashboard</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/my/order/invoice</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/order/order-confirmation</loc>
+  </url>
+  
+  <!-- Product Detail Pages -->
+  <url>
+    <loc>https://www.footdise.live/shops/:category/:subcategory/:subsubcategory/:slugg</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/shops/:category/:subcategory/:subsubcategory</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/shops/:category/:subcategory</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/shops/:category</loc>
+  </url>
 
+  <!-- Special Collection Pages -->
+  <url>
+    <loc>https://www.footdise.live/special/:special</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/shop/:tag</loc>
+  </url>
 
+  <!-- Static Pages -->
+  <url>
+    <loc>https://www.footdise.live/about</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/faq</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/gallery</loc>
+  </url>
+
+  <!-- Admin Pages -->
+  <url>
+    <loc>https://www.footdise.live/admin</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/admin/add-product</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/admin/manage-product</loc>
+  </url>
+  <url>
+    <loc>https://www.footdise.live/admin/manage-order</loc>
+  </url>
 </urlset>

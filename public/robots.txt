@@ -1,3 +1,5 @@
 User-agent: *
 Disallow: 
-Sitemap: https://footdise.live/sitemap.xml
+
+Sitemap: https://www.footdise.live/sitemap.xml
+Sitemap: https://footdise.live/sitemap(1).xml
